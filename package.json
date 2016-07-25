@@ -1,0 +1,39 @@
+{
+  "name": "neoui-sparrow",
+  "version": "1.0.0",
+  "description": "sparrow.js",
+  "main": "lib/sparrow.js",
+  "scripts": {
+    "build": "webpack --colors --progress --mode=build",
+    "dev": "webpack --progress --colors --watch --mode=dev",
+    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iuap-design/sparrow.git"
+  },
+  "keywords": [
+    "sparrow",
+    "iuap",
+    "design"
+  ],
+  "author": "Yonyou FED",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iuap-design/sparrow/issues"
+  },
+  "homepage": "https://github.com/iuap-design/sparrow#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.1.1",
+    "eslint-loader": "^1.4.1",
+    "mocha": "^2.5.3",
+    "webpack": "^1.13.1",
+    "yargs": "^4.8.1"
+  }
+}

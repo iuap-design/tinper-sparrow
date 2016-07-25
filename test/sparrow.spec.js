@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Library from '../lib/library.js';
+import sparrow from '../lib/sparrow.js';
 
 chai.expect();
 
@@ -7,13 +7,13 @@ const expect = chai.expect;
 
 var lib;
 
-describe('Given an instance of my library', function () {
+describe('Given an instance of my sparrow', function () {
   before(function () {
-    lib = new Library();
+    lib = new sparrow();
   });
   describe('when I need the name', function () {
     it('should return the name', () => {
-      expect(lib.name).to.be.equal('Library');
+      expect(lib.name).to.be.equal('sparrow');
     });
   });
 });
