@@ -1,29 +1,16 @@
-# Webpack library starter
+# sparrow
 
-Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library)
+`sparrow.js`是一个前端基础库，精简版的jQuery + 精简版lodash的合体。
 
-## Features
+## 功能特性
 
-* Webpack based.
-* ES6 as a source.
-* Exports in a [umd](https://github.com/umdjs/umd) format so your library works everywhere.
-* ES6 test setup with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/).
-* Linting with [ESLint](http://eslint.org/).
+## 关于开发
 
-## Process
-
-```
-ES6 source files
-       |
-       |
-    webpack
-       |
-       +--- babel, eslint
-       |
-  ready to use
-     library
-  in umd format
-```
+* 基于Webpack构建资源.
+* 使用ES6语法特性.
+* 导出[umd](https://github.com/umdjs/umd)格式文件，随处使用.
+* 使用[Mocha](http://mochajs.org/) 和 [Chai](http://chaijs.com/) 进行项目测试.
+* [ESLint](http://eslint.org/)帮助我们进行代码规范检测.
 
 ## Getting started
 
