@@ -15,7 +15,6 @@ if (env === 'build') {
 }
 
 var config = {
-  //entry: __dirname + '/src/index.js',
   entry : {
   	core:['./src/core/core.js',
   		  './src/core/base.js',

@@ -4,8 +4,8 @@
   "description": "sparrow.js",
   "main": "lib/sparrow.js",
   "scripts": {
-    "build": "webpack --colors --progress --mode=build",
-    "dev": "webpack --progress --colors --watch --mode=dev",
+    "build": "webpack --colors --progress --mode=build && node makeumd --mode=build",
+    "dev": "webpack --progress --colors  --mode=dev && node makeumd --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
   },
   "repository": {
