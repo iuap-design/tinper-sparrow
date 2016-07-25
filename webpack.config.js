@@ -15,7 +15,26 @@ if (env === 'build') {
 }
 
 var config = {
-  entry: __dirname + '/src/index.js',
+  //entry: __dirname + '/src/index.js',
+  entry : {
+  	core:['./src/core/core.js',
+  		  './src/core/base.js',
+  		  './src/core/compMgr.js',
+  		  './src/core/BaseComponent.js',
+  		  './src/core/end.js',
+  		  './src/core/event.js',
+  		  './src/core/ajax.js',
+  		  './src/utilities/dataRender.js',
+  		  './src/utilities/dateUtils.js',
+  		  './src/utilities/formater.js',
+  		  './src/utilities/hotKeys.js',
+ 		  './src/utilities/i18n.js',
+ 		  './src/utilities/jsExtensions.js',
+  		  './src/utilities/masker.js',
+  		  './src/utilities/rsautils.js',
+  		  './src/utilities/ripple.js'
+  		 ]
+  },
   devtool: 'source-map',
   output: {
     path: __dirname + '/lib',
