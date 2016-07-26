@@ -5,7 +5,6 @@ var env = require('yargs').argv.mode;
 var data = fs.readFileSync('./package.json', 'utf8');
 var packageObj = JSON.parse(data);
 var filesArr = [];
-console.log("envenvenvenvenvenv"+env);
 if(env=="dev"){
 	filesArr.push('./lib/sparrow.js');
 }else if(env=="build"){
