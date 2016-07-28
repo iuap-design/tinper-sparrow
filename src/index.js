@@ -1,7 +1,7 @@
 /**
  * Module : Sparrow entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-07-28 15:39:01
+ * Date	  : 2016-07-28 20:47:23
  */
 
 //对外暴露接口用于外部访问
@@ -73,6 +73,33 @@ import {
 	ajax
 } from './ajax';
 
+import {
+	floatRender,
+	integerRender,
+	dateRender,
+	dateTimeRender,
+	timeRender,
+	percentRender,
+	dateToUTCString
+} from './util/dataRender';
+
+import {
+	NumberFormater,
+	DateFormater
+} from './util/formater';
+
+import {
+	date
+} from './util/dateUtils';
+import {
+	AddressMasker,
+	NumberMasker,
+	CurrencyMasker,
+	PercentMasker
+} from './util/masker'
+
+import {hotkeys} from './util/hotKeys';
+
 //window.U_LANGUAGES = U_LANGUAGES;
 //公开接口、属性对外暴露
 u.extend = extend;
@@ -140,6 +167,36 @@ if(document.readyState && document.readyState === 'complete') {
 }
 u.extend(u, {
 	ajax: ajax
+});
+
+u.extend(u, {
+	floatRender: floatRender,
+	integerRender: integerRender,
+	dateRender: dateRender,
+	dateTimeRender: dateTimeRender,
+	timeRender: timeRender,
+	percentRender: percentRender,
+	dateToUTCString: dateToUTCString
+});
+
+u.extend(u, {
+	date: date
+});
+
+u.extend(u, {
+	NumberFormater: NumberFormater,
+	DateFormater: DateFormater
+});
+
+u.extend(u, {
+	AddressMasker: AddressMasker,
+	NumberMasker: NumberMasker,
+	CurrencyMasker: CurrencyMasker,
+	PercentMasker: PercentMasker
+});
+
+u.extend(u,{
+	hotkeys : hotkeys
 });
 
 console.log(u);

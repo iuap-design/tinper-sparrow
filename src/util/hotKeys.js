@@ -1,26 +1,35 @@
-var _hotkeys = {};
-_hotkeys.special_keys = {
+/**
+ * Module : Sparrow hotKeys
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-07-28 20:25:39
+ */
+
+import {isFunction} from '../class';
+import {extend} from '../extend';
+import {getFunction} from '../util';
+var hotkeys = {};
+hotkeys.special_keys = {
     27: 'esc', 9: 'tab', 32: 'space', 13: 'enter', 8: 'backspace', 145: 'scroll', 20: 'capslock',
     144: 'numlock', 19: 'pause', 45: 'insert', 36: 'home', 46: 'del', 35: 'end', 33: 'pageup',
     34: 'pagedown', 37: 'left', 38: 'up', 39: 'right', 40: 'down', 112: 'f1', 113: 'f2', 114: 'f3',
     115: 'f4', 116: 'f5', 117: 'f6', 118: 'f7', 119: 'f8', 120: 'f9', 121: 'f10', 122: 'f11', 123: 'f12'
 };
 
-_hotkeys.shift_nums = {
+hotkeys.shift_nums = {
     "`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&",
     "8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ":", "'": "\"", ",": "<",
     ".": ">", "/": "?", "\\": "|"
 };
 
-_hotkeys.add = function (combi, options, callback) {
-    if (u.isFunction(options)) {
+hotkeys.add = function (combi, options, callback) {
+    if (isFunction(options)) {
         callback = options;
         options = {};
     }
     var opt = {},
         defaults = {type: 'keydown', propagate: false, disableInInput: false, target: document.body, checkParent: true},
         that = this;
-    opt = u.extend(opt, defaults, options || {});
+    opt = extend(opt, defaults, options || {});
     combi = combi.toLowerCase();
 
     // inspect if keystroke matches
@@ -84,23 +93,23 @@ _hotkeys.add = function (combi, options, callback) {
     if (!data) {
         opt.target['u.hotkeys'] =  data = {events: {}};
     }
-//      if (!_hotkeys.all[opt.target]){
-//          _hotkeys.all[opt.target] = {events:{}};
+//      if (!hotkeys.all[opt.target]){
+//          hotkeys.all[opt.target] = {events:{}};
 //      }
     if (!data.events[opt.type]) {
         data.events[opt.type] = {callbackMap: {}};
-        u.on(opt.target, opt.type, inspector);
+        on(opt.target, opt.type, inspector);
         //$.event.add(opt.target, opt.type, inspector);
     }
-//      if (!_hotkeys.all[opt.target].events[opt.type]){
-//          _hotkeys.all[opt.target].events[opt.type] = {callbackMap: {}}
+//      if (!hotkeys.all[opt.target].events[opt.type]){
+//          hotkeys.all[opt.target].events[opt.type] = {callbackMap: {}}
 //          $.event.add(opt.target, opt.type, inspector);
 //      }
     data.events[opt.type].callbackMap[combi] = {cb: callback, propagate: opt.propagate};
-//      _hotkeys.all[opt.target].events[opt.type].callbackMap[combi] =  {cb: callback, propagate:opt.propagate};
-    return u.hotkeys;
+//      hotkeys.all[opt.target].events[opt.type].callbackMap[combi] =  {cb: callback, propagate:opt.propagate};
+    return hotkeys;
 };
-_hotkeys.remove = function (exp, opt) {
+hotkeys.remove = function (exp, opt) {
     opt = opt || {};
     target = opt.target || document.body;
     type = opt.type || 'keydown';
@@ -109,13 +118,13 @@ _hotkeys.remove = function (exp, opt) {
     delete target['u.hotkeys'].events[type].callbackMap[exp];
 };
 
-_hotkeys.scan = function (element, target) {
+hotkeys.scan = function (element, target) {
     element = element || document.body;
     element.querySelectorAll('[u-enter]').forEach(function(el){
         var enterValue = el.getAttribute('u-enter');
         if (!enterValue) return;
         if (enterValue.substring(0, 1) == '#')
-            u.hotkeys.add('enter', {target: this}, function () {
+            hotkeys.add('enter', {target: this}, function () {
                 var _el = element.querySelector(enterValue);
                 if (_el){
                     _el.focus();
@@ -123,8 +132,8 @@ _hotkeys.scan = function (element, target) {
             });
         else {
             target = target || window
-            var func = u.getFunction(target, enterValue)
-            u.hotkeys.add('enter', {target: this}, function () {
+            var func = h(target, enterValue)
+            hotkeys.add('enter', {target: this}, function () {
                 func.call(this)
             })
         }
@@ -132,11 +141,13 @@ _hotkeys.scan = function (element, target) {
     element.querySelectorAll('[u-hotkey]').forEach(function(el){
         var hotkey = el.getAttribute('u-hotkey');
         if (!hotkey) return;
-        u.hotkeys.add(hotkey, function () {
+        hotkeys.add(hotkey, function () {
             el.click();
         })
 
     });
 }
 
-u.hotkeys = _hotkeys;
+var hotkeys = hotkeys;
+
+export {hotkeys};

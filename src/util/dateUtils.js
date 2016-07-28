@@ -1,5 +1,10 @@
+/**
+ * Module : Sparrow date util
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-07-28 19:47:36
+ */
 
-
+var u = {};
 u.date= {
     /**
      * 多语言处理
@@ -236,3 +241,5 @@ u.date= {
     }
 };
 
+var date = u.date;
+export {date};

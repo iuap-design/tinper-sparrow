@@ -178,5 +178,6 @@ var indexOf = function(arr, item) {
 }
 
 export {
-	Class
+	Class,
+	isFunction
 };

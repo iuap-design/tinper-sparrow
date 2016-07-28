@@ -1,6 +1,11 @@
 /**
- * 抽象格式化类
+ * Module : Sparrow abstract formater class
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-07-28 19:35:26
  */
+
+import { extend } from '../extend';
+
 function AbstractMasker() {};
 
 AbstractMasker.prototype.format = function(obj) {
@@ -216,7 +221,7 @@ function AddressMasker(formatMeta) {
 };
 
 AddressMasker.prototype.update = function(formatMeta) {
-	this.formatMeta = u.extend({}, AddressMasker.DefaultFormatMeta, formatMeta)
+	this.formatMeta = extend({}, AddressMasker.DefaultFormatMeta, formatMeta)
 }
 
 AddressMasker.prototype.getExpress = function() {
@@ -301,7 +306,7 @@ function NumberMasker(formatMeta) {
 };
 
 NumberMasker.prototype.update = function(formatMeta) {
-	this.formatMeta = u.extend({}, NumberMasker.DefaultFormatMeta, formatMeta)
+	this.formatMeta = extend({}, NumberMasker.DefaultFormatMeta, formatMeta)
 }
 
 /**
@@ -395,7 +400,7 @@ function CurrencyMasker(formatMeta) {
 };
 
 CurrencyMasker.prototype.update = function(formatMeta) {
-	this.formatMeta = u.extend({}, CurrencyMasker.DefaultFormatMeta, formatMeta)
+	this.formatMeta = extend({}, CurrencyMasker.DefaultFormatMeta, formatMeta)
 }
 
 /**
@@ -420,7 +425,7 @@ function PercentMasker(formatMeta) {
 };
 
 PercentMasker.prototype.update = function(formatMeta) {
-	this.formatMeta = u.extend({}, NumberMasker.DefaultFormatMeta, formatMeta)
+	this.formatMeta = extend({}, NumberMasker.DefaultFormatMeta, formatMeta)
 }
 
 
@@ -501,7 +506,7 @@ NumberMasker.DefaultFormatMeta = {
 	negativeFormat: "-n"
 }
 
-CurrencyMasker.DefaultFormatMeta = u.extend({}, NumberMasker.DefaultFormatMeta, {
+CurrencyMasker.DefaultFormatMeta = extend({}, NumberMasker.DefaultFormatMeta, {
 	//curSymbol: "",
 	positiveFormat: "n",
 	negativeFormat: "-n"
@@ -514,7 +519,5 @@ AddressMasker.defaultFormatMeta = {
 };
 
 
-u.AddressMasker = AddressMasker;
-u.NumberMasker = NumberMasker;
-u.CurrencyMasker = CurrencyMasker;
-u.PercentMasker = PercentMasker;
+
+export {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker};

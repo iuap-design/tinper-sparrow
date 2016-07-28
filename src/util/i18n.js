@@ -1,19 +1,11 @@
-﻿//
-//if (window.i18n) {
-//    var scriptPath = getCurrentJsPath(),
-//        _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
-//        __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'))
-//    u.uuii18n = u.extend({}, window.i18n)
-//    u.uuii18n.init({
-//        postAsync: false,
-//        getAsync: false,
-//        fallbackLng: false,
-//        ns: {namespaces: ['uui-trans']},
-//        resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
-//    })
-//}
+﻿/**
+ * Module : Sparrow i18n
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-07-28 20:42:17
+ */
+import {uuii18n} from '?';
+var trans = function (key, dftValue) {
+    return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
+};
 
-window.trans = u.trans = function (key, dftValue) {
-    return  u.uuii18n ?  u.uuii18n.t('uui-trans:' + key) : dftValue
-}
-
+export {trans};
