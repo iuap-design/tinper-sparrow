@@ -4,7 +4,6 @@
  * Date	  : 2016-07-28 14:41:17
  */
 import { env } from './env';
-console.log(env.hasTouch);
 
 var u = {};
 u.event = {};

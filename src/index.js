@@ -8,7 +8,9 @@
 var u = window.u || {};
 window.u = u;
 //相关依赖导入
-import {extend} from './extend';
+import {
+	extend
+} from './extend';
 //import {U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE} from './enumerables'
 import {
 	setCookie,
@@ -44,13 +46,21 @@ import {
 	toggleClass,
 	closest,
 	css,
-	getZIndex
+	wrap,
+	getStyle,
+	getZIndex,
+	makeDOM,
+	makeModal,
+	getOffset,
+	getScroll,
+	showPanelByEle
 } from './dom';
 import {
 	Class
 } from './class';
-import { core } from './core';
-
+import {
+	core
+} from './core';
 
 //window.U_LANGUAGES = U_LANGUAGES;
 //公开接口、属性对外暴露
@@ -66,10 +76,10 @@ u.extend(u, {
 	getJSObject: getJSObject,
 	isDate: isDate,
 	isNumber: isNumber,
-	isArray : isArray,
+	isArray: isArray,
 	isEmptyObject: isEmptyObject,
 	inArray: inArray,
-	isDomElement : isDomElement,
+	isDomElement: isDomElement,
 	each: each
 });
 u.extend(u, env);
@@ -79,7 +89,7 @@ u.extend(u, {
 	off: off,
 	trigger: trigger,
 	stopEvent: stopEvent,
-	event : event
+	event: event
 });
 u.extend(u, {
 	addClass: addClass,
@@ -87,8 +97,15 @@ u.extend(u, {
 	hasClass: hasClass,
 	toggleClass: toggleClass,
 	closest: closest,
-	css : css,
-	getZIndex : getZIndex
+	css: css,
+	wrap: wrap,
+	getStyle: getStyle,
+	getZIndex: getZIndex,
+	makeDOM: makeDOM,
+	makeModal: makeModal,
+	getOffset: getOffset,
+	getScroll: getScroll,
+	showPanelByEle: showPanelByEle
 });
 u.extend(u, {
 	Class: Class
@@ -96,6 +113,5 @@ u.extend(u, {
 u.extend(u, {
 	core: core
 });
-
 
 console.log(u);
