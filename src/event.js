@@ -1,32 +1,34 @@
 /**
- * Module : Sparrow event
+ * Module : Sparrow touch event
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-07-27 21:46:50
+ * Date	  : 2016-07-28 14:41:17
  */
+import { env } from './env';
+console.log(env.hasTouch);
 
-var u = window.u || {};
+var u = {};
 u.event = {};
 
-var touchStartEvent = u.hasTouch ? "touchstart" : "mousedown",
-	touchStopEvent = u.hasTouch ? "touchend" : "mouseup",
-	touchMoveEvent = u.hasTouch ? "touchmove" : "mousemove";
+var touchStartEvent = env.hasTouch ? "touchstart" : "mousedown",
+	touchStopEvent = env.hasTouch ? "touchend" : "mouseup",
+	touchMoveEvent = env.hasTouch ? "touchmove" : "mousemove";
 
 // tap和taphold
 u.event.tap = {
 	tapholdThreshold: 750,
 	emitTapOnTaphold: true,
 	touchstartFun: function() {
-		u.trigger(this, 'vmousedown');
+		trigger(this, 'vmousedown');
 	},
 	touchendFun: function() {
-		u.trigger(this, 'vmouseup');
-		u.trigger(this, 'vclick');
+		trigger(this, 'vmouseup');
+		trigger(this, 'vclick');
 	},
 	setup: function() {
 		var thisObject = this,
 			isTaphold = false;
 
-		u.on(thisObject, "vmousedown", function(event) {
+		on(thisObject, "vmousedown", function(event) {
 			isTaphold = false;
 			if(event.which && event.which !== 1) {
 				return false;
@@ -42,9 +44,9 @@ u.event.tap = {
 			function clearTapHandlers() {
 				clearTapTimer();
 
-				u.off(thisObject, 'vclick');
-				u.off(thisObject, 'vmouseup');
-				u.off(document, 'vmousecancel');
+				off(thisObject, 'vclick');
+				off(thisObject, 'vmouseup');
+				off(document, 'vmousecancel');
 			}
 
 			function clickHandler(event) {
@@ -53,32 +55,32 @@ u.event.tap = {
 				// ONLY trigger a 'tap' event if the start target is
 				// the same as the stop target.
 				if(!isTaphold && origTarget === event.target) {
-					u.trigger(thisObject, 'tap');
+					trigger(thisObject, 'tap');
 				} else if(isTaphold) {
 					event.preventDefault();
 				}
 			}
-			u.on(thisObject, 'vmouseup', clearTapTimer);
-			u.on(thisObject, 'vclick', clickHandler);
-			u.on(document, 'vmousecancel', clearTapHandlers);
+			on(thisObject, 'vmouseup', clearTapTimer);
+			on(thisObject, 'vclick', clickHandler);
+			on(document, 'vmousecancel', clearTapHandlers);
 
 			timer = setTimeout(function() {
 				if(!u.event.tap.emitTapOnTaphold) {
 					isTaphold = true;
 				}
-				u.trigger(thisObject, "taphold");
+				trigger(thisObject, "taphold");
 				clearTapHandlers();
 			}, u.event.tap.tapholdThreshold);
 		});
 
-		u.on(thisObject, 'touchstart', u.event.tap.touchstartFun);
-		u.on(thisObject, 'touchend', u.event.tap.touchendFun);
+		on(thisObject, 'touchstart', u.event.tap.touchstartFun);
+		on(thisObject, 'touchend', u.event.tap.touchendFun);
 	},
 	teardown: function() {
-		u.off(thisObject, 'vmousedown');
-		u.off(thisObject, 'vclick');
-		u.off(thisObject, 'vmouseup');
-		u.off(document, 'vmousecancel');
+		off(thisObject, 'vmousedown');
+		off(thisObject, 'vclick');
+		off(thisObject, 'vmouseup');
+		off(document, 'vmousecancel');
 	}
 };
 
@@ -153,8 +155,8 @@ u.event.swipe = {
 			Math.abs(start.coords[1] - stop.coords[1]) < u.event.swipe.verticalDistanceThreshold) {
 			var direction = start.coords[0] > stop.coords[0] ? "swipeleft" : "swiperight";
 
-			u.trigger(thisObject, "swipe");
-			u.trigger(thisObject, direction);
+			trigger(thisObject, "swipe");
+			trigger(thisObject, direction);
 			return true;
 		}
 		return false;
@@ -220,14 +222,14 @@ u.event.swipe = {
 
 				// Reset the context to make way for the next swipe event
 				u.event.swipe.eventInProgress = false;
-				u.off(document, touchMoveEvent, context.move);
+				off(document, touchMoveEvent, context.move);
 				context.move = null;
 			};
 
-			u.on(document, touchMoveEvent, context.move);
-			u.on(document, touchStopEvent, context.stop);
+			on(document, touchMoveEvent, context.move);
+			on(document, touchStopEvent, context.stop);
 		};
-		u.on(thisObject, touchStartEvent, context.start);
+		on(thisObject, touchStartEvent, context.start);
 	},
 
 	teardown: function() {
@@ -245,13 +247,13 @@ u.event.swipe = {
 
 		if(context) {
 			if(context.start) {
-				u.off(thisObject, touchStartEvent, context.start);
+				off(thisObject, touchStartEvent, context.start);
 			}
 			if(context.move) {
-				u.off(document, touchMoveEvent, context.move);
+				off(document, touchMoveEvent, context.move);
 			}
 			if(context.stop) {
-				u.off(document, touchStopEvent, context.stop);
+				off(document, touchStopEvent, context.stop);
 			}
 		}
 	}
@@ -260,6 +262,8 @@ u.event.swipe = {
 u.event.swipeleft = u.event.swipe;
 
 u.event.swiperight = u.event.swipe;
+
+var event = u.event;
 
 var on = function(element, eventName, child, listener) {
 	if(!element)
@@ -383,5 +387,6 @@ export {
 	on,
 	off,
 	trigger,
-	stopEvent
+	stopEvent,
+	event
 };

@@ -22,4 +22,6 @@ if(enumerables) {
 		'toLocaleString', 'toString', 'constructor'
 	];
 }
-export default enumerables;
+
+
+export {enumerables,U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE};

@@ -4,7 +4,7 @@
  * Date	  : 2016-07-27 21:46:50
  */
 
-import extend from './extend';
+import {extend} from './extend';
 var u = {};
 
 

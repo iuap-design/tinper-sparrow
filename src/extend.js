@@ -4,8 +4,7 @@
  * Date	  : 2016-07-27 21:46:50
  */
 
-import enumerables from './enumerables'
-
+import {enumerables} from './enumerables';
 
 
 /**
@@ -39,4 +38,4 @@ var extend = function(object, config) {
 	return object;
 };
 
-export default extend;
+export {extend};
