@@ -62,6 +62,17 @@ import {
 	core
 } from './core';
 
+import {
+	compMgr
+} from './compMgr';
+import {
+	BaseComponent
+} from './BaseComponent';
+
+import {
+	ajax
+} from './ajax';
+
 //window.U_LANGUAGES = U_LANGUAGES;
 //公开接口、属性对外暴露
 u.extend = extend;
@@ -112,6 +123,23 @@ u.extend(u, {
 });
 u.extend(u, {
 	core: core
+});
+u.extend(u, {
+	compMgr: compMgr
+});
+u.extend(u, {
+	BaseComponent: BaseComponent
+});
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		compMgr.updateComp();
+	});
+}
+u.extend(u, {
+	ajax: ajax
 });
 
 console.log(u);
