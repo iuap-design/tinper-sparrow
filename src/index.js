@@ -228,5 +228,3 @@ u.extend(u, {
 u.extend(u, {
 	trans: trans
 });
-
-console.log(u);
