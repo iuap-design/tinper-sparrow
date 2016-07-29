@@ -228,3 +228,4 @@ u.extend(u, {
 u.extend(u, {
 	trans: trans
 });
+window.trans = trans;
