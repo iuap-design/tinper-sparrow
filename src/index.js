@@ -1,7 +1,7 @@
 /**
  * Module : Sparrow entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-07-28 20:47:23
+ * Date	  : 2016-07-29 10:21:33
  */
 
 //对外暴露接口用于外部访问
@@ -98,7 +98,24 @@ import {
 	PercentMasker
 } from './util/masker'
 
-import {hotkeys} from './util/hotKeys';
+import {
+	hotkeys
+} from './util/hotKeys';
+
+import {
+	Ripple
+} from './util/ripple';
+
+import {
+	RSAUtils,
+	BigInt,
+	BarrettMu,
+	twoDigit
+} from './util/rsautils';
+
+import {
+	trans
+} from './util/i18n';
 
 //window.U_LANGUAGES = U_LANGUAGES;
 //公开接口、属性对外暴露
@@ -195,8 +212,21 @@ u.extend(u, {
 	PercentMasker: PercentMasker
 });
 
-u.extend(u,{
-	hotkeys : hotkeys
+u.extend(u, {
+	hotkeys: hotkeys
+});
+
+u.extend(u, {
+	Ripple: Ripple
+});
+u.extend(u, {
+	RSAUtils: RSAUtils,
+	BigInt: BigInt,
+	BarrettMu: BarrettMu,
+	twoDigit: twoDigit
+});
+u.extend(u, {
+	trans: trans
 });
 
 console.log(u);

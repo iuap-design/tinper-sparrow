@@ -1,19 +1,15 @@
-﻿/* ========================================================================
- * UUI: rsautils.js v 1.0.0
- *
- * ========================================================================
- * Copyright 2015 yonyou, Inc.
- * Licensed under MIT ()
- * ======================================================================== */
-
+﻿/**
+ * Module : Sparrow rsa utils
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-07-29 09:14:38
+ */
 /*
- * u.RSAUtils.encryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
- * u.RSAUtils.decryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
+ * RSAUtils.encryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
+ * RSAUtils.decryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
  */
 
-if (typeof u.RSAUtils === 'undefined')
-    u.RSAUtils = {};
-var RSAUtils = u.RSAUtils;
+
+var RSAUtils = {};
 var biRadixBase = 2;
 var biRadixBits = 16;
 var bitsPerDigit = biRadixBits;
@@ -36,7 +32,7 @@ var maxDigits;
 var ZERO_ARRAY;
 var bigZero, bigOne;
 
-var BigInt = u.BigInt = function (flag) {
+var BigInt = function (flag) {
     if (typeof flag == "boolean" && flag == true) {
         this.digits = null;
     } else {
@@ -556,7 +552,7 @@ RSAUtils.biPowMod = function (x, y, m) {
 };
 
 
-u.BarrettMu = function (m) {
+var BarrettMu = function (m) {
     this.modulus = RSAUtils.biCopy(m);
     this.k = RSAUtils.biHighIndex(this.modulus) + 1;
     var b2k = new BigInt();
@@ -623,18 +619,16 @@ var RSAKeyPair = function (encryptionExponent, decryptionExponent, modulus) {
     // already been subtracted.
     this.chunkSize = 2 * $dmath.biHighIndex(this.m);
     this.radix = 16;
-    this.barrett = new u.BarrettMu(this.m);
+    this.barrett = new BarrettMu(this.m);
 };
 
 RSAUtils.getKeyPair = function (encryptionExponent, decryptionExponent, modulus) {
     return new RSAKeyPair(encryptionExponent, decryptionExponent, modulus);
 };
 
-if (typeof u.twoDigit === 'undefined') {
-    u.twoDigit = function (n) {
+var twoDigit = function (n) {
         return (n < 10 ? "0" : "") + String(n);
     };
-}
 
 // Altered by Rob Saunders (rob@robsaunders.net). New routine pads the
 // string after it has been converted to an array. This fixes an
@@ -714,3 +708,4 @@ RSAUtils.decryptedString = function (options) {
     return text;
 };
 	
+export {RSAUtils,BigInt,BarrettMu,twoDigit};
