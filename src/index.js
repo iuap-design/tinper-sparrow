@@ -229,3 +229,4 @@ u.extend(u, {
 	trans: trans
 });
 window.trans = trans;
+window.URipple = Ripple;
