@@ -23,7 +23,7 @@ var config = {
 	output: {
 		path: __dirname + '/lib',
 		filename: outputFile,
-		library: libraryName,
+		library: 'u',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},

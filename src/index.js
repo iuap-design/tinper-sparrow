@@ -1,17 +1,15 @@
 /**
  * Module : Sparrow entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-07-29 10:21:33
+ * Date	  : 2016-08-03 14:37:47
  */
 
 //对外暴露接口用于外部访问
-var u = window.u || {};
-window.u = u;
+var u = {};
 //相关依赖导入
 import {
 	extend
 } from './extend';
-//import {U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE} from './enumerables'
 import {
 	setCookie,
 	getCookie
@@ -228,5 +226,4 @@ u.extend(u, {
 u.extend(u, {
 	trans: trans
 });
-window.trans = trans;
-window.URipple = Ripple;
+export default u;
