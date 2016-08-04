@@ -115,4 +115,4 @@ var XmlHttp = {
 
 
 var ajax = XmlHttp.ajax;
-export default ajax;
+export  {ajax};

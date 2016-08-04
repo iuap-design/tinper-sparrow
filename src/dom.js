@@ -16,7 +16,7 @@ var addClass = function(element, value) {
 	} else {
 		element.classList.add(value);
 	}
-	return u;
+	return this;
 };
 /**
  * 删除元素上指定样式
@@ -30,7 +30,7 @@ var removeClass = function(element, value) {
 	} else {
 		element.classList.remove(value);
 	}
-	return u;
+	return this;
 };
 /**
  * 元素上是否存在该类

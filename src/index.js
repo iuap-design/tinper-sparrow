@@ -4,10 +4,7 @@
  * Date	  : 2016-08-04 09:48:36
  */
 
-//相关依赖导入
-import {
-	extend
-} from './extend';
+import {extend} from './extend';
 import {
 	setCookie,
 	getCookie
@@ -175,7 +172,7 @@ let api = {
 	twoDigit: twoDigit,
 	trans: trans
 };
-// extend(api,env);
+extend(api,env);
 if(document.readyState && document.readyState === 'complete') {
 	compMgr.updateComp();
 } else {
@@ -184,9 +181,4 @@ if(document.readyState && document.readyState === 'complete') {
 	});
 }
 // export api;
-export {
-	ajax,
-	percentRender,
-	PercentMasker,
-	core
-}
+export default api;
