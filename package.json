@@ -1,12 +1,13 @@
 {
   "name": "neoui-sparrow",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "sparrow.js",
-  "main": "lib/sparrow.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "webpack --colors --progress --mode=build && node version --mode=build",
     "dev": "webpack --progress --colors  --mode=dev && node version --mode=dev",
-    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
+    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "es2015": "babel src -d build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/iuap-design/sparrow#readme",
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
