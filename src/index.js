@@ -1,11 +1,9 @@
 /**
  * Module : Sparrow entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-03 14:37:47
+ * Date	  : 2016-08-04 09:48:36
  */
 
-//对外暴露接口用于外部访问
-var u = {};
 //相关依赖导入
 import {
 	extend
@@ -115,14 +113,12 @@ import {
 	trans
 } from './util/i18n';
 
-//window.U_LANGUAGES = U_LANGUAGES;
 //公开接口、属性对外暴露
-u.extend = extend;
-u.extend(u, {
+var api = {
+	ajax: ajax,
+	extend : extend,
 	setCookie: setCookie,
-	getCookie: getCookie
-});
-u.extend(u, {
+	getCookie: getCookie,
 	createShellObject: createShellObject,
 	execIgnoreError: execIgnoreError,
 	getFunction: getFunction,
@@ -133,18 +129,12 @@ u.extend(u, {
 	isEmptyObject: isEmptyObject,
 	inArray: inArray,
 	isDomElement: isDomElement,
-	each: each
-});
-u.extend(u, env);
-
-u.extend(u, {
+	each: each,
 	on: on,
 	off: off,
 	trigger: trigger,
 	stopEvent: stopEvent,
-	event: event
-});
-u.extend(u, {
+	event: event,
 	addClass: addClass,
 	removeClass: removeClass,
 	hasClass: hasClass,
@@ -158,21 +148,34 @@ u.extend(u, {
 	makeModal: makeModal,
 	getOffset: getOffset,
 	getScroll: getScroll,
-	showPanelByEle: showPanelByEle
-});
-u.extend(u, {
-	Class: Class
-});
-u.extend(u, {
-	core: core
-});
-u.extend(u, {
-	compMgr: compMgr
-});
-u.extend(u, {
-	BaseComponent: BaseComponent
-});
-
+	showPanelByEle: showPanelByEle,
+	Class: Class,
+	core: core,
+	compMgr: compMgr,
+	BaseComponent: BaseComponent,
+	floatRender: floatRender,
+	integerRender: integerRender,
+	dateRender: dateRender,
+	dateTimeRender: dateTimeRender,
+	timeRender: timeRender,
+	percentRender: percentRender,
+	dateToUTCString: dateToUTCString,
+	date: date,
+	NumberFormater: NumberFormater,
+	DateFormater: DateFormater,
+	AddressMasker: AddressMasker,
+	NumberMasker: NumberMasker,
+	CurrencyMasker: CurrencyMasker,
+	PercentMasker: PercentMasker,
+	hotkeys: hotkeys,
+	Ripple: Ripple,
+	RSAUtils: RSAUtils,
+	BigInt: BigInt,
+	BarrettMu: BarrettMu,
+	twoDigit: twoDigit,
+	trans: trans
+};
+extend(api,env);
 if(document.readyState && document.readyState === 'complete') {
 	compMgr.updateComp();
 } else {
@@ -180,50 +183,4 @@ if(document.readyState && document.readyState === 'complete') {
 		compMgr.updateComp();
 	});
 }
-u.extend(u, {
-	ajax: ajax
-});
-
-u.extend(u, {
-	floatRender: floatRender,
-	integerRender: integerRender,
-	dateRender: dateRender,
-	dateTimeRender: dateTimeRender,
-	timeRender: timeRender,
-	percentRender: percentRender,
-	dateToUTCString: dateToUTCString
-});
-
-u.extend(u, {
-	date: date
-});
-
-u.extend(u, {
-	NumberFormater: NumberFormater,
-	DateFormater: DateFormater
-});
-
-u.extend(u, {
-	AddressMasker: AddressMasker,
-	NumberMasker: NumberMasker,
-	CurrencyMasker: CurrencyMasker,
-	PercentMasker: PercentMasker
-});
-
-u.extend(u, {
-	hotkeys: hotkeys
-});
-
-u.extend(u, {
-	Ripple: Ripple
-});
-u.extend(u, {
-	RSAUtils: RSAUtils,
-	BigInt: BigInt,
-	BarrettMu: BarrettMu,
-	twoDigit: twoDigit
-});
-u.extend(u, {
-	trans: trans
-});
-export default u;
+export default api;
