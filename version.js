@@ -6,9 +6,9 @@ var data = fs.readFileSync('./package.json', 'utf8');
 var packageObj = JSON.parse(data);
 var filesArr = [];
 if(env=="dev"){
-	filesArr.push('./lib/sparrow.js');
+	filesArr.push('./dist/sparrow.js');
 }else if(env=="build"){
-	filesArr.push('./lib/sparrow.min.js');
+	filesArr.push('./dist/sparrow.min.js');
 }
 var headerStr = '/** \r\n';
 headerStr += ' * ' + packageObj.name + ' v' + packageObj.version + '\r\n';

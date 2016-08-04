@@ -21,7 +21,7 @@ var config = {
 	entry: __dirname + '/src/index.js',
 	devtool: 'source-map',
 	output: {
-		path: __dirname + '/lib',
+		path: __dirname + '/dist',
 		filename: outputFile,
 		library: 'u',
 		libraryTarget: 'umd',
