@@ -1,7 +1,5 @@
 {
   "presets": ["es2015"],
-  "plugins": [
-    "babel-plugin-add-module-exports",
-    "transform-es2015-modules-commonjs"
+  "plugins": ["transform-es2015-modules-commonjs"
   ]
 }

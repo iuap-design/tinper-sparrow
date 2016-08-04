@@ -5,6 +5,7 @@
  */
 
 import {env} from './env';
+
 var XmlHttp = {
 	get: "get",
 	post: "post",
@@ -17,7 +18,7 @@ var XmlHttp = {
 		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}*/
 		if(env.isIE8) {
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); //IE低版本创建XMLHTTP  
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); //IE低版本创建XMLHTTP
 		} else if(env.isIE) {
 			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); //IE高版本创建XMLHTTP
 		} else if(window.XMLHttpRequest) {
@@ -114,4 +115,4 @@ var XmlHttp = {
 
 
 var ajax = XmlHttp.ajax;
-export {ajax};
+export default ajax;
