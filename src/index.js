@@ -114,7 +114,7 @@ import {
 } from './util/i18n';
 
 //公开接口、属性对外暴露
-var api = {
+let api = {
 	ajax: ajax,
 	extend : extend,
 	setCookie: setCookie,
@@ -175,7 +175,7 @@ var api = {
 	twoDigit: twoDigit,
 	trans: trans
 };
-extend(api,env);
+// extend(api,env);
 if(document.readyState && document.readyState === 'complete') {
 	compMgr.updateComp();
 } else {
@@ -183,4 +183,10 @@ if(document.readyState && document.readyState === 'complete') {
 		compMgr.updateComp();
 	});
 }
-export default api;
+// export api;
+export {
+	ajax,
+	percentRender,
+	PercentMasker,
+	core
+}
