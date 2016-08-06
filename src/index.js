@@ -181,4 +181,5 @@ if(document.readyState && document.readyState === 'complete') {
 	});
 }
 // export api;
-export default api;
+//export default api;
+export {api as u};
