@@ -1,5 +1,5 @@
 /** 
- * neoui-sparrow v1.1.10
+ * neoui-sparrow v1.1.11
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/sparrow#readme
@@ -1908,12 +1908,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	// */
 	//
 	//if (document.readyState && document.readyState === 'complete'){
-	//    u.compMgr.updateComp();
+	//    compMgr.updateComp();
 	//}else{
-	//    u.on(window, 'load', function() {
+	//    on(window, 'load', function() {
 	//
 	//        //扫描并生成控件
-	//        u.compMgr.updateComp();
+	//        compMgr.updateComp();
 	//    });
 	//}
 
@@ -3177,13 +3177,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // or the element where you last clicked with your mouse.
 	        if (opt.checkParent) {
 	            //              while (!that.all[element] && element.parentNode){
-	            while (!element['u.hotkeys'] && element.parentNode) {
+	            while (!element['hotkeys'] && element.parentNode) {
 	                element = element.parentNode;
 	            }
 	        }
 	
 	        //          var cbMap = that.all[element].events[type].callbackMap;
-	        var cbMap = element['u.hotkeys'].events[type].callbackMap;
+	        var cbMap = element['hotkeys'].events[type].callbackMap;
 	        if (!shift && !ctrl && !alt) {
 	            // No Modifiers
 	            mapPoint = cbMap[special] || cbMap[character];
@@ -3207,9 +3207,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    // first hook for this element
-	    var data = opt.target['u.hotkeys'];
+	    var data = opt.target['hotkeys'];
 	    if (!data) {
-	        opt.target['u.hotkeys'] = data = { events: {} };
+	        opt.target['hotkeys'] = data = { events: {} };
 	    }
 	    //      if (!hotkeys.all[opt.target]){
 	    //          hotkeys.all[opt.target] = {events:{}};
@@ -3233,7 +3233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    type = opt.type || 'keydown';
 	    exp = exp.toLowerCase();
 	
-	    delete target['u.hotkeys'].events[type].callbackMap[exp];
+	    delete target['hotkeys'].events[type].callbackMap[exp];
 	};
 	
 	hotkeys.scan = function (element, target) {

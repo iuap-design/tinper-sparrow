@@ -60,13 +60,13 @@ hotkeys.add = function (combi, options, callback) {
         // or the element where you last clicked with your mouse.
         if (opt.checkParent) {
 //              while (!that.all[element] && element.parentNode){
-            while (!element['u.hotkeys'] && element.parentNode) {
+            while (!element['hotkeys'] && element.parentNode) {
                 element = element.parentNode;
             }
         }
 
 //          var cbMap = that.all[element].events[type].callbackMap;
-        var cbMap = element['u.hotkeys'].events[type].callbackMap;
+        var cbMap = element['hotkeys'].events[type].callbackMap;
         if (!shift && !ctrl && !alt) { // No Modifiers
             mapPoint = cbMap[special] || cbMap[character]
         }
@@ -89,9 +89,9 @@ hotkeys.add = function (combi, options, callback) {
         }
     };
     // first hook for this element
-    var data = opt.target['u.hotkeys'];
+    var data = opt.target['hotkeys'];
     if (!data) {
-        opt.target['u.hotkeys'] =  data = {events: {}};
+        opt.target['hotkeys'] =  data = {events: {}};
     }
 //      if (!hotkeys.all[opt.target]){
 //          hotkeys.all[opt.target] = {events:{}};
@@ -115,7 +115,7 @@ hotkeys.remove = function (exp, opt) {
     type = opt.type || 'keydown';
     exp = exp.toLowerCase();
 
-    delete target['u.hotkeys'].events[type].callbackMap[exp];
+    delete target['hotkeys'].events[type].callbackMap[exp];
 };
 
 hotkeys.scan = function (element, target) {
