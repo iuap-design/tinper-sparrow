@@ -1,13 +1,13 @@
 {
   "name": "neoui-sparrow",
-  "version": "1.1.11",
+  "version": "1.2.0",
   "description": "sparrow.js",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack --colors --progress --mode=build && node version --mode=build",
     "dev": "webpack --progress --colors  --mode=dev && node version --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "es": "babel src -d lib",
+    "es": "babel js -d lib",
     "prod": "npm run es && npm run build"
   },
   "repository": {
