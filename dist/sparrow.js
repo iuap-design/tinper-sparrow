@@ -1511,15 +1511,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extend = __webpack_require__(1);
 	
-	var _extend2 = _interopRequireDefault(_extend);
-	
 	var _util = __webpack_require__(4);
 	
 	var _cookies = __webpack_require__(3);
 	
 	var _enumerables = __webpack_require__(2);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var environment = {};
 	/**
@@ -1660,7 +1656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (typeof getMetaFunc == 'function') {
 			var meta = getMetaFunc.call(this);
 			return meta[type];
-		} else return (0, _extend2.default)({}, maskerMeta[type]);
+		} else return (0, _extend.extend)({}, maskerMeta[type]);
 	};
 	environment.languages = (0, _cookies.getCookie)(_enumerables.U_LANGUAGES) ? (0, _cookies.getCookie)(_enumerables.U_LANGUAGES).split(',') : navigator.language ? navigator.language : 'zh-CN';
 	if (environment.languages == 'zh-cn') environment.languages = 'zh-CN';

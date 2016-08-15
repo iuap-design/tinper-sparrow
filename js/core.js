@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-07-28 13:52:19
  */
-import extend from './extend';
+import {extend} from './extend';
 import {createShellObject} from './util';
 import {getCookie,setCookie} from './cookies';
 import {U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE} from './enumerables'
