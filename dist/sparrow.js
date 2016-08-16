@@ -1,5 +1,5 @@
 /** 
- * neoui-sparrow v1.2.2
+ * neoui-sparrow v1.2.3
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/sparrow#readme
@@ -1074,7 +1074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Module : Sparrow dom
 	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-27 21:46:50
+	 * Date	  : 2016-08-16 13:59:17
 	 */
 	var removeClass = function removeClass(element, value) {
 		if (typeof element.classList === 'undefined') {
@@ -1240,21 +1240,28 @@ return /******/ (function(modules) { // webpackBootstrap
 		var ele = obj.ele,
 		    panel = obj.panel,
 		    position = obj.position,
-		    off = getOffset(ele),
-		    scroll = getScroll(ele),
-		    offLeft = off.left,
-		    offTop = off.top,
-		    scrollLeft = scroll.left,
-		    scrollTop = scroll.top,
-		    eleWidth = ele.offsetWidth,
-		    eleHeight = ele.offsetHeight,
-		    panelWidth = panel.offsetWidth,
-		    panelHeight = panel.offsetHeight,
-		    bodyWidth = document.body.clientWidth,
+	
+		// off = u.getOffset(ele),scroll = u.getScroll(ele),
+		// offLeft = off.left,offTop = off.top,
+		// scrollLeft = scroll.left,scrollTop = scroll.top,
+		// eleWidth = ele.offsetWidth,eleHeight = ele.offsetHeight,
+		// panelWidth = panel.offsetWidth,panelHeight = panel.offsetHeight,
+		bodyWidth = document.body.clientWidth,
 		    bodyHeight = document.body.clientHeight,
 		    position = position || 'top',
-		    left = offLeft - scrollLeft,
-		    top = offTop - scrollTop;
+	
+		// left = offLeft - scrollLeft,top = offTop - scrollTop,
+		eleRect = obj.ele.getBoundingClientRect(),
+		    panelRect = obj.panel.getBoundingClientRect(),
+		    eleWidth = eleRect.width,
+		    eleHeight = eleRect.height,
+		    left = eleRect.left,
+		    top = eleRect.top,
+		    panelWidth = panelRect.width,
+		    panelHeight = panelRect.height,
+		    docWidth = document.documentElement.clientWidth,
+		    docHeight = document.documentElement.clientHeight;
+	
 		// 基准点为Ele的左上角
 		// 后续根据需要完善
 		if (position == 'left') {
@@ -1274,15 +1281,14 @@ return /******/ (function(modules) { // webpackBootstrap
 			top = top + eleHeight;
 		}
 	
-		// if((left + panelWidth) > bodyWidth)
-		//     left = bodyWidth - panelWidth;
-		// if(left < 0)
-		//     left = 0;
+		if (left + panelWidth > docWidth) left = docWidth - panelWidth - 10;
+		if (left < 0) left = 0;
 	
-		// if((top + panelHeight) > bodyHeight)
-		//     top = bodyHeight - panelHeight;
-		// if(top < 0)
-		//     top = 0;
+		if (top + panelHeight > docHeight) {
+			top = docHeight - panelHeight - 10;
+		}
+	
+		if (top < 0) top = 0;
 		panel.style.left = left + 'px';
 		panel.style.top = top + 'px';
 	};

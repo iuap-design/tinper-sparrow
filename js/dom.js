@@ -1,7 +1,7 @@
 /**
  * Module : Sparrow dom
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-07-27 21:46:50
+ * Date	  : 2016-08-16 13:59:17
  */
 import { on,stopEvent } from './event';
 /**
@@ -191,55 +191,55 @@ var getScroll = function(Node, offset) {
 		return offset;
 };
 var showPanelByEle = function(obj) {
-	var ele = obj.ele,
-		panel = obj.panel,
-		position = obj.position,
-		off = getOffset(ele),
-		scroll = getScroll(ele),
-		offLeft = off.left,
-		offTop = off.top,
-		scrollLeft = scroll.left,
-		scrollTop = scroll.top,
-		eleWidth = ele.offsetWidth,
-		eleHeight = ele.offsetHeight,
-		panelWidth = panel.offsetWidth,
-		panelHeight = panel.offsetHeight,
-		bodyWidth = document.body.clientWidth,
-		bodyHeight = document.body.clientHeight,
-		position = position || 'top',
-		left = offLeft - scrollLeft,
-		top = offTop - scrollTop;
-	// 基准点为Ele的左上角
-	// 后续根据需要完善
-	if(position == 'left') {
-		left = left - panelWidth;
-		top = top + (eleHeight - panelHeight) / 2;
-	} else if(position == 'right') {
-		left = left + eleWidth;
-		top = top + (eleHeight - panelHeight) / 2;
-	} else if(position == 'top' || position == 'topCenter') {
-		left = left + (eleWidth - panelWidth) / 2;
-		top = top - panelHeight;
-	} else if(position == 'bottom' || position == 'bottomCenter') {
-		left = left + (eleWidth - panelWidth) / 2;
-		top = top + eleHeight;
-	} else if(position == 'bottomLeft') {
-		left = left;
-		top = top + eleHeight;
-	}
+		var ele = obj.ele,panel = obj.panel,position = obj.position,
+			// off = u.getOffset(ele),scroll = u.getScroll(ele),
+			// offLeft = off.left,offTop = off.top,
+			// scrollLeft = scroll.left,scrollTop = scroll.top,
+			// eleWidth = ele.offsetWidth,eleHeight = ele.offsetHeight,
+			// panelWidth = panel.offsetWidth,panelHeight = panel.offsetHeight,
+			bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
+			position = position || 'top',
+			// left = offLeft - scrollLeft,top = offTop - scrollTop,
+			eleRect = obj.ele.getBoundingClientRect(),
+			panelRect = obj.panel.getBoundingClientRect(),
+			eleWidth = eleRect.width,eleHeight = eleRect.height,
+			left = eleRect.left,top = eleRect.top,
+			panelWidth = panelRect.width,panelHeight = panelRect.height,
+			docWidth =  document.documentElement.clientWidth, docHeight =  document.documentElement.clientHeight;
 
-	// if((left + panelWidth) > bodyWidth)
-	//     left = bodyWidth - panelWidth;
-	// if(left < 0)
-	//     left = 0;
+			// 基准点为Ele的左上角
+			// 后续根据需要完善
+		if(position == 'left'){
+			left=left-panelWidth;
+			top=top+(eleHeight - panelHeight)/2;
+		}else if(position == 'right'){
+			left=left+eleWidth;
+			top=top+(eleHeight - panelHeight)/2;
+		}else if(position == 'top'||position == 'topCenter'){
+			left = left + (eleWidth - panelWidth)/2;
+			top = top - panelHeight;
+		}else if(position == 'bottom'||position == 'bottomCenter'){
+			left = left+ (eleWidth - panelWidth)/2;
+			top = top + eleHeight;
+		}else if(position == 'bottomLeft'){
+			left = left;
+			top = top + eleHeight;
+		}
 
-	// if((top + panelHeight) > bodyHeight)
-	//     top = bodyHeight - panelHeight;
-	// if(top < 0)
-	//     top = 0;
-	panel.style.left = left + 'px';
-	panel.style.top = top + 'px';
-};
+	        if((left + panelWidth) > docWidth)
+	            left = docWidth - panelWidth - 10;
+	        if(left < 0)
+	            left = 0;
+
+	         if((top + panelHeight) > docHeight) {
+		 top = docHeight - panelHeight - 10;
+		 }
+
+	         if(top < 0)
+	             top = 0;
+	        panel.style.left = left + 'px';
+	        panel.style.top = top + 'px';
+	};
 
 export {
 	addClass,
