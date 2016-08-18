@@ -148,12 +148,11 @@ extend(u, {
 
 	u.version = version ? (browserMatch.version ? browserMatch.version : 0) : 0;
 	if(u.isAndroid){
-		if(ua.match(/AppleWebKit.*Mobile.*/)){
-			isAndroidMobile=true;
-			isAndroidPAD=false;
-		}else{
+		if(window.screen.width>=768&&window.screen.width<1024){
 			isAndroidPAD=true;
-			isAndroidMobile=false;
+		}
+		if(window.screen.width<=768) {
+			isAndroidMobile = true;
 		}
 	}
 	if(u.isIE) {
