@@ -32,6 +32,8 @@ extend(u, {
 	isUnix: false,
 	isLinux: false,
 	isAndroid: false,
+	isAndroidPAD:false,
+	isAndroidMobile:false,
 	isMac: false,
 	hasTouch: false,
 	isMobile: false
@@ -87,12 +89,7 @@ extend(u, {
 			version: match[1] || "0"
 		};
 	}
-	if(match != null) {
-		browserMatch = {
-			browser: "",
-			version: "0"
-		};
-	}
+
 
 	if(s = ua.match(/opera.([\d.]+)/)) {
 		u.isOpera = true;
@@ -123,6 +120,7 @@ extend(u, {
 		u.isIPAD = true;
 		u.isStandard = true;
 	}
+
 	if(ua.match(/iphone/i)) {
 		u.isIOS = true;
 		u.isIphone = true;
@@ -149,6 +147,15 @@ extend(u, {
 	}
 
 	u.version = version ? (browserMatch.version ? browserMatch.version : 0) : 0;
+	if(u.isAndroid){
+		if(ua.match(/AppleWebKit.*Mobile.*/)){
+			isAndroidMobile=true;
+			isAndroidPAD=false;
+		}else{
+			isAndroidPAD=true;
+			isAndroidMobile=false;
+		}
+	}
 	if(u.isIE) {
 		var intVersion = parseInt(u.version);
 		var mode = document.documentMode;
@@ -177,8 +184,6 @@ extend(u, {
 				u.isIE9_CORE = true;
 			} else if(browserMatch.version == 11) {
 				u.isIE11 = true;
-			} else {
-
 			}
 		}
 	}
