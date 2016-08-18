@@ -149,10 +149,10 @@ extend(u, {
 	u.version = version ? (browserMatch.version ? browserMatch.version : 0) : 0;
 	if(u.isAndroid){
 		if(window.screen.width>=768&&window.screen.width<1024){
-			isAndroidPAD=true;
+			u.isAndroidPAD=true;
 		}
 		if(window.screen.width<=768) {
-			isAndroidPhone = true;
+			u.isAndroidPhone = true;
 		}
 	}
 	if(u.isIE) {
