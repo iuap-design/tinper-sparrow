@@ -189,7 +189,7 @@ extend(u, {
 	if("ontouchend" in document) {
 		u.hasTouch = true;
 	}
-	if(u.isIOS || u.isAndroid)
+	if(u.isIphone || u.isAndroidPhone)
 		u.isMobile = true;
 
 })();
