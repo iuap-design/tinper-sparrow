@@ -33,7 +33,7 @@ extend(u, {
 	isLinux: false,
 	isAndroid: false,
 	isAndroidPAD:false,
-	isAndroidMobile:false,
+	isAndroidPhone:false,
 	isMac: false,
 	hasTouch: false,
 	isMobile: false
@@ -152,7 +152,7 @@ extend(u, {
 			isAndroidPAD=true;
 		}
 		if(window.screen.width<=768) {
-			isAndroidMobile = true;
+			isAndroidPhone = true;
 		}
 	}
 	if(u.isIE) {
