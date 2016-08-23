@@ -24,7 +24,7 @@ var config = {
 		path: __dirname + '/dist',
 		filename: outputFile,
 		//library: 'u',
-		libraryTarget: 'umd',
+		libraryTarget: 'var',
 		umdNamedDefine: true
 	},
 	module: {
