@@ -173,6 +173,9 @@
 	}
 	// export api;
 	//export default api;
+	(0, _extend.extend)(api, window.u || {});
+	
+	window.u = api;
 	exports.u = api;
 
 /***/ },

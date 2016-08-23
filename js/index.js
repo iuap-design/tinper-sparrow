@@ -182,4 +182,7 @@ if(document.readyState && document.readyState === 'complete') {
 }
 // export api;
 //export default api;
+extend(api,window.u || {});
+
+window.u = api;
 export {api as u};
