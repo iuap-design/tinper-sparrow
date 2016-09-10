@@ -1,5 +1,5 @@
 /*!
- * neoui-sparrow v1.4.10
+ * neoui-sparrow v1.4.11
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/sparrow#readme
