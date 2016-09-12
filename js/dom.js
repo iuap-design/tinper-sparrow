@@ -241,6 +241,34 @@ var showPanelByEle = function(obj) {
 	        panel.style.top = top + 'px';
 	};
 
+var getElementLeft = function (element){
+	var actualLeft = element.offsetLeft;
+　　　　var current = element.offsetParent;
+　　　　while (current !== null){
+　　　　　　actualLeft += current.offsetLeft;
+　　　　　　current = current.offsetParent;
+　　　　}
+　　　　if (document.compatMode == "BackCompat"){
+　　　　　　var elementScrollLeft=document.body.scrollLeft;
+　　　　} else {
+　　　　　　var elementScrollLeft=document.documentElement.scrollLeft;
+　　　　}
+　　　　return actualLeft-elementScrollLeft;
+}
+var getElementTop = function (element){
+	var actualTop = element.offsetTop;
+　　　　var current = element.offsetParent;
+　　　　while (current !== null){
+　　　　　　actualTop += current. offsetTop;
+　　　　　　current = current.offsetParent;
+　　　　}
+　　　　 if (document.compatMode == "BackCompat"){
+　　　　　　var elementScrollTop=document.body.scrollTop;
+　　　　} else {
+　　　　　　var elementScrollTop=document.documentElement.scrollTop;
+　　　　}
+　　　　return actualTop-elementScrollTop;
+}
 export {
 	addClass,
 	removeClass,
@@ -255,5 +283,7 @@ export {
 	makeModal,
 	getOffset,
 	getScroll,
-	showPanelByEle
+	showPanelByEle,
+	getElementLeft,
+	getElementTop
 };
