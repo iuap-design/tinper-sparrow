@@ -1,48 +1,48 @@
-/** 
- * neoui-sparrow v1.4.10
+/*!
+ * neoui-sparrow v1.4.11
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/sparrow#readme
  * bugs : https://github.com/iuap-design/sparrow/issues
- **/ 
+ */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -52,50 +52,50 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.u = undefined;
-	
+
 	var _extend = __webpack_require__(1);
-	
+
 	var _cookies = __webpack_require__(3);
-	
+
 	var _util = __webpack_require__(4);
-	
+
 	var _env = __webpack_require__(5);
-	
+
 	var _event = __webpack_require__(6);
-	
+
 	var _dom = __webpack_require__(7);
-	
+
 	var _class = __webpack_require__(8);
-	
+
 	var _core = __webpack_require__(9);
-	
+
 	var _compMgr = __webpack_require__(10);
-	
+
 	var _BaseComponent = __webpack_require__(11);
-	
+
 	var _ajax = __webpack_require__(12);
-	
+
 	var _dataRender = __webpack_require__(13);
-	
+
 	var _formater = __webpack_require__(14);
-	
+
 	var _dateUtils = __webpack_require__(16);
-	
+
 	var _masker = __webpack_require__(15);
-	
+
 	var _hotKeys = __webpack_require__(17);
-	
+
 	var _ripple = __webpack_require__(18);
-	
+
 	var _rsautils = __webpack_require__(19);
-	
+
 	var _i18n = __webpack_require__(20);
-	
+
 	//公开接口、属性对外暴露
 	var api = {
 		ajax: _ajax.ajax,
@@ -162,7 +162,7 @@
 	    * Author : Kvkens(yueming@yonyou.com)
 	    * Date	  : 2016-08-04 09:48:36
 	    */
-	
+
 	(0, _extend.extend)(api, _env.env);
 	if (document.readyState && document.readyState === 'complete') {
 		_compMgr.compMgr.updateComp();
@@ -174,7 +174,7 @@
 	// export api;
 	//export default api;
 	(0, _extend.extend)(api, window.u || {});
-	
+
 	window.u = api;
 	exports.u = api;
 
@@ -183,20 +183,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.extend = undefined;
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
 	                                                                                                                                                                                                                                                   * Module : Sparrow extend
 	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
 	                                                                                                                                                                                                                                                   * Date	  : 2016-07-27 21:46:50
 	                                                                                                                                                                                                                                                   */
-	
+
 	var _enumerables = __webpack_require__(2);
-	
+
 	/**
 	 * 复制对象属性
 	 *
@@ -227,7 +227,7 @@
 		}
 		return object;
 	};
-	
+
 	exports.extend = extend;
 
 /***/ },
@@ -235,7 +235,7 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -244,12 +244,12 @@
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-27 21:46:50
 	 */
-	
+
 	var U_LANGUAGES = "i_languages";
 	var U_THEME = "u_theme";
 	var U_LOCALE = "u_locale";
 	var U_USERCODE = "usercode";
-	
+
 	var enumerables = true,
 	    enumerablesTest = {
 		toString: 1
@@ -261,7 +261,7 @@
 	if (enumerables) {
 		exports.enumerables = enumerables = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
 	}
-	
+
 	exports.enumerables = enumerables;
 	exports.U_LANGUAGES = U_LANGUAGES;
 	exports.U_THEME = U_THEME;
@@ -273,7 +273,7 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -282,7 +282,7 @@
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-27 21:46:50
 	 */
-	
+
 	var setCookie = function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
 		var sCookie = sName + "=" + encodeURIComponent(sValue);
 		if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();
@@ -291,16 +291,16 @@
 		if (bSecure) sCookie += "; secure=" + bSecure;
 		document.cookie = sCookie;
 	};
-	
+
 	var getCookie = function getCookie(sName) {
 		var sRE = "(?:; )?" + sName + "=([^;]*);?";
 		var oRE = new RegExp(sRE);
-	
+
 		if (oRE.test(document.cookie)) {
 			return decodeURIComponent(RegExp["$1"]);
 		} else return null;
 	};
-	
+
 	exports.setCookie = setCookie;
 	exports.getCookie = getCookie;
 
@@ -309,19 +309,19 @@
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
+
 	/**
 	 * Module : Sparrow util tools
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-27 21:46:50
 	 */
-	
+
 	/**
 	 * 创建一个带壳的对象,防止外部修改
 	 * @param {Object} proto
@@ -336,7 +336,7 @@
 			a.call(b, c);
 		} catch (e) {}
 	};
-	
+
 	var getFunction = function getFunction(target, val) {
 		if (!val || typeof val == 'function') return val;
 		if (typeof target[val] == 'function') return target[val];else if (typeof window[val] == 'function') return window[val];else if (val.indexOf('.') != -1) {
@@ -408,9 +408,9 @@
 			return;
 		}
 	};
-	
+
 	NodeList.prototype.forEach = Array.prototype.forEach;
-	
+
 	/**
 	 * 获得字符串的字节长度
 	 */
@@ -419,7 +419,7 @@
 		var str = this.replace(/[^\x00-\xff]/g, "**");
 		return str.length;
 	};
-	
+
 	/**
 	 * 将AFindText全部替换为ARepText
 	 */
@@ -428,7 +428,7 @@
 		var raRegExp = new RegExp(AFindText, "g");
 		return this.replace(raRegExp, ARepText);
 	};
-	
+
 	exports.createShellObject = createShellObject;
 	exports.execIgnoreError = execIgnoreError;
 	exports.getFunction = getFunction;
@@ -446,20 +446,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.env = undefined;
-	
+
 	var _extend = __webpack_require__(1);
-	
+
 	var u = {}; /**
 	             * Module : Sparrow browser environment
 	             * Author : Kvkens(yueming@yonyou.com)
 	             * Date	  : 2016-07-27 21:46:50
 	             */
-	
+
 	(0, _extend.extend)(u, {
 		isIE: false,
 		isFF: false,
@@ -490,7 +490,7 @@
 		hasTouch: false,
 		isMobile: false
 	});
-	
+
 	(function () {
 		var userAgent = navigator.userAgent,
 		    rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
@@ -506,7 +506,7 @@
 			version: ''
 		},
 		    match = rMsie.exec(ua);
-	
+
 		if (match != null) {
 			browserMatch = {
 				browser: "IE",
@@ -541,7 +541,7 @@
 				version: match[1] || "0"
 			};
 		}
-	
+
 		if (s = ua.match(/opera.([\d.]+)/)) {
 			u.isOpera = true;
 		} else if (browserMatch.browser == "IE" && browserMatch.version == 11) {
@@ -571,32 +571,32 @@
 			u.isIPAD = true;
 			u.isStandard = true;
 		}
-	
+
 		if (ua.match(/iphone/i)) {
 			u.isIOS = true;
 			u.isIphone = true;
 		}
-	
+
 		if (navigator.platform == "Mac68K" || navigator.platform == "MacPPC" || navigator.platform == "Macintosh" || navigator.platform == "MacIntel") {
 			//u.isIOS = true;
 			u.isMac = true;
 		}
-	
+
 		if (navigator.platform == "Win32" || navigator.platform == "Windows" || navigator.platform == "Win64") {
 			u.isWin = true;
 		}
-	
+
 		if (navigator.platform == "X11" && !u.isWin && !u.isMac) {
 			u.isUnix = true;
 		}
 		if (String(navigator.platform).indexOf("Linux") > -1) {
 			u.isLinux = true;
 		}
-	
+
 		if (ua.indexOf('Android') > -1 || ua.indexOf('android') > -1 || ua.indexOf('Adr') > -1 || ua.indexOf('adr') > -1) {
 			u.isAndroid = true;
 		}
-	
+
 		u.version = version ? browserMatch.version ? browserMatch.version : 0 : 0;
 		if (u.isAndroid) {
 			if (window.screen.width >= 768 && window.screen.width < 1024) {
@@ -642,7 +642,7 @@
 		}
 		if (u.isIphone || u.isAndroidPhone) u.isMobile = true;
 	})();
-	
+
 	var env = u;
 	exports.env = env;
 
@@ -651,26 +651,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.event = exports.stopEvent = exports.trigger = exports.off = exports.on = undefined;
-	
+
 	var _env = __webpack_require__(5);
-	
+
 	var u = {}; /**
 	             * Module : Sparrow touch event
 	             * Author : Kvkens(yueming@yonyou.com)
 	             * Date	  : 2016-07-28 14:41:17
 	             */
-	
+
 	u.event = {};
-	
+
 	var touchStartEvent = _env.env.hasTouch ? "touchstart" : "mousedown",
 	    touchStopEvent = _env.env.hasTouch ? "touchend" : "mouseup",
 	    touchMoveEvent = _env.env.hasTouch ? "touchmove" : "mousemove";
-	
+
 	// tap和taphold
 	u.event.tap = {
 		tapholdThreshold: 750,
@@ -685,31 +685,31 @@
 		setup: function setup() {
 			var thisObject = this,
 			    isTaphold = false;
-	
+
 			on(thisObject, "vmousedown", function (event) {
 				isTaphold = false;
 				if (event.which && event.which !== 1) {
 					return false;
 				}
-	
+
 				var origTarget = event.target,
 				    timer;
-	
+
 				function clearTapTimer() {
 					clearTimeout(timer);
 				}
-	
+
 				function clearTapHandlers() {
 					clearTapTimer();
-	
+
 					off(thisObject, 'vclick');
 					off(thisObject, 'vmouseup');
 					off(document, 'vmousecancel');
 				}
-	
+
 				function clickHandler(event) {
 					clearTapHandlers();
-	
+
 					// ONLY trigger a 'tap' event if the start target is
 					// the same as the stop target.
 					if (!isTaphold && origTarget === event.target) {
@@ -721,7 +721,7 @@
 				on(thisObject, 'vmouseup', clearTapTimer);
 				on(thisObject, 'vclick', clickHandler);
 				on(document, 'vmousecancel', clearTapHandlers);
-	
+
 				timer = setTimeout(function () {
 					if (!u.event.tap.emitTapOnTaphold) {
 						isTaphold = true;
@@ -730,7 +730,7 @@
 					clearTapHandlers();
 				}, u.event.tap.tapholdThreshold);
 			});
-	
+
 			on(thisObject, 'touchstart', u.event.tap.touchstartFun);
 			on(thisObject, 'touchend', u.event.tap.touchendFun);
 		},
@@ -741,50 +741,50 @@
 			off(document, 'vmousecancel');
 		}
 	};
-	
+
 	u.event.taphold = u.event.tap;
-	
+
 	u.event.swipe = {
-	
+
 		// More than this horizontal displacement, and we will suppress scrolling.
 		scrollSupressionThreshold: 30,
-	
+
 		// More time than this, and it isn't a swipe.
 		durationThreshold: 1000,
-	
+
 		// Swipe horizontal displacement must be more than this.
 		horizontalDistanceThreshold: 30,
-	
+
 		// Swipe vertical displacement must be less than this.
 		verticalDistanceThreshold: 30,
-	
+
 		getLocation: function getLocation(event) {
 			var winPageX = window.pageXOffset,
 			    winPageY = window.pageYOffset,
 			    x = event.clientX,
 			    y = event.clientY;
-	
+
 			if (event.pageY === 0 && Math.floor(y) > Math.floor(event.pageY) || event.pageX === 0 && Math.floor(x) > Math.floor(event.pageX)) {
-	
+
 				// iOS4 clientX/clientY have the value that should have been
 				// in pageX/pageY. While pageX/page/ have the value 0
 				x = x - winPageX;
 				y = y - winPageY;
 			} else if (y < event.pageY - winPageY || x < event.pageX - winPageX) {
-	
+
 				// Some Android browsers have totally bogus values for clientX/Y
 				// when scrolling/zooming a page. Detectable since clientX/clientY
 				// should never be smaller than pageX/pageY minus page scroll
 				x = event.pageX - winPageX;
 				y = event.pageY - winPageY;
 			}
-	
+
 			return {
 				x: x,
 				y: y
 			};
 		},
-	
+
 		start: function start(event) {
 			var data = event.touches ? event.touches[0] : event,
 			    location = u.event.swipe.getLocation(data);
@@ -794,7 +794,7 @@
 				origin: event.target
 			};
 		},
-	
+
 		stop: function stop(event) {
 			var data = event.touches ? event.touches[0] : event,
 			    location = u.event.swipe.getLocation(data);
@@ -803,27 +803,27 @@
 				coords: [location.x, location.y]
 			};
 		},
-	
+
 		handleSwipe: function handleSwipe(start, stop, thisObject, origTarget) {
 			if (stop.time - start.time < u.event.swipe.durationThreshold && Math.abs(start.coords[0] - stop.coords[0]) > u.event.swipe.horizontalDistanceThreshold && Math.abs(start.coords[1] - stop.coords[1]) < u.event.swipe.verticalDistanceThreshold) {
 				var direction = start.coords[0] > stop.coords[0] ? "swipeleft" : "swiperight";
-	
+
 				trigger(thisObject, "swipe");
 				trigger(thisObject, direction);
 				return true;
 			}
 			return false;
 		},
-	
+
 		// This serves as a flag to ensure that at most one swipe event event is
 		// in work at any given time
 		eventInProgress: false,
-	
+
 		setup: function setup() {
 			var events,
 			    thisObject = this,
 			    context = {};
-	
+
 			// Retrieve the events data for this element and add the swipe context
 			events = thisObject["mobile-events"];
 			if (!events) {
@@ -834,31 +834,31 @@
 			}
 			events.length++;
 			events.swipe = context;
-	
+
 			context.start = function (event) {
-	
+
 				// Bail if we're already working on a swipe event
 				if (u.event.swipe.eventInProgress) {
 					return;
 				}
 				u.event.swipe.eventInProgress = true;
-	
+
 				var stop,
 				    start = u.event.swipe.start(event),
 				    origTarget = event.target,
 				    emitted = false;
-	
+
 				context.move = function (event) {
 					// if ( !start || event.isDefaultPrevented() ) {
 					if (!start) {
 						return;
 					}
-	
+
 					stop = u.event.swipe.stop(event);
 					if (!emitted) {
 						emitted = u.event.swipe.handleSwipe(start, stop, thisObject, origTarget);
 						if (emitted) {
-	
+
 							// Reset the context to make way for the next swipe event
 							u.event.swipe.eventInProgress = false;
 						}
@@ -868,25 +868,25 @@
 						event.preventDefault();
 					}
 				};
-	
+
 				context.stop = function () {
 					emitted = true;
-	
+
 					// Reset the context to make way for the next swipe event
 					u.event.swipe.eventInProgress = false;
 					off(document, touchMoveEvent, context.move);
 					context.move = null;
 				};
-	
+
 				on(document, touchMoveEvent, context.move);
 				on(document, touchStopEvent, context.stop);
 			};
 			on(thisObject, touchStartEvent, context.start);
 		},
-	
+
 		teardown: function teardown() {
 			var events, context;
-	
+
 			events = thisObject["mobile-events"];
 			if (events) {
 				context = events.swipe;
@@ -896,7 +896,7 @@
 					thisObject["mobile-events"] = null;
 				}
 			}
-	
+
 			if (context) {
 				if (context.start) {
 					off(thisObject, touchStartEvent, context.start);
@@ -910,13 +910,13 @@
 			}
 		}
 	};
-	
+
 	u.event.swipeleft = u.event.swipe;
-	
+
 	u.event.swiperight = u.event.swipe;
-	
+
 	var event = u.event;
-	
+
 	var on = function on(element, eventName, child, listener) {
 		if (!element) return;
 		if (arguments.length < 4) {
@@ -936,7 +936,7 @@
 			};
 		}
 		//capture = capture || false;
-	
+
 		if (!element["uEvent"]) {
 			//在dom上添加记录区
 			element["uEvent"] = {};
@@ -981,7 +981,7 @@
 			}
 		}
 	};
-	
+
 	var off = function off(element, eventName, listener) {
 		//删除事件数组
 		if (listener) {
@@ -1016,7 +1016,7 @@
 			element["uEvent"][eventName + 'fn']();
 		}
 	};
-	
+
 	/**
 	 * 阻止冒泡
 	 */
@@ -1031,7 +1031,7 @@
 			else window.event.returnValue = false;
 		}
 	};
-	
+
 	exports.on = on;
 	exports.off = off;
 	exports.trigger = trigger;
@@ -1043,14 +1043,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.showPanelByEle = exports.getScroll = exports.getOffset = exports.makeModal = exports.makeDOM = exports.getZIndex = exports.getStyle = exports.wrap = exports.css = exports.closest = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = undefined;
-	
+
 	var _event = __webpack_require__(6);
-	
+
 	/**
 	 * 元素增加指定样式
 	 * @param value
@@ -1109,7 +1109,7 @@
 			return element.classList.toggle(value);
 		}
 	};
-	
+
 	/**
 	 * 向上查找指定类元素
 	 * @param {Object} element
@@ -1123,7 +1123,7 @@
 		if (tmp == document.body) return null;
 		return tmp;
 	};
-	
+
 	/**
 	 * 元素CSS操作
 	 * @param {Object} element
@@ -1148,7 +1148,7 @@
 			}
 		}
 	};
-	
+
 	var wrap = function wrap(element, parent) {
 		var p = makeDOM(parent);
 		element.parentNode.insertBefore(p, element);
@@ -1198,14 +1198,14 @@
 		} else {
 			document.body.appendChild(overlayDiv);
 		}
-	
+
 		element.style.zIndex = getZIndex();
 		(0, _event.on)(overlayDiv, 'click', function (e) {
 			(0, _event.stopEvent)(e);
 		});
 		return overlayDiv;
 	};
-	
+
 	var getOffset = function getOffset(Node, offset) {
 		if (!offset) {
 			offset = {};
@@ -1238,7 +1238,7 @@
 		var ele = obj.ele,
 		    panel = obj.panel,
 		    position = obj.position,
-	
+
 		// off = u.getOffset(ele),scroll = u.getScroll(ele),
 		// offLeft = off.left,offTop = off.top,
 		// scrollLeft = scroll.left,scrollTop = scroll.top,
@@ -1247,7 +1247,7 @@
 		bodyWidth = document.body.clientWidth,
 		    bodyHeight = document.body.clientHeight,
 		    position = position || 'top',
-	
+
 		// left = offLeft - scrollLeft,top = offTop - scrollTop,
 		eleRect = obj.ele.getBoundingClientRect(),
 		    panelRect = obj.panel.getBoundingClientRect(),
@@ -1259,7 +1259,7 @@
 		    panelHeight = panelRect.height,
 		    docWidth = document.documentElement.clientWidth,
 		    docHeight = document.documentElement.clientHeight;
-	
+
 		// 基准点为Ele的左上角
 		// 后续根据需要完善
 		if (position == 'left') {
@@ -1278,19 +1278,19 @@
 			left = left;
 			top = top + eleHeight;
 		}
-	
+
 		if (left + panelWidth > docWidth) left = docWidth - panelWidth - 10;
 		if (left < 0) left = 0;
-	
+
 		if (top + panelHeight > docHeight) {
 			top = docHeight - panelHeight - 10;
 		}
-	
+
 		if (top < 0) top = 0;
 		panel.style.left = left + 'px';
 		panel.style.top = top + 'px';
 	};
-	
+
 	exports.addClass = addClass;
 	exports.removeClass = removeClass;
 	exports.hasClass = hasClass;
@@ -1311,7 +1311,7 @@
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -1320,13 +1320,13 @@
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-28 08:45:39
 	 */
-	
+
 	var Class = function Class(o) {
 		if (!(this instanceof Class) && isFunction(o)) {
 			return classify(o);
 		}
 	};
-	
+
 	// Create a new Class.
 	//
 	//  var SuperPig = Class.create({
@@ -1345,42 +1345,42 @@
 			properties = parent;
 			parent = null;
 		}
-	
+
 		properties || (properties = {});
 		parent || (parent = properties.Extends || Class);
 		properties.Extends = parent;
-	
+
 		// The created class constructor
 		function SubClass() {
 			var ret;
 			// Call the parent constructor.
 			parent.apply(this, arguments);
-	
+
 			// Only call initialize in self constructor.
 			if (this.constructor === SubClass && this.initialize) {
 				ret = this.initialize.apply(this, arguments);
 			}
 			return ret ? ret : this;
 		}
-	
+
 		// Inherit class (static) properties from parent.
 		if (parent !== Class) {
 			mix(SubClass, parent, parent.StaticsWhiteList);
 		}
-	
+
 		// Add instance properties to the subclass.
 		implement.call(SubClass, properties);
-	
+
 		// Make subclass extendable.
 		return classify(SubClass);
 	};
-	
+
 	function implement(properties) {
 		var key, value;
-	
+
 		for (key in properties) {
 			value = properties[key];
-	
+
 			if (Class.Mutators.hasOwnProperty(key)) {
 				Class.Mutators[key].call(this, value);
 			} else {
@@ -1388,60 +1388,60 @@
 			}
 		}
 	}
-	
+
 	// Create a sub Class based on `Class`.
 	Class.extend = function (properties) {
 		properties || (properties = {});
 		properties.Extends = this;
-	
+
 		return Class.create(properties);
 	};
-	
+
 	function classify(cls) {
 		cls.extend = Class.extend;
 		cls.implement = implement;
 		return cls;
 	}
-	
+
 	// Mutators define special properties.
 	Class.Mutators = {
-	
+
 		'Extends': function Extends(parent) {
 			var existed = this.prototype;
 			var proto = createProto(parent.prototype);
-	
+
 			// Keep existed properties.
 			mix(proto, existed);
-	
+
 			// Enforce the constructor to be what we expect.
 			proto.constructor = this;
-	
+
 			// Set the prototype chain to inherit from `parent`.
 			this.prototype = proto;
-	
+
 			// Set a convenience property in case the parent's prototype is
 			// needed later.
 			this.superclass = parent.prototype;
 		},
-	
+
 		'Implements': function Implements(items) {
 			isArray(items) || (items = [items]);
 			var proto = this.prototype,
 			    item;
-	
+
 			while (item = items.shift()) {
 				mix(proto, item.prototype || item);
 			}
 		},
-	
+
 		'Statics': function Statics(staticProperties) {
 			mix(this, staticProperties);
 		}
 	};
-	
+
 	// Shared empty constructor function to aid in prototype-chain creation.
 	function Ctor() {}
-	
+
 	// See: http://jsperf.com/object-create-vs-new-ctor
 	var createProto = Object.__proto__ ? function (proto) {
 		return {
@@ -1451,16 +1451,16 @@
 		Ctor.prototype = proto;
 		return new Ctor();
 	};
-	
+
 	// Helpers
 	// ------------
-	
+
 	function mix(r, s, wl) {
 		// Copy "all" properties including inherited ones.
 		for (var p in s) {
 			if (s.hasOwnProperty(p)) {
 				if (wl && indexOf(wl, p) === -1) continue;
-	
+
 				// 在 iPhone 1 代等设备的 Safari 中，prototype 也会被枚举出来，需排除
 				if (p !== 'prototype') {
 					r[p] = s[p];
@@ -1468,17 +1468,17 @@
 			}
 		}
 	}
-	
+
 	var toString = Object.prototype.toString;
-	
+
 	var isArray = Array.isArray || function (val) {
 		return toString.call(val) === '[object Array]';
 	};
-	
+
 	var isFunction = function isFunction(val) {
 		return toString.call(val) === '[object Function]';
 	};
-	
+
 	var indexOf = function indexOf(arr, item) {
 		if (Array.prototype.indexOf && arr.indexOf) {
 			return arr.indexOf(item);
@@ -1491,7 +1491,7 @@
 			return -1;
 		}
 	};
-	
+
 	exports.Class = Class;
 	exports.isFunction = isFunction;
 
@@ -1500,35 +1500,35 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.core = undefined;
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
 	                                                                                                                                                                                                                                                   * Module : Sparrow core context
 	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
 	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 13:52:19
 	                                                                                                                                                                                                                                                   */
-	
-	
+
+
 	var _extend = __webpack_require__(1);
-	
+
 	var _util = __webpack_require__(4);
-	
+
 	var _cookies = __webpack_require__(3);
-	
+
 	var _enumerables = __webpack_require__(2);
-	
+
 	var environment = {};
 	/**
 	 * client attributes
 	 */
 	var clientAttributes = {};
-	
+
 	var sessionAttributes = {};
-	
+
 	var fn = {};
 	var maskerMeta = {
 		'float': {
@@ -1558,7 +1558,7 @@
 	fn.getEnvironment = function () {
 		return (0, _util.createShellObject)(environment);
 	};
-	
+
 	/**
 	 * 获取客户端参数对象
 	 * @return {clientAttributes}
@@ -1567,7 +1567,7 @@
 		var exf = function exf() {};
 		return (0, _util.createShellObject)(clientAttributes);
 	};
-	
+
 	fn.setContextPath = function (contextPath) {
 		return environment[IWEB_CONTEXT_PATH] = contextPath;
 	};
@@ -1590,7 +1590,7 @@
 		var exf = function exf() {};
 		return (0, _util.createShellObject)(sessionAttributes);
 	};
-	
+
 	/**
 	 * 设置会话级参数对象
 	 * @param {Object} k 对象名称
@@ -1600,7 +1600,7 @@
 		sessionAttributes[k] = v;
 		(0, _cookies.setCookie)("ISES_" + k, v);
 	};
-	
+
 	/**
 	 * 移除客户端参数
 	 * @param {Object} k 对象名称
@@ -1611,14 +1611,14 @@
 			delete clientAttributes[k];
 		});
 	};
-	
+
 	/**
 	 * 获取地区信息编码
 	 */
 	fn.getLocale = function () {
 		return this.getEnvironment().locale;
 	};
-	
+
 	/**
 	 * 获取多语信息
 	 */
@@ -1632,14 +1632,14 @@
 	fn.collectEnvironment = function () {
 		var _env = this.getEnvironment();
 		var _ses = this.getSessionAttributes();
-	
+
 		for (var i in clientAttributes) {
 			_ses[i] = clientAttributes[i];
 		}
 		_env.clientAttributes = _ses;
 		return _env;
 	};
-	
+
 	/**
 	 * 设置数据格式信息
 	 * @param {String} type
@@ -1665,7 +1665,7 @@
 	environment.languages = (0, _cookies.getCookie)(_enumerables.U_LANGUAGES) ? (0, _cookies.getCookie)(_enumerables.U_LANGUAGES).split(',') : navigator.language ? navigator.language : 'zh-CN';
 	if (environment.languages == 'zh-cn') environment.languages = 'zh-CN';
 	if (environment.languages == 'en-us') environment.languages = 'en-US';
-	
+
 	environment.theme = (0, _cookies.getCookie)(_enumerables.U_THEME);
 	environment.locale = (0, _cookies.getCookie)(_enumerables.U_LOCALE);
 	//environment.timezoneOffset = (new Date()).getTimezoneOffset()
@@ -1674,12 +1674,12 @@
 	document.cookie.replace(/ISES_(\w*)=([^;]*);?/ig, function (a, b, c) {
 		sessionAttributes[b] = c;
 	});
-	
+
 	var Core = function Core() {};
 	Core.prototype = fn;
-	
+
 	var core = new Core();
-	
+
 	exports.core = core;
 
 /***/ },
@@ -1687,20 +1687,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.compMgr = undefined;
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
 	                                                                                                                                                                                                                                                   * Module : Sparrow compMgr
 	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
 	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 18:41:06
 	                                                                                                                                                                                                                                                   */
-	
+
 	var _dom = __webpack_require__(7);
-	
+
 	function _findRegisteredClass(name, optReplace) {
 	    for (var i = 0; i < CompMgr.registeredControls.length; i++) {
 	        if (CompMgr.registeredControls[i].className === name) {
@@ -1712,18 +1712,18 @@
 	    }
 	    return false;
 	}
-	
+
 	function _getUpgradedListOfElement(element) {
 	    var dataUpgraded = element.getAttribute('data-upgraded');
 	    // Use `['']` as default value to conform the `,name,name...` style.
 	    return dataUpgraded === null ? [''] : dataUpgraded.split(',');
 	}
-	
+
 	function _isElementUpgraded(element, jsClass) {
 	    var upgradedList = _getUpgradedListOfElement(element);
 	    return upgradedList.indexOf(jsClass) != -1;
 	}
-	
+
 	function _upgradeElement(element, optJsClass) {
 	    if (!((typeof element === 'undefined' ? 'undefined' : _typeof(element)) === 'object' && element instanceof Element)) {
 	        throw new Error('Invalid argument provided to upgrade MDL element.');
@@ -1741,7 +1741,7 @@
 	    } else if (!_isElementUpgraded(element, optJsClass)) {
 	        classesToUpgrade.push(_findRegisteredClass(optJsClass));
 	    }
-	
+
 	    // Upgrade the element for each classes.
 	    for (var i = 0, n = classesToUpgrade.length, registeredClass; i < n; i++) {
 	        registeredClass = classesToUpgrade[i];
@@ -1764,7 +1764,7 @@
 	        }
 	    }
 	}
-	
+
 	function _upgradeDomInternal(optJsClass, optCssClass, ele) {
 	    if (typeof optJsClass === 'undefined' && typeof optCssClass === 'undefined') {
 	        for (var i = 0; i < CompMgr.registeredControls.length; i++) {
@@ -1789,7 +1789,7 @@
 	        }
 	    }
 	}
-	
+
 	var CompMgr = {
 	    plugs: {},
 	    dataAdapters: {},
@@ -1878,7 +1878,8 @@
 	            classConstructor: config.comp,
 	            className: config.compAsString || config['compAsString'],
 	            cssClass: config.css || config['css'],
-	            callbacks: []
+	            callbacks: [],
+	            dependencies: config.dependencies || []
 	        };
 	        config.comp.prototype.compType = config.compAsString;
 	        for (var i = 0; i < this.registeredControls.length; i++) {
@@ -1893,16 +1894,43 @@
 	        };
 	        this.registeredControls.push(newConfig);
 	    },
+
 	    updateComp: function updateComp(ele) {
+	        this._reorderComps();
 	        for (var n = 0; n < this.registeredControls.length; n++) {
 	            _upgradeDomInternal(this.registeredControls[n].className, null, ele);
 	        }
+	    },
+	    // 后续遍历registeredControls，重新排列
+	    _reorderComps: function _reorderComps() {
+	        var tmpArray = [];
+	        var dictory = {};
+
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            dictory[this.registeredControls[n].className] = this.registeredControls[n];
+	        }
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            traverse(this.registeredControls[n]);
+	        }
+
+	        this.registeredControls = tmpArray;
+
+	        function traverse(control) {
+	            if (u.inArray(control, tmpArray)) return;
+	            if (control.dependencies.length > 0) {
+	                for (var i = 0, len = control.dependencies.length; i < len; i++) {
+	                    var childControl = dictory[control.dependencies[i]];
+	                    traverse(childControl);
+	                }
+	            }
+	            tmpArray.push(control);
+	        }
 	    }
 	};
-	
+
 	var compMgr = CompMgr;
 	exports.compMgr = compMgr;
-	
+
 	///**
 	// * 加载控件
 	// */
@@ -1922,26 +1950,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.BaseComponent = undefined;
-	
+
 	var _class = __webpack_require__(8);
-	
+
 	var _util = __webpack_require__(4);
-	
+
 	var _event = __webpack_require__(6);
-	
+
 	var _compMgr = __webpack_require__(10);
-	
+
 	/**
 	 * Module : Sparrow base component
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-28 18:45:08
 	 */
-	
+
 	var BaseComponent = _class.Class.create({
 	    initialize: function initialize(element) {
 	        if ((0, _util.isDomElement)(element)) {
@@ -1952,7 +1980,7 @@
 	            this.options = element;
 	        }
 	        this.element = typeof this.element === 'string' ? document.querySelector(this.element) : this.element;
-	
+
 	        this.compType = this.compType || this.constructor.compType;
 	        this.element[this.compType] = this;
 	        this.element['init'] = true;
@@ -2043,7 +2071,7 @@
 	        }
 	    }
 	});
-	
+
 	function adjustDataType(options) {
 	    var types = ['integer', 'float', 'currency', 'percent', 'string', 'textarea'];
 	    var _type = options['type'],
@@ -2053,9 +2081,9 @@
 	        options['type'] = 'originText';
 	    }
 	}
-	
+
 	var BaseComponent = BaseComponent;
-	
+
 	exports.BaseComponent = BaseComponent;
 
 /***/ },
@@ -2063,14 +2091,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.ajax = undefined;
-	
+
 	var _env = __webpack_require__(5);
-	
+
 	var XmlHttp = {
 		get: "get",
 		post: "post",
@@ -2105,15 +2133,15 @@
 				url += "&" + params;
 				params = null; //如果是get请求,保证最终会执行send(null)
 			}
-	
+
 			var xmlhttp = XmlHttp.createXhr();
 			//xmlhttp.open(method, url+ escape(new Date()), async);
 			xmlhttp.open(method, url, async);
-	
+
 			if (method == XmlHttp.post) {
 				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
 			}
-	
+
 			var execount = 0;
 			// 异步
 			if (async) {
@@ -2180,7 +2208,7 @@
 	    * Author : Kvkens(yueming@yonyou.com)
 	    * Date	  : 2016-07-28 19:06:36
 	    */
-	
+
 	var ajax = XmlHttp.ajax;
 	exports.ajax = ajax;
 
@@ -2189,20 +2217,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.dateToUTCString = exports.percentRender = exports.timeRender = exports.dateTimeRender = exports.dateRender = exports.integerRender = exports.floatRender = undefined;
-	
+
 	var _core = __webpack_require__(9);
-	
+
 	var _formater = __webpack_require__(14);
-	
+
 	var _masker = __webpack_require__(15);
-	
+
 	var _dateUtils = __webpack_require__(16);
-	
+
 	/**
 	 * Module : Sparrow data display formater
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -2219,7 +2247,7 @@
 		var masker = new _masker.NumberMasker(maskerMeta);
 		return masker.format(formater.format(trueValue)).value;
 	};
-	
+
 	var integerRender = function integerRender(value) {
 		var trueValue = value;
 		if (typeof value === 'undefined' || value === null) return value;
@@ -2227,7 +2255,7 @@
 		if (typeof value === 'function') trueValue = value();
 		return trueValue;
 	};
-	
+
 	var _dateRender = function _dateRender(value, format, type) {
 		var trueValue = value;
 		if (typeof value === 'undefined' || value === null) return value;
@@ -2238,19 +2266,19 @@
 		var maskerValue = _dateUtils.date.format(trueValue, maskerMeta.format);
 		return maskerValue;
 	};
-	
+
 	var dateRender = function dateRender(value, format) {
 		return _dateRender(value, format, 'date');
 	};
-	
+
 	var dateTimeRender = function dateTimeRender(value, format) {
 		return _dateRender(value, format, 'datetime');
 	};
-	
+
 	var timeRender = function timeRender(value, format) {
 		return _dateRender(value, format, 'time');
 	};
-	
+
 	var percentRender = function percentRender(value) {
 		var trueValue = value;
 		if (typeof value === 'undefined' || value === null) return value;
@@ -2261,7 +2289,7 @@
 		var maskerValue = masker.format(trueValue);
 		return maskerValue && maskerValue.value ? maskerValue.value : '';
 	};
-	
+
 	var dateToUTCString = function dateToUTCString(date) {
 		if (!date) return '';
 		if (date.indexOf("-") > -1) date = date.replace(/\-/g, "/");
@@ -2269,7 +2297,7 @@
 		if (isNaN(utcString)) return "";
 		return utcString;
 	};
-	
+
 	exports.floatRender = floatRender;
 	exports.integerRender = integerRender;
 	exports.dateRender = dateRender;
@@ -2283,14 +2311,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.DateFormater = exports.NumberFormater = undefined;
-	
+
 	var _util = __webpack_require__(4);
-	
+
 	function NumberFormater(precision) {
 	    this.precision = precision;
 	} /**
@@ -2299,14 +2327,14 @@
 	   * Date	  : 2016-07-28 15:39:01
 	   */
 	;
-	
+
 	NumberFormater.prototype.update = function (precision) {
 	    this.precision = precision;
 	};
-	
+
 	NumberFormater.prototype.format = function (value) {
 	    if (!(0, _util.isNumber)(value)) return "";
-	
+
 	    // 以0开头的数字将其前面的0去掉
 	    while ((value + "").charAt(0) == "0" && value.length > 1 && (value + "").indexOf('0.') != 0) {
 	        value = value.substring(1);
@@ -2323,22 +2351,22 @@
 	        }
 	        if (result == "NaN") return "";
 	    }
-	
+
 	    return result;
 	};
-	
+
 	function DateFormater(pattern) {
 	    this.pattern = pattern;
 	};
-	
+
 	DateFormater.prototype.update = function (pattern) {
 	    this.pattern = pattern;
 	};
-	
+
 	DateFormater.prototype.format = function (value) {
 	    return moment(value).format(this.pattern);
 	};
-	
+
 	//var NumberFormater = NumberFormater;
 	//var DateFormater = DateFormater;
 	exports.NumberFormater = NumberFormater;
@@ -2349,29 +2377,29 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.PercentMasker = exports.CurrencyMasker = exports.NumberMasker = exports.AddressMasker = undefined;
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
 	                                                                                                                                                                                                                                                   * Module : Sparrow abstract formater class
 	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
 	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 19:35:26
 	                                                                                                                                                                                                                                                   */
-	
+
 	var _extend = __webpack_require__(1);
-	
+
 	function AbstractMasker() {};
-	
+
 	AbstractMasker.prototype.format = function (obj) {
 		if (obj == null) return null;
-	
+
 		var fObj = this.formatArgument(obj);
 		return this.innerFormat(fObj);
 	};
-	
+
 	/**
 	 * 统一被格式化对象结构
 	 *
@@ -2379,7 +2407,7 @@
 	 * @return
 	 */
 	AbstractMasker.prototype.formatArgument = function (obj) {};
-	
+
 	/**
 	 * 格式化
 	 *
@@ -2387,21 +2415,21 @@
 	 * @return
 	 */
 	AbstractMasker.prototype.innerFormat = function (obj) {};
-	
+
 	/**
 	 * 拆分算法格式化虚基类
 	 */
 	AbstractSplitMasker.prototype = new AbstractMasker();
-	
+
 	function AbstractSplitMasker() {};
 	AbstractSplitMasker.prototype.elements = new Array();
 	AbstractSplitMasker.prototype.format = function (obj) {
 		if (obj == null) return null;
-	
+
 		var fObj = this.formatArgument(obj);
 		return this.innerFormat(fObj);
 	};
-	
+
 	/**
 	 * 统一被格式化对象结构
 	 *
@@ -2411,7 +2439,7 @@
 	AbstractSplitMasker.prototype.formatArgument = function (obj) {
 		return obj;
 	};
-	
+
 	/**
 	 * 格式化
 	 *
@@ -2424,10 +2452,10 @@
 		var result = "";
 		//dingrf 去掉concat合并数组的方式，换用多维数组来实现 提高效率
 		result = this.getElementsValue(this.elements, obj);
-	
+
 		return new FormatResult(result);
 	};
-	
+
 	/**
 	 * 合并多维数组中的elementValue
 	 * @param {} element
@@ -2445,14 +2473,14 @@
 		}
 		return result;
 	};
-	
+
 	AbstractSplitMasker.prototype.getExpress = function () {};
-	
+
 	AbstractSplitMasker.prototype.doSplit = function () {
 		var express = this.getExpress();
 		if (this.elements == null || this.elements.length == 0) this.elements = this.doQuotation(express, this.getSeperators(), this.getReplaceds(), 0);
 	};
-	
+
 	/**
 	 * 处理引号
 	 *
@@ -2487,7 +2515,7 @@
 				fromIndex = j;
 			}
 		} while (result != null);
-	
+
 		if (fromIndex < express.length) {
 			var childElements = this.doSeperator(express.substring(fromIndex, express.length), seperators, replaced, curSeperator);
 			if (childElements != null && childElements.length > 0)
@@ -2496,7 +2524,7 @@
 		}
 		return elements;
 	};
-	
+
 	/**
 	 * 处理其它分隔符
 	 *
@@ -2513,7 +2541,7 @@
 			elements.push(this.getVarElement(express));
 			return elements;
 		}
-	
+
 		if (express.length == 0) return null;
 		var fromIndex = 0;
 		var elements = new Array();
@@ -2531,7 +2559,7 @@
 							//						elements = elements.concat(childElements);
 							elements.push(childElements);
 					}
-	
+
 					if (replaced[curSeperator] != null) {
 						elements.push(new StringElement(replaced[curSeperator]));
 					} else {
@@ -2541,7 +2569,7 @@
 				}
 			}
 		} while (result != null);
-	
+
 		if (fromIndex < express.length) {
 			var childElements = this.doSeperator(express.substring(fromIndex, express.length), seperators, replaced, curSeperator + 1);
 			if (childElements != null && childElements.length > 0)
@@ -2550,66 +2578,66 @@
 		}
 		return elements;
 	};
-	
+
 	/**
 	 * 地址格式
 	 */
 	AddressMasker.prototype = new AbstractSplitMasker();
-	
+
 	function AddressMasker(formatMeta) {
 		this.update(formatMeta);
 	};
-	
+
 	AddressMasker.prototype.update = function (formatMeta) {
 		this.formatMeta = (0, _extend.extend)({}, AddressMasker.DefaultFormatMeta, formatMeta);
 	};
-	
+
 	AddressMasker.prototype.getExpress = function () {
 		return this.formatMeta.express;
 	};
-	
+
 	AddressMasker.prototype.getReplaceds = function () {
 		return [this.formatMeta.separator];
 	};
-	
+
 	AddressMasker.prototype.getSeperators = function () {
 		return ["(\\s)+?"];
 	};
-	
+
 	AddressMasker.prototype.getVarElement = function (express) {
 		var ex = {};
-	
+
 		if (express == "C") ex.getValue = function (obj) {
 			return obj.country;
 		};
-	
+
 		if (express == "S") ex.getValue = function (obj) {
 			return obj.state;
 		};
-	
+
 		if (express == "T") ex.getValue = function (obj) {
 			return obj.city;
 		};
-	
+
 		if (express == "D") ex.getValue = function (obj) {
 			return obj.section;
 		};
-	
+
 		if (express == "R") ex.getValue = function (obj) {
 			return obj.road;
 		};
-	
+
 		if (express == "P") ex.getValue = function (obj) {
 			return obj.postcode;
 		};
-	
+
 		if (_typeof(ex.getValue) == undefined) return new StringElement(express);else return ex;
 	};
-	
+
 	AddressMasker.prototype.formatArgument = function (obj) {
 		return obj;
 	};
-	
+
 	/**
 	 * <b> 数字格式化  </b>
 	 *
@@ -2624,18 +2652,18 @@
 	 */
 	NumberMasker.prototype = new AbstractMasker();
 	NumberMasker.prototype.formatMeta = null;
-	
+
 	/**
 	 *构造方法
 	 */
 	function NumberMasker(formatMeta) {
 		this.update(formatMeta);
 	};
-	
+
 	NumberMasker.prototype.update = function (formatMeta) {
 		this.formatMeta = (0, _extend.extend)({}, NumberMasker.DefaultFormatMeta, formatMeta);
 	};
-	
+
 	/**
 	 *格式化对象
 	 */
@@ -2701,7 +2729,7 @@
 		}
 		return charArray;
 	};
-	
+
 	/**
 	 *默认构造方法
 	 */
@@ -2710,21 +2738,21 @@
 		numberObj.value = obj;
 		return numberObj;
 	};
-	
+
 	/**
 	 * 货币格式
 	 */
 	CurrencyMasker.prototype = new NumberMasker();
 	CurrencyMasker.prototype.formatMeta = null;
-	
+
 	function CurrencyMasker(formatMeta) {
 		this.update(formatMeta);
 	};
-	
+
 	CurrencyMasker.prototype.update = function (formatMeta) {
 		this.formatMeta = (0, _extend.extend)({}, CurrencyMasker.DefaultFormatMeta, formatMeta);
 	};
-	
+
 	/**
 	 * 重载格式方法
 	 * @param {} obj
@@ -2738,21 +2766,21 @@
 		fo.value = this.formatMeta.curSymbol + fo.value; //fo.value.replace("$", this.formatMeta.curSymbol);
 		return fo;
 	};
-	
+
 	PercentMasker.prototype = new NumberMasker();
-	
+
 	function PercentMasker(formatMeta) {
 		this.update(formatMeta);
 	};
-	
+
 	PercentMasker.prototype.update = function (formatMeta) {
 		this.formatMeta = (0, _extend.extend)({}, NumberMasker.DefaultFormatMeta, formatMeta);
 	};
-	
+
 	PercentMasker.prototype.formatArgument = function (obj) {
 		return obj;
 	};
-	
+
 	PercentMasker.prototype.innerFormat = function (value) {
 		var val = "";
 		if (value != "") {
@@ -2772,7 +2800,7 @@
 			value: val
 		};
 	};
-	
+
 	/**
 	 * 将结果输出成HTML代码
 	 * @param {} result
@@ -2789,18 +2817,18 @@
 		color = result.color;
 		return '<font color="' + color + '">' + result.value + '<\/font>';
 	};
-	
+
 	/**
 	 * 格式解析后形成的单个格式单元
 	 * 适用于基于拆分算法的AbstractSplitFormat，表示拆分后的变量单元
 	 */
 	StringElement.prototype = new Object();
-	
+
 	function StringElement(value) {
 		this.value = value;
 	};
 	StringElement.prototype.value = "";
-	
+
 	StringElement.prototype.getValue = function (obj) {
 		return this.value;
 	};
@@ -2815,7 +2843,7 @@
 		this.value = value;
 		this.color = color;
 	};
-	
+
 	NumberMasker.DefaultFormatMeta = {
 		isNegRed: true,
 		isMarkEnable: true,
@@ -2824,18 +2852,18 @@
 		positiveFormat: "n",
 		negativeFormat: "-n"
 	};
-	
+
 	CurrencyMasker.DefaultFormatMeta = (0, _extend.extend)({}, NumberMasker.DefaultFormatMeta, {
 		//curSymbol: "",
 		positiveFormat: "n",
 		negativeFormat: "-n"
 	});
-	
+
 	AddressMasker.defaultFormatMeta = {
 		express: "C S T R P",
 		separator: " "
 	};
-	
+
 	exports.AddressMasker = AddressMasker;
 	exports.NumberMasker = NumberMasker;
 	exports.CurrencyMasker = CurrencyMasker;
@@ -2846,22 +2874,22 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.date = undefined;
-	
+
 	var _core = __webpack_require__(9);
-	
+
 	var u = {}; /**
 	             * Module : Sparrow date util
 	             * Author : Kvkens(yueming@yonyou.com)
 	             * Date	  : 2016-08-06 13:37:20
 	             */
-	
+
 	u.date = {
-	
+
 		/**
 	  * 多语言处理
 	  */
@@ -2882,9 +2910,9 @@
 				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
 			}
 		},
-	
+
 		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
-	
+
 		leftZeroFill: function leftZeroFill(number, targetLength, forceSign) {
 			var output = '' + Math.abs(number),
 			    sign = number >= 0;
@@ -2893,7 +2921,7 @@
 			}
 			return (sign ? forceSign ? '+' : '' : '-') + output;
 		},
-	
+
 		_formats: {
 			//year
 			YY: function YY(date) {
@@ -2981,7 +3009,7 @@
 				return u.date.leftZeroFill(date.getSeconds(), 2);
 			}
 		},
-	
+
 		/**
 	  * 日期格式化
 	  * @param date
@@ -3005,7 +3033,7 @@
 			}
 			return output;
 		},
-	
+
 		_addOrSubtract: function _addOrSubtract(date, period, value, isAdding) {
 			var times = date.getTime(),
 			    d = date.getDate(),
@@ -3038,7 +3066,7 @@
 			}
 			return _date;
 		},
-	
+
 		add: function add(date, period, value) {
 			return u.date._addOrSubtract(date, period, value, 1);
 		},
@@ -3091,12 +3119,12 @@
 			} else {
 				dateFlag = true;
 			}
-	
+
 			if (dateFlag) return _date;else return null;
 		}
-	
+
 	};
-	
+
 	var date = u.date;
 	exports.date = date;
 
@@ -3105,37 +3133,37 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.hotkeys = undefined;
-	
+
 	var _class = __webpack_require__(8);
-	
+
 	var _extend = __webpack_require__(1);
-	
+
 	var _util = __webpack_require__(4);
-	
+
 	var hotkeys = {}; /**
 	                   * Module : Sparrow hotKeys
 	                   * Author : Kvkens(yueming@yonyou.com)
 	                   * Date	  : 2016-07-28 20:25:39
 	                   */
-	
+
 	hotkeys.special_keys = {
 	    27: 'esc', 9: 'tab', 32: 'space', 13: 'enter', 8: 'backspace', 145: 'scroll', 20: 'capslock',
 	    144: 'numlock', 19: 'pause', 45: 'insert', 36: 'home', 46: 'del', 35: 'end', 33: 'pageup',
 	    34: 'pagedown', 37: 'left', 38: 'up', 39: 'right', 40: 'down', 112: 'f1', 113: 'f2', 114: 'f3',
 	    115: 'f4', 116: 'f5', 117: 'f6', 118: 'f7', 119: 'f8', 120: 'f9', 121: 'f10', 122: 'f11', 123: 'f12'
 	};
-	
+
 	hotkeys.shift_nums = {
 	    "`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&",
 	    "8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ":", "'": "\"", ",": "<",
 	    ".": ">", "/": "?", "\\": "|"
 	};
-	
+
 	hotkeys.add = function (combi, options, callback) {
 	    if ((0, _class.isFunction)(options)) {
 	        callback = options;
@@ -3146,14 +3174,14 @@
 	        that = this;
 	    opt = (0, _extend.extend)(opt, defaults, options || {});
 	    combi = combi.toLowerCase();
-	
+
 	    // inspect if keystroke matches
 	    var inspector = function inspector(event) {
 	        //event = $.event.fix(event); // jQuery event normalization.
 	        var element = this; //event.target;
 	        // @ TextNode -> nodeType == 3
 	        element = element.nodeType == 3 ? element.parentNode : element;
-	
+
 	        if (opt['disableInInput']) {
 	            // Disable shortcut keys in Input, Textarea fields
 	            var target = element; //$(element);
@@ -3171,7 +3199,7 @@
 	            propagate = true,
 	            // default behaivour
 	        mapPoint = null;
-	
+
 	        // in opera + safari, the event.target is unpredictable.
 	        // for example: 'keydown' might be associated with HtmlBodyElement
 	        // or the element where you last clicked with your mouse.
@@ -3181,7 +3209,7 @@
 	                element = element.parentNode;
 	            }
 	        }
-	
+
 	        //          var cbMap = that.all[element].events[type].callbackMap;
 	        var cbMap = element['hotkeys'].events[type].callbackMap;
 	        if (!shift && !ctrl && !alt) {
@@ -3232,10 +3260,10 @@
 	    target = opt.target || document.body;
 	    type = opt.type || 'keydown';
 	    exp = exp.toLowerCase();
-	
+
 	    delete target['hotkeys'].events[type].callbackMap[exp];
 	};
-	
+
 	hotkeys.scan = function (element, target) {
 	    element = element || document.body;
 	    element.querySelectorAll('[u-enter]').forEach(function (el) {
@@ -3262,9 +3290,9 @@
 	        });
 	    });
 	};
-	
+
 	var hotkeys = hotkeys;
-	
+
 	exports.hotkeys = hotkeys;
 
 /***/ },
@@ -3272,33 +3300,33 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.URipple = exports.Ripple = undefined;
-	
+
 	var _env = __webpack_require__(5);
-	
+
 	var _dom = __webpack_require__(7);
-	
+
 	var _event = __webpack_require__(6);
-	
+
 	var URipple = function URipple(element) {
 	  if (_env.isIE8) return;
 	  this._element = element;
-	
+
 	  // Initialize instance.
 	  this.init();
 	};
 	//window['URipple'] = URipple;
-	
+
 	/**
 	 * Module : Sparrow ripple
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 08:42:13
 	 */
-	
+
 	URipple.prototype._down = function (event) {
 	  if (_env.isIE8) return;
 	  if (!this._rippleElement.style.width && !this._rippleElement.style.height) {
@@ -3307,9 +3335,9 @@
 	    this._rippleElement.style.width = this.rippleSize_ + 'px';
 	    this._rippleElement.style.height = this.rippleSize_ + 'px';
 	  }
-	
+
 	  (0, _dom.addClass)(this._rippleElement, 'is-visible');
-	
+
 	  if (event.type === 'mousedown' && this._ignoringMouseDown) {
 	    this._ignoringMouseDown = false;
 	  } else {
@@ -3340,7 +3368,7 @@
 	    if (window.requestAnimationFrame) window.requestAnimationFrame(this.animFrameHandler.bind(this));
 	  }
 	};
-	
+
 	/**
 	 * Handle mouse / finger up on element.
 	 *
@@ -3361,7 +3389,7 @@
 	    (0, _dom.removeClass)(self._rippleElement, 'is-visible');
 	  }, 0);
 	};
-	
+
 	/**
 	     * Getter for frameCount_.
 	     * @return {number} the frame count.
@@ -3378,7 +3406,7 @@
 	  if (_env.isIE8) return;
 	  this.frameCount_ = fC;
 	};
-	
+
 	/**
 	     * Getter for _rippleElement.
 	     * @return {Element} the ripple element.
@@ -3387,7 +3415,7 @@
 	  if (_env.isIE8) return;
 	  return this._rippleElement;
 	};
-	
+
 	/**
 	 * Sets the ripple X and Y coordinates.
 	 * @param  {number} newX the new X coordinate
@@ -3398,7 +3426,7 @@
 	  this.x_ = newX;
 	  this.y_ = newY;
 	};
-	
+
 	/**
 	 * Sets the ripple styles.
 	 * @param  {boolean} start whether or not this is the start frame.
@@ -3410,7 +3438,7 @@
 	    var scale;
 	    var size;
 	    var offset = 'translate(' + this.x_ + 'px, ' + this.y_ + 'px)';
-	
+
 	    if (start) {
 	      scale = 'scale(0.0001, 0.0001)';
 	      size = '1px';
@@ -3418,13 +3446,13 @@
 	      scale = '';
 	      size = this.rippleSize_ + 'px';
 	    }
-	
+
 	    transformString = 'translate(-50%, -50%) ' + offset + scale;
-	
+
 	    this._rippleElement.style.webkitTransform = transformString;
 	    this._rippleElement.style.msTransform = transformString;
 	    this._rippleElement.style.transform = transformString;
-	
+
 	    if (start) {
 	      (0, _dom.removeClass)(this._rippleElement, 'is-animating');
 	    } else {
@@ -3432,7 +3460,7 @@
 	    }
 	  }
 	};
-	
+
 	/**
 	   * Handles an animation frame.
 	   */
@@ -3444,7 +3472,7 @@
 	    this.setRippleStyles(false);
 	  }
 	};
-	
+
 	/**
 	 * Initialize element.
 	 */
@@ -3464,7 +3492,7 @@
 	    this.rippleSize_ = 0;
 	    this.x_ = 0;
 	    this.y_ = 0;
-	
+
 	    // Touch start produces a compat mouse down event, which would cause a
 	    // second ripples. To avoid that, we use this property to ignore the first
 	    // mouse down after a touch start.
@@ -3475,7 +3503,7 @@
 	    (0, _event.on)(this._element, 'touchstart', function (e) {
 	      self._down(e);
 	    });
-	
+
 	    (0, _event.on)(this._element, 'mouseup', function (e) {
 	      self._up(e);
 	    });
@@ -3490,9 +3518,9 @@
 	    });
 	  }
 	};
-	
+
 	var Ripple = URipple;
-	
+
 	exports.Ripple = Ripple;
 	exports.URipple = URipple;
 
@@ -3501,7 +3529,7 @@
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -3514,7 +3542,7 @@
 	 * RSAUtils.encryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
 	 * RSAUtils.decryptedString({exponent: 'xxxxx', modulus: 'xxxxx', text: 'xxxxx'})
 	 */
-	
+
 	var RSAUtils = {};
 	var biRadixBase = 2;
 	var biRadixBits = 16;
@@ -3524,7 +3552,7 @@
 	var biRadixSquared = biRadix * biRadix;
 	var maxDigitVal = biRadix - 1;
 	var maxInteger = 9999999999999998;
-	
+
 	//maxDigits:
 	//Change this to accommodate your largest number size. Use setMaxDigits()
 	//to change it!
@@ -3537,7 +3565,7 @@
 	var maxDigits;
 	var ZERO_ARRAY;
 	var bigZero, bigOne;
-	
+
 	var BigInt = function BigInt(flag) {
 	    if (typeof flag == "boolean" && flag == true) {
 	        this.digits = null;
@@ -3546,7 +3574,7 @@
 	    }
 	    this.isNeg = false;
 	};
-	
+
 	RSAUtils.setMaxDigits = function (value) {
 	    maxDigits = value;
 	    ZERO_ARRAY = new Array(maxDigits);
@@ -3557,11 +3585,11 @@
 	    bigOne.digits[0] = 1;
 	};
 	RSAUtils.setMaxDigits(20);
-	
+
 	//The maximum number of digits in base 10 you can convert to an
 	//integer without JavaScript throwing up on you.
 	var dpl10 = 15;
-	
+
 	RSAUtils.biFromNumber = function (i) {
 	    var result = new BigInt();
 	    result.isNeg = i < 0;
@@ -3573,10 +3601,10 @@
 	    }
 	    return result;
 	};
-	
+
 	//lr10 = 10 ^ dpl10
 	var lr10 = RSAUtils.biFromNumber(1000000000000000);
-	
+
 	RSAUtils.biFromDecimal = function (s) {
 	    var isNeg = s.charAt(0) == '-';
 	    var i = isNeg ? 1 : 0;
@@ -3600,14 +3628,14 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biCopy = function (bi) {
 	    var result = new BigInt(true);
 	    result.digits = bi.digits.slice(0);
 	    result.isNeg = bi.isNeg;
 	    return result;
 	};
-	
+
 	RSAUtils.reverseStr = function (s) {
 	    var result = "";
 	    for (var i = s.length - 1; i > -1; --i) {
@@ -3615,9 +3643,9 @@
 	    }
 	    return result;
 	};
-	
+
 	var hexatrigesimalToChar = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-	
+
 	RSAUtils.biToString = function (x, radix) {
 	    // 2 <= radix <= 36
 	    var b = new BigInt();
@@ -3631,7 +3659,7 @@
 	    }
 	    return (x.isNeg ? "-" : "") + RSAUtils.reverseStr(result);
 	};
-	
+
 	RSAUtils.biToDecimal = function (x) {
 	    var b = new BigInt();
 	    b.digits[0] = 10;
@@ -3643,9 +3671,9 @@
 	    }
 	    return (x.isNeg ? "-" : "") + RSAUtils.reverseStr(result);
 	};
-	
+
 	var hexToChar = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-	
+
 	RSAUtils.digitToHex = function (n) {
 	    var mask = 0xf;
 	    var result = "";
@@ -3655,7 +3683,7 @@
 	    }
 	    return RSAUtils.reverseStr(result);
 	};
-	
+
 	RSAUtils.biToHex = function (x) {
 	    var result = "";
 	    var n = RSAUtils.biHighIndex(x);
@@ -3664,7 +3692,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.charToHex = function (c) {
 	    var ZERO = 48;
 	    var NINE = ZERO + 9;
@@ -3673,7 +3701,7 @@
 	    var bigA = 65;
 	    var bigZ = 65 + 25;
 	    var result;
-	
+
 	    if (c >= ZERO && c <= NINE) {
 	        result = c - ZERO;
 	    } else if (c >= bigA && c <= bigZ) {
@@ -3685,7 +3713,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.hexToDigit = function (s) {
 	    var result = 0;
 	    var sl = Math.min(s.length, 4);
@@ -3695,7 +3723,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biFromHex = function (s) {
 	    var result = new BigInt();
 	    var sl = s.length;
@@ -3704,7 +3732,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biFromString = function (s, radix) {
 	    var isNeg = s.charAt(0) == '-';
 	    var istop = isNeg ? 1 : 0;
@@ -3721,14 +3749,14 @@
 	    result.isNeg = isNeg;
 	    return result;
 	};
-	
+
 	RSAUtils.biDump = function (b) {
 	    return (b.isNeg ? "-" : "") + b.digits.join(" ");
 	};
-	
+
 	RSAUtils.biAdd = function (x, y) {
 	    var result;
-	
+
 	    if (x.isNeg != y.isNeg) {
 	        y.isNeg = !y.isNeg;
 	        result = RSAUtils.biSubtract(x, y);
@@ -3746,7 +3774,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biSubtract = function (x, y) {
 	    var result;
 	    if (x.isNeg != y.isNeg) {
@@ -3783,14 +3811,14 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biHighIndex = function (x) {
 	    var result = x.digits.length - 1;
 	    while (result > 0 && x.digits[result] == 0) {
 	        --result;
 	    }return result;
 	};
-	
+
 	RSAUtils.biNumBits = function (x) {
 	    var n = RSAUtils.biHighIndex(x);
 	    var d = x.digits[n];
@@ -3802,14 +3830,14 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biMultiply = function (x, y) {
 	    var result = new BigInt();
 	    var c;
 	    var n = RSAUtils.biHighIndex(x);
 	    var t = RSAUtils.biHighIndex(y);
 	    var u, uv, k;
-	
+
 	    for (var i = 0; i <= t; ++i) {
 	        c = 0;
 	        k = i;
@@ -3825,10 +3853,10 @@
 	    result.isNeg = x.isNeg != y.isNeg;
 	    return result;
 	};
-	
+
 	RSAUtils.biMultiplyDigit = function (x, y) {
 	    var n, c, uv;
-	
+
 	    var result = new BigInt();
 	    n = RSAUtils.biHighIndex(x);
 	    c = 0;
@@ -3841,16 +3869,16 @@
 	    result.digits[1 + n] = c;
 	    return result;
 	};
-	
+
 	RSAUtils.arrayCopy = function (src, srcStart, dest, destStart, n) {
 	    var m = Math.min(srcStart + n, src.length);
 	    for (var i = srcStart, j = destStart; i < m; ++i, ++j) {
 	        dest[j] = src[i];
 	    }
 	};
-	
+
 	var highBitMasks = [0x0000, 0x8000, 0xC000, 0xE000, 0xF000, 0xF800, 0xFC00, 0xFE00, 0xFF00, 0xFF80, 0xFFC0, 0xFFE0, 0xFFF0, 0xFFF8, 0xFFFC, 0xFFFE, 0xFFFF];
-	
+
 	RSAUtils.biShiftLeft = function (x, n) {
 	    var digitCount = Math.floor(n / bitsPerDigit);
 	    var result = new BigInt();
@@ -3864,9 +3892,9 @@
 	    result.isNeg = x.isNeg;
 	    return result;
 	};
-	
+
 	var lowBitMasks = [0x0000, 0x0001, 0x0003, 0x0007, 0x000F, 0x001F, 0x003F, 0x007F, 0x00FF, 0x01FF, 0x03FF, 0x07FF, 0x0FFF, 0x1FFF, 0x3FFF, 0x7FFF, 0xFFFF];
-	
+
 	RSAUtils.biShiftRight = function (x, n) {
 	    var digitCount = Math.floor(n / bitsPerDigit);
 	    var result = new BigInt();
@@ -3880,25 +3908,25 @@
 	    result.isNeg = x.isNeg;
 	    return result;
 	};
-	
+
 	RSAUtils.biMultiplyByRadixPower = function (x, n) {
 	    var result = new BigInt();
 	    RSAUtils.arrayCopy(x.digits, 0, result.digits, n, result.digits.length - n);
 	    return result;
 	};
-	
+
 	RSAUtils.biDivideByRadixPower = function (x, n) {
 	    var result = new BigInt();
 	    RSAUtils.arrayCopy(x.digits, n, result.digits, 0, result.digits.length - n);
 	    return result;
 	};
-	
+
 	RSAUtils.biModuloByRadixPower = function (x, n) {
 	    var result = new BigInt();
 	    RSAUtils.arrayCopy(x.digits, 0, result.digits, 0, n);
 	    return result;
 	};
-	
+
 	RSAUtils.biCompare = function (x, y) {
 	    if (x.isNeg != y.isNeg) {
 	        return 1 - 2 * Number(x.isNeg);
@@ -3914,7 +3942,7 @@
 	    }
 	    return 0;
 	};
-	
+
 	RSAUtils.biDivideModulo = function (x, y) {
 	    var nb = RSAUtils.biNumBits(x);
 	    var tb = RSAUtils.biNumBits(y);
@@ -3937,10 +3965,10 @@
 	        }
 	        return [q, r];
 	    }
-	
+
 	    q = new BigInt();
 	    r = x;
-	
+
 	    // Normalize Y.
 	    var t = Math.ceil(tb / bitsPerDigit) - 1;
 	    var lambda = 0;
@@ -3955,7 +3983,7 @@
 	    r = RSAUtils.biShiftLeft(r, lambda);
 	    nb += lambda; // Update the bit count for x.
 	    var n = Math.ceil(nb / bitsPerDigit) - 1;
-	
+
 	    var b = RSAUtils.biMultiplyByRadixPower(y, n - t);
 	    while (RSAUtils.biCompare(r, b) != -1) {
 	        ++q.digits[n - t];
@@ -3972,7 +4000,7 @@
 	        } else {
 	            q.digits[i - t - 1] = Math.floor((ri * biRadix + ri1) / yt);
 	        }
-	
+
 	        var c1 = q.digits[i - t - 1] * (yt * biRadix + yt1);
 	        var c2 = ri * biRadixSquared + (ri1 * biRadix + ri2);
 	        while (c1 > c2) {
@@ -3980,7 +4008,7 @@
 	            c1 = q.digits[i - t - 1] * (yt * biRadix | yt1);
 	            c2 = ri * biRadix * biRadix + (ri1 * biRadix + ri2);
 	        }
-	
+
 	        b = RSAUtils.biMultiplyByRadixPower(y, i - t - 1);
 	        r = RSAUtils.biSubtract(r, RSAUtils.biMultiplyDigit(b, q.digits[i - t - 1]));
 	        if (r.isNeg) {
@@ -4002,22 +4030,22 @@
 	    }
 	    // Check for the unbelievably stupid degenerate case of r == -0.
 	    if (r.digits[0] == 0 && RSAUtils.biHighIndex(r) == 0) r.isNeg = false;
-	
+
 	    return [q, r];
 	};
-	
+
 	RSAUtils.biDivide = function (x, y) {
 	    return RSAUtils.biDivideModulo(x, y)[0];
 	};
-	
+
 	RSAUtils.biModulo = function (x, y) {
 	    return RSAUtils.biDivideModulo(x, y)[1];
 	};
-	
+
 	RSAUtils.biMultiplyMod = function (x, y, m) {
 	    return RSAUtils.biModulo(RSAUtils.biMultiply(x, y), m);
 	};
-	
+
 	RSAUtils.biPow = function (x, y) {
 	    var result = bigOne;
 	    var a = x;
@@ -4029,7 +4057,7 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.biPowMod = function (x, y, m) {
 	    var result = bigOne;
 	    var a = x;
@@ -4042,7 +4070,7 @@
 	    }
 	    return result;
 	};
-	
+
 	var BarrettMu = function BarrettMu(m) {
 	    this.modulus = RSAUtils.biCopy(m);
 	    this.k = RSAUtils.biHighIndex(this.modulus) + 1;
@@ -4055,7 +4083,7 @@
 	    this.multiplyMod = BarrettMu_multiplyMod;
 	    this.powMod = BarrettMu_powMod;
 	};
-	
+
 	function BarrettMu_modulo(x) {
 	    var $dmath = RSAUtils;
 	    var q1 = $dmath.biDivideByRadixPower(x, this.k - 1);
@@ -4075,7 +4103,7 @@
 	    }
 	    return r;
 	}
-	
+
 	function BarrettMu_multiplyMod(x, y) {
 	    /*
 	     x = this.modulo(x);
@@ -4084,7 +4112,7 @@
 	    var xy = RSAUtils.biMultiply(x, y);
 	    return this.modulo(xy);
 	}
-	
+
 	function BarrettMu_powMod(x, y) {
 	    var result = new BigInt();
 	    result.digits[0] = 1;
@@ -4098,7 +4126,7 @@
 	    }
 	    return result;
 	}
-	
+
 	var RSAKeyPair = function RSAKeyPair(encryptionExponent, decryptionExponent, modulus) {
 	    var $dmath = RSAUtils;
 	    this.e = $dmath.biFromHex(encryptionExponent);
@@ -4112,15 +4140,15 @@
 	    this.radix = 16;
 	    this.barrett = new BarrettMu(this.m);
 	};
-	
+
 	RSAUtils.getKeyPair = function (encryptionExponent, decryptionExponent, modulus) {
 	    return new RSAKeyPair(encryptionExponent, decryptionExponent, modulus);
 	};
-	
+
 	var twoDigit = function twoDigit(n) {
 	    return (n < 10 ? "0" : "") + String(n);
 	};
-	
+
 	// Altered by Rob Saunders (rob@robsaunders.net). New routine pads the
 	// string after it has been converted to an array. This fixes an
 	// incompatibility with Flash MX's ActionScript.
@@ -4132,11 +4160,11 @@
 	        a[i] = s.charCodeAt(i);
 	        i++;
 	    }
-	
+
 	    while (a.length % key.chunkSize != 0) {
 	        a[i++] = 0;
 	    }
-	
+
 	    var al = a.length;
 	    var result = "";
 	    var j, k, block;
@@ -4153,7 +4181,7 @@
 	    }
 	    return result.substring(0, result.length - 1); // Remove last space.
 	};
-	
+
 	RSAUtils._decryptedString = function (key, s) {
 	    var blocks = s.split(" ");
 	    var result = "";
@@ -4176,9 +4204,9 @@
 	    }
 	    return result;
 	};
-	
+
 	RSAUtils.setMaxDigits(130);
-	
+
 	RSAUtils.encryptedString = function (options) {
 	    var text = options.text;
 	    if (options.exponent && options.modulus) {
@@ -4187,7 +4215,7 @@
 	    }
 	    return text;
 	};
-	
+
 	RSAUtils.decryptedString = function (options) {
 	    var text = options.text;
 	    if (options.exponent && options.modulus) {
@@ -4196,7 +4224,7 @@
 	    }
 	    return text;
 	};
-	
+
 	exports.RSAUtils = RSAUtils;
 	exports.BigInt = BigInt;
 	exports.BarrettMu = BarrettMu;
@@ -4207,7 +4235,7 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -4221,9 +4249,8 @@
 	  //return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
 	  return dftValue;
 	};
-	
+
 	exports.trans = trans;
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=sparrow.js.map
