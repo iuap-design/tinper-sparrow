@@ -2,9 +2,15 @@
  * Module : Sparrow compMgr
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-07-28 18:41:06
+ * Update : 2016-09-13 09:26:00
  */
 
-import {hasClass} from './dom';
+import {
+    hasClass
+} from './dom';
+import {
+    inArray
+} from './util';
 
 function _findRegisteredClass(name, optReplace) {
     for (var i = 0; i < CompMgr.registeredControls.length; i++) {
@@ -37,7 +43,7 @@ function _upgradeElement(element, optJsClass) {
     var classesToUpgrade = [];
     if (!optJsClass) {
         var className = element.className;
-        for(var i=0; i< CompMgr.registeredControls.length; i++){
+        for (var i = 0; i < CompMgr.registeredControls.length; i++) {
             var component = CompMgr.registeredControls[i]
             if (className.indexOf(component.cssClass) > -1 && classesToUpgrade.indexOf(component) === -1 &&
                 !_isElementUpgraded(element, component.className)) {
@@ -52,7 +58,7 @@ function _upgradeElement(element, optJsClass) {
     for (var i = 0, n = classesToUpgrade.length, registeredClass; i < n; i++) {
         registeredClass = classesToUpgrade[i];
         if (registeredClass) {
-            if (element[registeredClass.className]){
+            if (element[registeredClass.className]) {
                 continue;
             }
             // Mark element as upgraded.
@@ -86,10 +92,10 @@ function _upgradeDomInternal(optJsClass, optCssClass, ele) {
             }
         }
         var elements;
-        if(ele) {
+        if (ele) {
             elements = hasClass(ele, optCssClass) ? [ele] : ele.querySelectorAll('.' + optCssClass);
         } else {
-           elements = document.querySelectorAll('.' + optCssClass);
+            elements = document.querySelectorAll('.' + optCssClass);
         }
         for (var n = 0; n < elements.length; n++) {
             _upgradeElement(elements[n], jsClass);
@@ -99,7 +105,7 @@ function _upgradeDomInternal(optJsClass, optCssClass, ele) {
 
 var CompMgr = {
     plugs: {},
-    dataAdapters:{},
+    dataAdapters: {},
     /** 注册的控件*/
     registeredControls: [],
     createdControls: [],
@@ -107,31 +113,35 @@ var CompMgr = {
      *
      * @param options  {el:'#content', model:{}}
      */
-    apply: function (options) {
-		if(options){
-        var _el = options.el||document.body;
-        var model = options.model;
-		}
-        if (typeof _el == 'string'){
+    apply: function(options) {
+        if (options) {
+            var _el = options.el || document.body;
+            var model = options.model;
+        }
+        if (typeof _el == 'string') {
             _el = document.body.querySelector(_el);
         }
         if (_el == null || typeof _el != 'object')
             _el = document.body;
-        var comps =_el.querySelectorAll('[u-meta]');
-        comps.forEach(function(element){
+        var comps = _el.querySelectorAll('[u-meta]');
+        comps.forEach(function(element) {
             if (element['comp']) return;
             var options = JSON.parse(element.getAttribute('u-meta'));
             if (options && options['type']) {
                 //var comp = CompMgr._createComp({el:element,options:options,model:model});
-                var comp = CompMgr.createDataAdapter({el:element,options:options,model:model});
-                if (comp){
+                var comp = CompMgr.createDataAdapter({
+                    el: element,
+                    options: options,
+                    model: model
+                });
+                if (comp) {
                     element['adpt'] = comp;
                     element['u-meta'] = comp;
                 }
             }
         });
     },
-    addPlug: function (config) {
+    addPlug: function(config) {
         var plug = config['plug'],
             name = config['name'];
         this.plugs || (this.plugs = {});
@@ -141,25 +151,25 @@ var CompMgr = {
         plug.compType = name;
         this.plugs[name] = plug
     },
-    addDataAdapter: function(config){
+    addDataAdapter: function(config) {
         var adapter = config['adapter'],
             name = config['name'];
-            //dataType = config['dataType'] || ''
+        //dataType = config['dataType'] || ''
         //var key = dataType ? name + '.' + dataType : name;
         this.dataAdapters || (dataAdapters = {});
-        if(this.dataAdapters[name]){
+        if (this.dataAdapters[name]) {
             throw new Error('dataAdapter has exist:' + name);
         }
         this.dataAdapters[name] = adapter;
 
     },
-    getDataAdapter: function(name){
+    getDataAdapter: function(name) {
         if (!name) return;
         this.dataAdapters || (dataAdapters = {});
         //var key = dataType ? name + '.' + dataType : name;
         return this.dataAdapters[name];
     },
-    createDataAdapter: function(options){
+    createDataAdapter: function(options) {
         var opt = options['options'];
         var type = opt['type'],
             id = opt['id'];
@@ -170,7 +180,7 @@ var CompMgr = {
         comp.id = id;
         return comp;
     },
-    _createComp: function (options) {
+    _createComp: function(options) {
         var opt = options['options'];
         var type = opt['type'];
         var plug = this.plugs[type];
@@ -182,7 +192,7 @@ var CompMgr = {
     /**
      * 注册UI控件
      */
-    regComp: function(config){
+    regComp: function(config) {
         var newConfig = {
             classConstructor: config.comp,
             className: config.compAsString || config['compAsString'],
@@ -191,7 +201,7 @@ var CompMgr = {
             dependencies: config.dependencies || []
         };
         config.comp.prototype.compType = config.compAsString;
-        for(var i=0; i< this.registeredControls.length; i++){
+        for (var i = 0; i < this.registeredControls.length; i++) {
             var item = this.registeredControls[i];
             //registeredControls.forEach(function(item) {
             if (item.cssClass === newConfig.cssClass) {
@@ -203,43 +213,45 @@ var CompMgr = {
         };
         this.registeredControls.push(newConfig);
     },
-    
 
-    updateComp: function(ele){
+
+    updateComp: function(ele) {
         this._reorderComps();
         for (var n = 0; n < this.registeredControls.length; n++) {
-            _upgradeDomInternal(this.registeredControls[n].className,null ,ele);
+            _upgradeDomInternal(this.registeredControls[n].className, null, ele);
         }
     },
     // 后续遍历registeredControls，重新排列
     _reorderComps: function() {
         var tmpArray = [];
         var dictory = {};
-        
+
         for (var n = 0; n < this.registeredControls.length; n++) {
             dictory[this.registeredControls[n].className] = this.registeredControls[n];
         }
         for (var n = 0; n < this.registeredControls.length; n++) {
             traverse(this.registeredControls[n]);
         }
-        
+
         this.registeredControls = tmpArray;
-        
+
         function traverse(control) {
-            if(u.inArray(control, tmpArray)) return;
-            if(control.dependencies.length > 0) {
-                for(var i = 0, len = control.dependencies.length; i < len;i++) {
+            if (inArray(control, tmpArray)) return;
+            if (control.dependencies.length > 0) {
+                for (var i = 0, len = control.dependencies.length; i < len; i++) {
                     var childControl = dictory[control.dependencies[i]];
                     traverse(childControl);
                 }
-           }
-           tmpArray.push(control);
+            }
+            tmpArray.push(control);
         }
     }
 };
 
 var compMgr = CompMgr;
-export {compMgr};
+export {
+    compMgr
+};
 
 ///**
 // * 加载控件
