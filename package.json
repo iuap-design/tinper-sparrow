@@ -1,6 +1,6 @@
 {
   "name": "neoui-sparrow",
-  "version": "1.4.14",
+  "version": "1.4.15",
   "description": "sparrow.js",
   "main": "js/index.js",
   "scripts": {
