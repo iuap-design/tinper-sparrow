@@ -183,8 +183,11 @@ var getScroll = function(Node, offset) {
 		offset.left += Node.scrollLeft || document.documentElement.scrollLeft;
 		return offset;
 	}
-	offset.top += Node.scrollTop;
-	offset.left += Node.scrollLeft;
+	if(Node.tagName != 'INPUT'){
+		offset.top += Node.scrollTop;
+		offset.left += Node.scrollLeft;
+	}
+	
 	if(Node.parentNode)
 		return getScroll(Node.parentNode, offset);
 	else
