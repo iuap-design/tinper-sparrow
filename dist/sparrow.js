@@ -1,5 +1,5 @@
 /*!
- * neoui-sparrow v1.4.15
+ * neoui-sparrow v1.4.16
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/sparrow#readme
@@ -1214,8 +1214,11 @@
 			offset.left += Node.scrollLeft || document.documentElement.scrollLeft;
 			return offset;
 		}
-		offset.top += Node.scrollTop;
-		offset.left += Node.scrollLeft;
+		if (Node.tagName != 'INPUT') {
+			offset.top += Node.scrollTop;
+			offset.left += Node.scrollLeft;
+		}
+
 		if (Node.parentNode) return getScroll(Node.parentNode, offset);else return offset;
 	};
 	var showPanelByEle = function showPanelByEle(obj) {
@@ -4168,9 +4171,9 @@
 	    for (i = 0; i < al; i += key.chunkSize) {
 	        block = new BigInt();
 	        j = 0;
-	        for (k = i; k < i + key.chunkSize; ++j, k++) {
-	            block.digits[j] = a[k];
-	            block.digits[j] += a[k] << 8;
+	        for (k = i; k < i + key.chunkSize; ++j) {
+	            block.digits[j] = a[k++];
+	            block.digits[j] += a[k++] << 8;
 	        }
 	        var crypt = key.barrett.powMod(block, key.e);
 	        var text = key.radix == 16 ? RSAUtils.biToHex(crypt) : RSAUtils.biToString(crypt, key.radix);
