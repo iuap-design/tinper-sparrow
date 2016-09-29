@@ -10,12 +10,15 @@ import { on,stopEvent } from './event';
  * @returns {*}
  */
 var addClass = function(element, value) {
-	if(typeof element.classList === 'undefined') {
-		if(u._addClass)
-			u._addClass(element, value);
-	} else {
-		element.classList.add(value);
+	if(element){
+		if(typeof element.classList === 'undefined') {
+			if(u._addClass)
+				u._addClass(element, value);
+		} else {
+			element.classList.add(value);
+		}
 	}
+	
 	return this;
 };
 /**
@@ -24,11 +27,13 @@ var addClass = function(element, value) {
  * @param {Object} value
  */
 var removeClass = function(element, value) {
-	if(typeof element.classList === 'undefined') {
-		if(u._removeClass)
-			u._removeClass(element, value);
-	} else {
-		element.classList.remove(value);
+	if(element){
+		if(typeof element.classList === 'undefined') {
+			if(u._removeClass)
+				u._removeClass(element, value);
+		} else {
+			element.classList.remove(value);
+		}
 	}
 	return this;
 };
