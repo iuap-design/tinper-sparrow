@@ -13,7 +13,8 @@ import {
 	AddressMasker,
 	NumberMasker,
 	CurrencyMasker,
-	PercentMasker
+	PercentMasker,
+	PhoneNumberMasker
 } from './masker';
 import {
 	date
@@ -83,6 +84,19 @@ var percentRender = function(value) {
 	return(maskerValue && maskerValue.value) ? maskerValue.value : '';
 };
 
+var phoneNumberRender = function () {
+	var trueValue = value
+	if(typeof value === 'undefined' || value === null)
+		return value
+			//value 为 ko对象
+	if(typeof value === 'function')
+		trueValue = value()
+	var maskerMeta = core.getMaskerMeta('phoneNumber') || {}
+	var masker = new PhoneNumberMasker(maskerMeta);
+	var maskerValue = masker.format(trueValue);
+	return(maskerValue && maskerValue.value) ? maskerValue.value : '';
+}
+
 var dateToUTCString = function(date) {
 	if(!date) return ''
 	if(date.indexOf("-") > -1)
@@ -99,5 +113,6 @@ export {
 	dateTimeRender,
 	timeRender,
 	percentRender,
-	dateToUTCString
+	dateToUTCString,
+	phoneNumberRender
 };
