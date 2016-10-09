@@ -497,6 +497,36 @@ function FormatResult(value, color) {
 	this.color = color;
 };
 
+/**
+ * 电话
+ * @param {[type]} formatMeta [description]
+ */
+function PhoneNumberMasker (formatMeta) {
+	this.update(formatMeta);
+}
+
+PhoneNumberMasker.prototype = new NumberMasker();
+PhoneNumberMasker.prototype.formatMeta = null;
+
+PhoneNumberMasker.prototype.update = function (formatMeta) {
+	this.formatMeta = extend({}, PhoneNumberMasker.DefaultFormatMeta, formatMeta);
+}
+
+PhoneNumberMasker.prototype.formatArgument = function (obj) {
+	return obj;
+}
+
+PhoneNumberMasker.prototype.innerFormat = function (obj) {
+	if(!obj){
+		return;
+	}
+	var val = obj;
+	return {
+		value: val
+	};
+}
+
+
 NumberMasker.DefaultFormatMeta = {
 	isNegRed: true,
 	isMarkEnable: true,
@@ -513,11 +543,16 @@ CurrencyMasker.DefaultFormatMeta = extend({}, NumberMasker.DefaultFormatMeta, {
 })
 
 
+
 AddressMasker.defaultFormatMeta = {
 	express: "C S T R P",
 	separator: " "
 };
 
+PhoneNumberMasker.defaultFormatMeta = {
+
+}
 
 
-export {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker};
+
+export {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker,PhoneNumberMasker};
