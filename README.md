@@ -1,4 +1,4 @@
-# sparrow
+# tinper sparrow
 
 `sparrow.js`是一个短小精悍的前端基础库，它包含对DOM、CSS基本操作、多平台浏览器移动设备判断、Cookies操作、事件的绑定、日期、数字、字符串相关判断、以及浏览器自身函数不足所扩展的一系列功能.
 
@@ -19,15 +19,6 @@ $ npm install
 
 编译产出
 ```
-$ npm run build
+$ npm run product
 ```
 
-开发调试
-```
-$ npm run dev
-```
-
-执行测试
-```
-$ npm run test
-```
