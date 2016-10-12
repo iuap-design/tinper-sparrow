@@ -1,6 +1,6 @@
 {
   "name": "tinper-sparrow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "sparrow.js",
   "main": "js/index.js",
   "scripts": {

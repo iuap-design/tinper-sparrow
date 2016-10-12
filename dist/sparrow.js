@@ -1,9 +1,9 @@
 /*!
- * neoui-sparrow v1.4.16
+ * tinper-sparrow v0.1.1
  * sparrow.js
  * author : Yonyou FED
- * homepage : https://github.com/iuap-design/sparrow#readme
- * bugs : https://github.com/iuap-design/sparrow/issues
+ * homepage : https://github.com/iuap-design/tinper-sparrow#readme
+ * bugs : https://github.com/iuap-design/tinper-sparrow/issues
  */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -185,11 +185,11 @@
 	exports.__esModule = true;
 	exports.extend = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                   * Module : Sparrow extend
-	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                   * Date	  : 2016-07-27 21:46:50
-	                                                                                                                                                                                                                                                   */
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : Sparrow extend
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-27 21:46:50
+	                                                                                                                                                                                                                                                                               */
 
 	var _enumerables = __webpack_require__(2);
 
@@ -304,7 +304,7 @@
 
 	exports.__esModule = true;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	/**
 	 * Module : Sparrow util tools
@@ -1041,11 +1041,14 @@
 	 * @returns {*}
 	 */
 	var addClass = function addClass(element, value) {
-		if (typeof element.classList === 'undefined') {
-			if (u._addClass) u._addClass(element, value);
-		} else {
-			element.classList.add(value);
+		if (element) {
+			if (typeof element.classList === 'undefined') {
+				if (u._addClass) u._addClass(element, value);
+			} else {
+				element.classList.add(value);
+			}
 		}
+
 		return this;
 	};
 	/**
@@ -1059,10 +1062,12 @@
 	 * Date	  : 2016-08-16 13:59:17
 	 */
 	var removeClass = function removeClass(element, value) {
-		if (typeof element.classList === 'undefined') {
-			if (u._removeClass) u._removeClass(element, value);
-		} else {
-			element.classList.remove(value);
+		if (element) {
+			if (typeof element.classList === 'undefined') {
+				if (u._removeClass) u._removeClass(element, value);
+			} else {
+				element.classList.remove(value);
+			}
 		}
 		return this;
 	};
@@ -1519,11 +1524,11 @@
 	exports.__esModule = true;
 	exports.core = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                   * Module : Sparrow core context
-	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 13:52:19
-	                                                                                                                                                                                                                                                   */
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : Sparrow core context
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-28 13:52:19
+	                                                                                                                                                                                                                                                                               */
 
 
 	var _extend = __webpack_require__(1);
@@ -1562,7 +1567,8 @@
 			precision: 2,
 			curSymbol: '￥'
 		},
-		'percent': {}
+		'percent': {},
+		'phoneNumber': {}
 	};
 	/**
 	 * 获取环境信息
@@ -1704,12 +1710,12 @@
 	exports.__esModule = true;
 	exports.compMgr = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                   * Module : Sparrow compMgr
-	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 18:41:06
-	                                                                                                                                                                                                                                                   * Update : 2016-09-13 09:26:00
-	                                                                                                                                                                                                                                                   */
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : Sparrow compMgr
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-28 18:41:06
+	                                                                                                                                                                                                                                                                               * Update : 2016-09-13 09:26:00
+	                                                                                                                                                                                                                                                                               */
 
 	var _dom = __webpack_require__(7);
 
@@ -2233,7 +2239,7 @@
 	'use strict';
 
 	exports.__esModule = true;
-	exports.dateToUTCString = exports.percentRender = exports.timeRender = exports.dateTimeRender = exports.dateRender = exports.integerRender = exports.floatRender = undefined;
+	exports.phoneNumberRender = exports.dateToUTCString = exports.percentRender = exports.timeRender = exports.dateTimeRender = exports.dateRender = exports.integerRender = exports.floatRender = undefined;
 
 	var _core = __webpack_require__(9);
 
@@ -2302,6 +2308,17 @@
 		return maskerValue && maskerValue.value ? maskerValue.value : '';
 	};
 
+	var phoneNumberRender = function phoneNumberRender() {
+		var trueValue = value;
+		if (typeof value === 'undefined' || value === null) return value;
+		//value 为 ko对象
+		if (typeof value === 'function') trueValue = value();
+		var maskerMeta = _core.core.getMaskerMeta('phoneNumber') || {};
+		var masker = new _masker.PhoneNumberMasker(maskerMeta);
+		var maskerValue = masker.format(trueValue);
+		return maskerValue && maskerValue.value ? maskerValue.value : '';
+	};
+
 	var dateToUTCString = function dateToUTCString(date) {
 		if (!date) return '';
 		if (date.indexOf("-") > -1) date = date.replace(/\-/g, "/");
@@ -2317,6 +2334,7 @@
 	exports.timeRender = timeRender;
 	exports.percentRender = percentRender;
 	exports.dateToUTCString = dateToUTCString;
+	exports.phoneNumberRender = phoneNumberRender;
 
 /***/ },
 /* 14 */
@@ -2389,13 +2407,13 @@
 	"use strict";
 
 	exports.__esModule = true;
-	exports.PercentMasker = exports.CurrencyMasker = exports.NumberMasker = exports.AddressMasker = undefined;
+	exports.PhoneNumberMasker = exports.PercentMasker = exports.CurrencyMasker = exports.NumberMasker = exports.AddressMasker = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                   * Module : Sparrow abstract formater class
-	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 19:35:26
-	                                                                                                                                                                                                                                                   */
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : Sparrow abstract formater class
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-28 19:35:26
+	                                                                                                                                                                                                                                                                               */
 
 	var _extend = __webpack_require__(1);
 
@@ -2852,6 +2870,35 @@
 		this.color = color;
 	};
 
+	/**
+	 * 电话
+	 * @param {[type]} formatMeta [description]
+	 */
+	function PhoneNumberMasker(formatMeta) {
+		this.update(formatMeta);
+	}
+
+	PhoneNumberMasker.prototype = new NumberMasker();
+	PhoneNumberMasker.prototype.formatMeta = null;
+
+	PhoneNumberMasker.prototype.update = function (formatMeta) {
+		this.formatMeta = (0, _extend.extend)({}, PhoneNumberMasker.DefaultFormatMeta, formatMeta);
+	};
+
+	PhoneNumberMasker.prototype.formatArgument = function (obj) {
+		return obj;
+	};
+
+	PhoneNumberMasker.prototype.innerFormat = function (obj) {
+		if (!obj) {
+			return;
+		}
+		var val = obj;
+		return {
+			value: val
+		};
+	};
+
 	NumberMasker.DefaultFormatMeta = {
 		isNegRed: true,
 		isMarkEnable: true,
@@ -2872,10 +2919,13 @@
 		separator: " "
 	};
 
+	PhoneNumberMasker.defaultFormatMeta = {};
+
 	exports.AddressMasker = AddressMasker;
 	exports.NumberMasker = NumberMasker;
 	exports.CurrencyMasker = CurrencyMasker;
 	exports.PercentMasker = PercentMasker;
+	exports.PhoneNumberMasker = PhoneNumberMasker;
 
 /***/ },
 /* 16 */
