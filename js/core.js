@@ -39,6 +39,9 @@ var maskerMeta = {
 	},
 	'percent': {
 
+	},
+	'phoneNumber': {
+		
 	}
 };
 /**
