@@ -1,6 +1,6 @@
 {
-  "name": "neoui-sparrow",
-  "version": "1.4.16",
+  "name": "tinper-sparrow",
+  "version": "0.1.0",
   "description": "sparrow.js",
   "main": "js/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iuap-design/sparrow.git"
+    "url": "git+https://github.com/iuap-design/tinper-sparrow.git"
   },
   "keywords": [
     "sparrow",
@@ -23,9 +23,9 @@
   "author": "Yonyou FED",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iuap-design/sparrow/issues"
+    "url": "https://github.com/iuap-design/tinper-sparrow/issues"
   },
-  "homepage": "https://github.com/iuap-design/sparrow#readme",
+  "homepage": "https://github.com/iuap-design/tinper-sparrow#readme",
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
