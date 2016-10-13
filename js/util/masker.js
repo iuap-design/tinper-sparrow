@@ -513,17 +513,16 @@ PhoneNumberMasker.prototype.update = function (formatMeta) {
 }
 
 PhoneNumberMasker.prototype.formatArgument = function (obj) {
-	return obj;
+	var numberObj = {};
+	numberObj.value = obj;
+	return numberObj;
 }
 
 PhoneNumberMasker.prototype.innerFormat = function (obj) {
 	if(!obj){
 		return;
 	}
-	var val = obj;
-	return {
-		value: val
-	};
+	return obj;
 }
 
 
