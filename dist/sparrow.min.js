@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.2
+ * tinper-sparrow v3.1.3
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
