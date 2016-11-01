@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.4
+ * tinper-sparrow v3.1.5
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -419,6 +419,24 @@
 		return this.replace(raRegExp, ARepText);
 	};
 
+	var dateFormat = function dateFormat(str) {
+		//如果不是string类型  原型返回
+		if (typeof str !== 'string') {
+			return str;
+		}
+		//判断 str 格式如果是 yy-mm-dd
+		if (str && str.indexOf('-') > -1) {
+			//获取当前是否是 ios版本
+			var ua = navigator.userAgent.toLowerCase();
+			if (/iphone|ipad|ipod/.test(ua)) {
+				//转换成 yy/mm/dd
+				str = str.replace(/-/g, "/");
+			}
+		}
+
+		return str;
+	};
+
 	exports.createShellObject = createShellObject;
 	exports.execIgnoreError = execIgnoreError;
 	exports.getFunction = getFunction;
@@ -430,6 +448,7 @@
 	exports.inArray = inArray;
 	exports.isDomElement = isDomElement;
 	exports.each = each;
+	exports.dateFormat = dateFormat;
 
 /***/ },
 /* 5 */
@@ -2937,12 +2956,15 @@
 
 	var _core = __webpack_require__(9);
 
-	var u = {}; /**
-	             * Module : Sparrow date util
-	             * Author : Kvkens(yueming@yonyou.com)
-	             * Date	  : 2016-08-06 13:37:20
-	             */
+	var _util = __webpack_require__(4);
 
+	/**
+	 * Module : Sparrow date util
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-06 13:37:20
+	 */
+
+	var u = {};
 	u.date = {
 
 		/**
@@ -3131,7 +3153,7 @@
 		getDateObj: function getDateObj(value) {
 			if (!value || typeof value == 'undefined') return value;
 			var dateFlag = false;
-			var _date = new Date(value);
+			var _date = new Date((0, _util.dateFormat)(value));
 			if (isNaN(_date)) {
 				// IE的话对"2016-2-13 12:13:22"进行处理
 				var index1, index2, index3, s1, s2, s3;
