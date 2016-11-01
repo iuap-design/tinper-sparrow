@@ -210,9 +210,9 @@ var showPanelByEle = function(obj) {
 			// left = offLeft - scrollLeft,top = offTop - scrollTop,
 			eleRect = obj.ele.getBoundingClientRect(),
 			panelRect = obj.panel.getBoundingClientRect(),
-			eleWidth = eleRect.width,eleHeight = eleRect.height,
-			left = eleRect.left,top = eleRect.top,
-			panelWidth = panelRect.width,panelHeight = panelRect.height,
+			eleWidth = eleRect.width || 0,eleHeight = eleRect.height || 0,
+			left = eleRect.left || 0,top = eleRect.top || 0,
+			panelWidth = panelRect.width || 0,panelHeight = panelRect.height || 0,
 			docWidth =  document.documentElement.clientWidth, docHeight =  document.documentElement.clientHeight;
 
 			// 基准点为Ele的左上角
