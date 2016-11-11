@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.6
+ * tinper-sparrow v3.1.7
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -3136,10 +3136,10 @@
 				_date.setDate(d);
 			} else if (period == 'M') {
 				m = m + value * isAdding;
-				_date.setMonth(d);
+				_date.setMonth(m);
 			} else if (period == 'y') {
 				m = m + value * 12 * isAdding;
-				_date.setMonth(d);
+				_date.setMonth(m);
 			}
 			return _date;
 		},
