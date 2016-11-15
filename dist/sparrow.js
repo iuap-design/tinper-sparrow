@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.7
+ * tinper-sparrow v3.1.8
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -426,9 +426,9 @@
 		}
 		//判断 str 格式如果是 yy-mm-dd
 		if (str && str.indexOf('-') > -1) {
-			//获取当前是否是 ios版本
+			//获取当前是否是 ios版本,>8是因为ios不识别new Date（“2016/11”）格式
 			var ua = navigator.userAgent.toLowerCase();
-			if (/iphone|ipad|ipod/.test(ua)) {
+			if (/iphone|ipad|ipod/.test(ua) && str.length > 8) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
 			}
