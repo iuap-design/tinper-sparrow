@@ -126,18 +126,15 @@ var dateFormat = function ( str ) {
 	{
 		return str;
 	}
-	//判断 str 格式如果是 yy-mm-dd
-	// if (str && str.indexOf ('-') > -1){
-	// 	//获取当前是否是 ios版本,>8是因为ios不识别new Date（“2016/11”）格式
-	// 	var ua = navigator.userAgent.toLowerCase();
-	// 	if (/iphone|ipad|ipod/.test(ua)) {
-	// 		//转换成 yy/mm/dd
-	// 	    str = str.replace(/-/g,"/");
-	// 		if(str.length <= 8){
-	// 			str = str + '/28' ;
-	// 		}
-	// 	}
-	// }
+	判断 str 格式如果是 yy-mm-dd
+	if (str && str.indexOf ('-') > -1){
+		//获取当前是否是 ios版本,>8是因为ios不识别new Date（“2016/11”）格式
+		var ua = navigator.userAgent.toLowerCase();
+		if (/iphone|ipad|ipod/.test(ua)) {
+			//转换成 yy/mm/dd
+		    str = str.replace(/-/g,"/");
+		}
+	}
 	str = str.replace(/(^\s+)|(\s+$)/g,"");
 
 	return str;
