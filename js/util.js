@@ -126,7 +126,7 @@ var dateFormat = function ( str ) {
 	{
 		return str;
 	}
-	判断 str 格式如果是 yy-mm-dd
+	//判断 str 格式如果是 yy-mm-dd
 	if (str && str.indexOf ('-') > -1){
 		//获取当前是否是 ios版本,>8是因为ios不识别new Date（“2016/11”）格式
 		var ua = navigator.userAgent.toLowerCase();
