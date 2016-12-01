@@ -133,9 +133,13 @@ var dateFormat = function ( str ) {
 		if (/iphone|ipad|ipod/.test(ua)) {
 			//转换成 yy/mm/dd
 		    str = str.replace(/-/g,"/");
+			str = str.replace(/(^\s+)|(\s+$)/g,"");
+			if(str.length <= 8){
+				str = str += "/01";
+			}
 		}
 	}
-	str = str.replace(/(^\s+)|(\s+$)/g,"");
+
 
 	return str;
 }
