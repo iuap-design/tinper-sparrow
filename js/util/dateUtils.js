@@ -5,7 +5,7 @@
  */
 
 import {core} from '../core';
-import {dateFormat} from '../util'
+
 var u = {};
 u.date = {
 
@@ -193,7 +193,7 @@ u.date = {
 	getDateObj: function(value) {
 		if(!value || typeof value == 'undefined') return value;
 		var dateFlag = false;
-		var _date = new Date(dateFormat(value));
+		var _date = new Date(value);
 		if(isNaN(_date)) {
 			// IE的话对"2016-2-13 12:13:22"进行处理
 			var index1, index2, index3, s1, s2, s3;
@@ -236,7 +236,7 @@ u.date = {
 		} else {
 			dateFlag = true;
 		}
-
+		_date = _date.replace(/(^\s+)|(\s+$)/g,"");
 		if(dateFlag)
 			return _date;
 		else
