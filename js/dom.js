@@ -144,7 +144,7 @@ var makeDOM = function(htmlString) {
  */
 var makeModal = function(element, parEle) {
 	var overlayDiv = document.createElement('div');
-	addClass(overlayDiv, 'u-overlay');
+	$(overlayDiv).addClass('u-overlay');
 	overlayDiv.style.zIndex = getZIndex();
 	// 如果有父元素则插入到父元素上，没有则添加到body上
 	if(parEle && parEle != document.body) {
