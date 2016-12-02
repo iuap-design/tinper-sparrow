@@ -236,7 +236,6 @@ u.date = {
 		} else {
 			dateFlag = true;
 		}
-		_date = _date.replace(/(^\s+)|(\s+$)/g,"");
 		if(dateFlag)
 			return _date;
 		else
