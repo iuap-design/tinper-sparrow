@@ -99,7 +99,8 @@ var each = function(obj, callback) {
 
 };
 
-NodeList.prototype.forEach = Array.prototype.forEach;
+if(NodeList)
+	NodeList.prototype.forEach = Array.prototype.forEach;
 
 /**
  * 获得字符串的字节长度
