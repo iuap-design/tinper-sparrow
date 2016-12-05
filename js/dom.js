@@ -12,13 +12,17 @@ import { on,stopEvent } from './event';
 var addClass = function(element, value) {
 	if(element){
 		if(typeof element.classList === 'undefined') {
-			if(u._addClass)
+			if(u._addClass){
 				u._addClass(element, value);
+			}else{
+				$(element).addClass(value);
+			}
+
 		} else {
 			element.classList.add(value);
 		}
 	}
-	
+
 	return this;
 };
 /**
@@ -192,7 +196,7 @@ var getScroll = function(Node, offset) {
 		offset.top += Node.scrollTop;
 		offset.left += Node.scrollLeft;
 	}
-	
+
 	if(Node.parentNode)
 		return getScroll(Node.parentNode, offset);
 	else
