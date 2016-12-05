@@ -33,8 +33,12 @@ var addClass = function(element, value) {
 var removeClass = function(element, value) {
 	if(element){
 		if(typeof element.classList === 'undefined') {
-			if(u._removeClass)
+			if(u._removeClass){
 				u._removeClass(element, value);
+			}else{
+				$(element).removeClass(value);
+			}
+
 		} else {
 			element.classList.remove(value);
 		}
@@ -50,8 +54,12 @@ var hasClass = function(element, value) {
 	if(!element) return false;
 	if(element.nodeName && (element.nodeName === '#text' || element.nodeName === '#comment')) return false;
 	if(typeof element.classList === 'undefined') {
-		if(u._hasClass)
+		if(u._hasClass){
 			return u._hasClass(element, value);
+		}else{
+			return $(element).hasClass(value);
+		}
+
 		return false;
 	} else {
 		return element.classList.contains(value);
