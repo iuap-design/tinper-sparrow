@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.15
+ * tinper-sparrow v3.1.16
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -94,7 +94,15 @@
 
 	var _i18n = __webpack_require__(20);
 
+	var _ployfill = __webpack_require__(21);
+
 	//公开接口、属性对外暴露
+	/**
+	 * Module : Sparrow entry index
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-04 09:48:36
+	 */
+
 	var api = {
 		ajax: _ajax.ajax,
 		extend: _extend.extend,
@@ -154,13 +162,10 @@
 		BigInt: _rsautils.BigInt,
 		BarrettMu: _rsautils.BarrettMu,
 		twoDigit: _rsautils.twoDigit,
-		trans: _i18n.trans
-	}; /**
-	    * Module : Sparrow entry index
-	    * Author : Kvkens(yueming@yonyou.com)
-	    * Date	  : 2016-08-04 09:48:36
-	    */
-
+		trans: _i18n.trans,
+		requestAnimationFrame: _ployfill.requestAnimationFrame,
+		cancelRequestAnimFrame: _ployfill.cancelRequestAnimFrame
+	};
 	(0, _extend.extend)(api, _env.env);
 	if (document.readyState && document.readyState === 'complete') {
 		_compMgr.compMgr.updateComp();
@@ -398,8 +403,9 @@
 			return;
 		}
 	};
-
-	NodeList.prototype.forEach = Array.prototype.forEach;
+	try {
+		NodeList.prototype.forEach = Array.prototype.forEach;
+	} catch (e) {}
 
 	/**
 	 * 获得字符串的字节长度
@@ -431,8 +437,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -1065,7 +1072,11 @@
 	var addClass = function addClass(element, value) {
 		if (element) {
 			if (typeof element.classList === 'undefined') {
-				if (u._addClass) u._addClass(element, value);
+				if (u._addClass) {
+					u._addClass(element, value);
+				} else {
+					$(element).addClass(value);
+				}
 			} else {
 				element.classList.add(value);
 			}
@@ -1086,7 +1097,11 @@
 	var removeClass = function removeClass(element, value) {
 		if (element) {
 			if (typeof element.classList === 'undefined') {
-				if (u._removeClass) u._removeClass(element, value);
+				if (u._removeClass) {
+					u._removeClass(element, value);
+				} else {
+					$(element).removeClass(value);
+				}
 			} else {
 				element.classList.remove(value);
 			}
@@ -1102,7 +1117,12 @@
 		if (!element) return false;
 		if (element.nodeName && (element.nodeName === '#text' || element.nodeName === '#comment')) return false;
 		if (typeof element.classList === 'undefined') {
-			if (u._hasClass) return u._hasClass(element, value);
+			if (u._hasClass) {
+				return u._hasClass(element, value);
+			} else {
+				return $(element).hasClass(value);
+			}
+
 			return false;
 		} else {
 			return element.classList.contains(value);
@@ -1200,7 +1220,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -3190,7 +3210,9 @@
 					} else {
 						_date = new Date(parseInt(value));
 						if (isNaN(_date)) {
-							throw new TypeError('invalid Date parameter');
+							// 输入值不正确时，默认为空，如果抛出异常会后面内容的解析
+							// throw new TypeError('invalid Date parameter');
+							_date = "";
 						} else {
 							dateFlag = true;
 						}
@@ -3199,7 +3221,6 @@
 			} else {
 				dateFlag = true;
 			}
-
 			if (dateFlag) return _date;else return null;
 		}
 
@@ -4325,6 +4346,41 @@
 	};
 
 	exports.trans = trans;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+	var requestAnimationFrame = function requestAnimationFrame(callback) {
+	    if (!window.requestAnimationFrame) {
+	        window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+	            var self = this,
+	                start,
+	                finish;
+	            return window.setTimeout(function () {
+	                start = +new Date();
+	                callback(start);
+	                finish = +new Date();
+	                self.timeout = 1000 / 60 - (finish - start);
+	            }, self.timeout);
+	        };
+	    } else {
+	        window.requestAnimationFrame(callback);
+	    }
+	};
+
+	var cancelRequestAnimFrame = function cancelRequestAnimFrame(callback) {
+	    window.cancelRequestAnimFrame = function () {
+	        return window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame || clearTimeout;
+	    }();
+	    window.cancelRequestAnimFrame(callback);
+	};
+
+	exports.requestAnimationFrame = requestAnimationFrame;
+	exports.cancelRequestAnimFrame = cancelRequestAnimFrame;
 
 /***/ }
 /******/ ]);
