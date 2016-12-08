@@ -110,6 +110,11 @@ import {
 	trans
 } from './util/i18n';
 
+import {
+	requestAnimationFrame,
+    cancelRequestAnimFrame
+} from './ployfill';
+
 //公开接口、属性对外暴露
 let api = {
 	ajax: ajax,
@@ -170,7 +175,9 @@ let api = {
 	BigInt: BigInt,
 	BarrettMu: BarrettMu,
 	twoDigit: twoDigit,
-	trans: trans
+	trans: trans,
+	requestAnimationFrame: requestAnimationFrame,
+ 	cancelRequestAnimFrame: cancelRequestAnimFrame
 };
 extend(api,env);
 if(document.readyState && document.readyState === 'complete') {

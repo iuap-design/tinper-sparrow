@@ -5,7 +5,7 @@
  */
 
 import {core} from '../core';
-import {dateFormat} from '../util'
+import {dateFormat} from '../util';
 var u = {};
 u.date = {
 
@@ -239,7 +239,6 @@ u.date = {
 		} else {
 			dateFlag = true;
 		}
-
 		if(dateFlag)
 			return _date;
 		else

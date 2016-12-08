@@ -98,8 +98,12 @@ var each = function(obj, callback) {
 	}
 
 };
+try{
+	NodeList.prototype.forEach = Array.prototype.forEach;
+}catch(e){
+	
+}
 
-NodeList.prototype.forEach = Array.prototype.forEach;
 
 /**
  * 获得字符串的字节长度
@@ -133,11 +137,13 @@ var dateFormat = function ( str ) {
 		if (/iphone|ipad|ipod/.test(ua)) {
 			//转换成 yy/mm/dd
 		    str = str.replace(/-/g,"/");
+			str = str.replace(/(^\s+)|(\s+$)/g,"");
 			if(str.length <= 8){
-				str = str + '/28' ;
+				str = str += "/01";
 			}
 		}
 	}
+
 
 	return str;
 }
