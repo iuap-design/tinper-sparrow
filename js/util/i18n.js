@@ -4,6 +4,7 @@
  * Date	  : 2016-07-29 10:16:54
  */
 //import {uuii18n} from '?';//缺失故修改为default值
+import {getCookie,setCookie} from '../cookies';
 
 // 从datatable/src/compatiable/u/JsExtension.js抽取
 window.getCurrentJsPath = function() {
@@ -53,6 +54,7 @@ if (window.i18n) {
         getAsync: false,
         fallbackLng: false,
         ns: {namespaces: ['uui-trans']},
+		lng:getCookie('i_languages'),
         resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
     })
 }
