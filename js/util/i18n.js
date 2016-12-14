@@ -60,7 +60,7 @@ if (window.i18n) {
 }
 
 var trans = function (key, dftValue) {
-    return  i18n ?  i18n.t('uui-trans:' + key) : dftValue
+    return  window.i18n ?  i18n.t('uui-trans:' + key) : dftValue
 }
 
 export {trans};
