@@ -1,3 +1,17 @@
+<a name="3.1.17"></a>
+## [3.1.17](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.16...v3.1.17) (2016-12-14)
+
+
+### Bug Fixes
+* addClass ie9兼容 ([b2bb857](https://github.com/iuap-design/tinper-sparrow/commit/b2bb857))
+
+* i18n bug ([06ed3fc](https://github.com/iuap-design/tinper-sparrow/commit/06ed3fc))
+
+* removeClass hasClass bug other2jquery ([6fec69e](https://github.com/iuap-design/tinper-sparrow/commit/6fec69e))
+
+
+
+
 <a name="3.1.15"></a>
 ## [3.1.15](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.14...v3.1.15) (2016-11-29)
 
