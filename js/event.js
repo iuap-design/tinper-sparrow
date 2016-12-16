@@ -302,7 +302,7 @@ var on = function(element, eventName, child, listener) {
 			element["uEvent"][eventName].forEach(function(fn) {
 				try {
 					e.target = e.target || e.srcElement; //兼容IE8
-				} catch(e) {}
+				} catch(ee) {}
 				if(fn)
 					fn.call(element, e)
 			})
