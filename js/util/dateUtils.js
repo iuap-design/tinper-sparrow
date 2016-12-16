@@ -196,41 +196,43 @@ u.date = {
 		var _date = new Date(dateFormat(value));
 		if(isNaN(_date)) {
 			// IE的话对"2016-2-13 12:13:22"进行处理
-			var index1, index2, index3, s1, s2, s3;
-			if(value.indexOf) {
+			var index1, index2, index3, s1, s2, s3, s4;
+			if (value.indexOf) {
 				index1 = value.indexOf('-');
 				index2 = value.indexOf(':');
 				index3 = value.indexOf(' ');
-				if(index1 > 0 || index2 > 0 || index3 > 0) {
+				if (index1 > 0 || index2 > 0 || index3 > 0) {
 					_date = new Date();
-					if(index3 > 0) {
+					if (index3 > 0) {
 						s3 = value.split(' ');
 						s1 = s3[0].split('-');
 						s2 = s3[1].split(':');
-					} else if(index1 > 0) {
+						s4 = s3[2];
+					} else if (index1 > 0) {
 						s1 = value.split('-');
-					} else if(index2 > 0) {
+					} else if (index2 > 0) {
 						s2 = value.split(':');
 					}
-					if(s1 && s1.length > 0) {
+					if (s1 && s1.length > 0) {
 						_date.setYear(s1[0]);
 						_date.setMonth(parseInt(s1[1] - 1));
 						_date.setDate(s1[2] ? s1[2] : 0);
 						dateFlag = true;
 					}
-					if(s2 && s2.length > 0) {
+					if (s2 && s2.length > 0) {
+						//解决ie和firefox等时间pm直接变am问题
+						if(s4=="pm"){
+							s2[0]=s2[0]-(-12);
+						}
 						_date.setHours(s2[0] ? s2[0] : 0);
 						_date.setMinutes(s2[1] ? s2[1] : 0);
 						_date.setSeconds(s2[2] ? s2[2] : 0);
 						dateFlag = true;
 					}
 				} else {
-					_date = new Date(parseInt(value))
-					if(isNaN(_date)) {
-						// 输入值不正确时，默认为空，如果抛出异常会后面内容的解析
-                        // throw new TypeError('invalid Date parameter');
-                        _date="";
-
+					_date = new Date(parseInt(value));
+					if (isNaN(_date)) {
+						throw new TypeError('invalid Date parameter');
 					} else {
 						dateFlag = true;
 					}
