@@ -54,7 +54,7 @@ if (window.i18n) {
         getAsync: false,
         fallbackLng: false,
         ns: {namespaces: ['uui-trans']},
-		lng:getCookie('i_languages'),
+		lng:getCookie('i_languages') || 'zh',
         resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
     })
 }
