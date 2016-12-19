@@ -342,7 +342,9 @@ var off = function(element, eventName, listener) {
 		}
 		return;
 	}
-	var eventfn = element["uEvent"][eventName + 'fn']
+	var eventfn;
+	if(element && element["uEvent"] && element["uEvent"][eventName + 'fn'])
+		eventfn = element["uEvent"][eventName + 'fn']
 	if(element.removeEventListener) { // 用于支持DOM的浏览器
 		element.removeEventListener(eventName, eventfn);
 	} else if(element.removeEvent) { // 用于IE浏览器
@@ -353,8 +355,11 @@ var off = function(element, eventName, listener) {
 	if(u.event && u.event[eventName] && u.event[eventName].teardown) {
 		u.event[eventName].teardown.call(element);
 	}
-	element["uEvent"][eventName] = undefined
-	element["uEvent"][eventName + 'fn'] = undefined
+
+	if(element && element["uEvent"] && element["uEvent"][eventName])
+		element["uEvent"][eventName] = undefined
+	if(element && element["uEvent"] && element["uEvent"][eventName + 'fn'])
+		element["uEvent"][eventName + 'fn'] = undefined
 
 };
 var trigger = function(element, eventName) {
