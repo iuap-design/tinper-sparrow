@@ -6,6 +6,7 @@
 
 import {core} from '../core';
 import {dateFormat} from '../util';
+import {trans} from './i18n';
 var u = {};
 u.date = {
 
@@ -28,6 +29,14 @@ u.date = {
 			weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
 			weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
 		}
+	},
+	_jsonLocale:{
+		months: trans('date.months', "一月\n二月\n三月\n四月\n五月\n六月\n七月\n八月\n九月\n十月\n十一月\n十二月").split('\n'),
+		monthsShort: trans('date.monthsShort', "1月\n2月\n3月\n4月\n5月\n6月\n7月\n8月\n9月\n10月\n11月\n12月").split('\n'),
+		weekdays: trans('date.weekdays', "星期日\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六").split('\n'),
+		weekdaysShort: trans('date.weekdaysShort', "周日\n周一\n周二\n周三\n周四\n周五\n周六").split('\n'),
+		weekdaysMin: trans('date.weekdaysMin', "日\n一\n二\n三\n四\n五\n六").split('\n'),
+		defaultMonth: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
 	},
 
 	_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
@@ -59,11 +68,13 @@ u.date = {
 		},
 		MMM: function(date, language) {
 			var m = date.getMonth();
-			return u.date._dateLocale[language].monthsShort[m];
+			// return u.date._dateLocale[language].monthsShort[m];
+			return u.date._jsonLocale.monthsShort[m];
 		},
 		MMMM: function(date, language) {
 			var m = date.getMonth();
-			return u.date._dateLocale[language].months[m];
+			// return u.date._dateLocale[language].months[m];
+			return u.date._jsonLocale.months[m];
 		},
 		//date
 		D: function(date) {
@@ -79,15 +90,18 @@ u.date = {
 		},
 		dd: function(date, language) {
 			var d = u.date._formats.d(date);
-			return u.date._dateLocale[language].weekdaysMin[d];
+			// return u.date._dateLocale[language].weekdaysMin[d];
+			return u.date._jsonLocale.weekdaysMin[d];
 		},
 		ddd: function(date, language) {
 			var d = u.date._formats.d(date);
-			return u.date._dateLocale[language].weekdaysShort[d];
+			// return u.date._dateLocale[language].weekdaysShort[d];
+			return u.date._jsonLocale.weekdaysShort[d];
 		},
 		dddd: function(date, language) {
 			var d = u.date._formats.d(date);
-			return u.date._dateLocale[language].weekdays[d];
+			// return u.date._dateLocale[language].weekdays[d];
+			return u.date._jsonLocale.weekdays[d];
 		},
 		// am pm
 		a: function(date) {
