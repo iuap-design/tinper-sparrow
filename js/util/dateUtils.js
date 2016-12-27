@@ -149,7 +149,7 @@ u.date = {
 	 * @param formatString
 	 */
 	format: function(date, formatString, language) {
-		if(!date) return date;
+		if(!date) return ''; // renturn date 改为 return '',因：setFormat初始会赋值为undefined,造成二次选择报错
 		var array = formatString.match(u.date._formattingTokens),
 			i, length, output = '';
 		var _date = u.date.getDateObj(date);
