@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.17
+ * tinper-sparrow v3.1.18
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -86,13 +86,13 @@
 
 	var _masker = __webpack_require__(15);
 
-	var _hotKeys = __webpack_require__(17);
+	var _hotKeys = __webpack_require__(18);
 
-	var _ripple = __webpack_require__(18);
+	var _ripple = __webpack_require__(19);
 
-	var _rsautils = __webpack_require__(19);
+	var _rsautils = __webpack_require__(20);
 
-	var _i18n = __webpack_require__(20);
+	var _i18n = __webpack_require__(17);
 
 	var _ployfill = __webpack_require__(21);
 
@@ -179,6 +179,8 @@
 	(0, _extend.extend)(api, window.u || {});
 
 	window.u = api;
+	window.iweb = {};
+	window.iweb.browser = window.u;
 	exports.u = api;
 
 /***/ },
@@ -968,7 +970,7 @@
 				element["uEvent"][eventName].forEach(function (fn) {
 					try {
 						e.target = e.target || e.srcElement; //兼容IE8
-					} catch (e) {}
+					} catch (ee) {}
 					if (fn) fn.call(element, e);
 				});
 			};
@@ -1009,7 +1011,8 @@
 			}
 			return;
 		}
-		var eventfn = element["uEvent"][eventName + 'fn'];
+		var eventfn;
+		if (element && element["uEvent"] && element["uEvent"][eventName + 'fn']) eventfn = element["uEvent"][eventName + 'fn'];
 		if (element.removeEventListener) {
 			// 用于支持DOM的浏览器
 			element.removeEventListener(eventName, eventfn);
@@ -1023,8 +1026,9 @@
 		if (u.event && u.event[eventName] && u.event[eventName].teardown) {
 			u.event[eventName].teardown.call(element);
 		}
-		element["uEvent"][eventName] = undefined;
-		element["uEvent"][eventName + 'fn'] = undefined;
+
+		if (element && element["uEvent"] && element["uEvent"][eventName]) element["uEvent"][eventName] = undefined;
+		if (element && element["uEvent"] && element["uEvent"][eventName + 'fn']) element["uEvent"][eventName + 'fn'] = undefined;
 	};
 	var trigger = function trigger(element, eventName) {
 		if (element["uEvent"] && element["uEvent"][eventName]) {
@@ -2981,13 +2985,14 @@
 
 	var _util = __webpack_require__(4);
 
-	/**
-	 * Module : Sparrow date util
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-06 13:37:20
-	 */
+	var _i18n = __webpack_require__(17);
 
-	var u = {};
+	var u = {}; /**
+	             * Module : Sparrow date util
+	             * Author : Kvkens(yueming@yonyou.com)
+	             * Date	  : 2016-08-06 13:37:20
+	             */
+
 	u.date = {
 
 		/**
@@ -3009,6 +3014,14 @@
 				weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
 				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
 			}
+		},
+		_jsonLocale: {
+			months: (0, _i18n.trans)('date.months', "一月\n二月\n三月\n四月\n五月\n六月\n七月\n八月\n九月\n十月\n十一月\n十二月").split('\n'),
+			monthsShort: (0, _i18n.trans)('date.monthsShort', "1月\n2月\n3月\n4月\n5月\n6月\n7月\n8月\n9月\n10月\n11月\n12月").split('\n'),
+			weekdays: (0, _i18n.trans)('date.weekdays', "星期日\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六").split('\n'),
+			weekdaysShort: (0, _i18n.trans)('date.weekdaysShort', "周日\n周一\n周二\n周三\n周四\n周五\n周六").split('\n'),
+			weekdaysMin: (0, _i18n.trans)('date.weekdaysMin', "日\n一\n二\n三\n四\n五\n六").split('\n'),
+			defaultMonth: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
 		},
 
 		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
@@ -3040,11 +3053,13 @@
 			},
 			MMM: function MMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].monthsShort[m];
+				// return u.date._dateLocale[language].monthsShort[m];
+				return u.date._jsonLocale.monthsShort[m];
 			},
 			MMMM: function MMMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].months[m];
+				// return u.date._dateLocale[language].months[m];
+				return u.date._jsonLocale.months[m];
 			},
 			//date
 			D: function D(date) {
@@ -3060,15 +3075,18 @@
 			},
 			dd: function dd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysMin[d];
+				// return u.date._dateLocale[language].weekdaysMin[d];
+				return u.date._jsonLocale.weekdaysMin[d];
 			},
 			ddd: function ddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysShort[d];
+				// return u.date._dateLocale[language].weekdaysShort[d];
+				return u.date._jsonLocale.weekdaysShort[d];
 			},
 			dddd: function dddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdays[d];
+				// return u.date._dateLocale[language].weekdays[d];
+				return u.date._jsonLocale.weekdays[d];
 			},
 			// am pm
 			a: function a(date) {
@@ -3179,7 +3197,7 @@
 			var _date = new Date((0, _util.dateFormat)(value));
 			if (isNaN(_date)) {
 				// IE的话对"2016-2-13 12:13:22"进行处理
-				var index1, index2, index3, s1, s2, s3;
+				var index1, index2, index3, s1, s2, s3, s4;
 				if (value.indexOf) {
 					index1 = value.indexOf('-');
 					index2 = value.indexOf(':');
@@ -3190,6 +3208,7 @@
 							s3 = value.split(' ');
 							s1 = s3[0].split('-');
 							s2 = s3[1].split(':');
+							s4 = s3[2];
 						} else if (index1 > 0) {
 							s1 = value.split('-');
 						} else if (index2 > 0) {
@@ -3202,6 +3221,10 @@
 							dateFlag = true;
 						}
 						if (s2 && s2.length > 0) {
+							//解决ie和firefox等时间pm直接变am问题
+							if (s4 == "pm") {
+								s2[0] = s2[0] - -12;
+							}
 							_date.setHours(s2[0] ? s2[0] : 0);
 							_date.setMinutes(s2[1] ? s2[1] : 0);
 							_date.setSeconds(s2[2] ? s2[2] : 0);
@@ -3210,9 +3233,7 @@
 					} else {
 						_date = new Date(parseInt(value));
 						if (isNaN(_date)) {
-							// 输入值不正确时，默认为空，如果抛出异常会后面内容的解析
-							// throw new TypeError('invalid Date parameter');
-							_date = "";
+							throw new TypeError('invalid Date parameter');
 						} else {
 							dateFlag = true;
 						}
@@ -3231,6 +3252,81 @@
 
 /***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.trans = undefined;
+
+	var _cookies = __webpack_require__(3);
+
+	var _enumerables = __webpack_require__(2);
+
+	// 从datatable/src/compatiable/u/JsExtension.js抽取
+	/**
+	 * Module : Sparrow i18n
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:16:54
+	 */
+	//import {uuii18n} from '?';//缺失故修改为default值
+	window.getCurrentJsPath = function () {
+		var doc = document,
+		    a = {},
+		    expose = +new Date(),
+		    rExtractUri = /((?:http|https|file):\/\/.*?\/[^:]+)(?::\d+)?:\d+/,
+		    isLtIE8 = ('' + doc.querySelector).indexOf('[native code]') === -1;
+		// FF,Chrome
+		if (doc.currentScript) {
+			return doc.currentScript.src;
+		}
+
+		var stack;
+		try {
+			a.b();
+		} catch (e) {
+			stack = e.fileName || e.sourceURL || e.stack || e.stacktrace;
+		}
+		// IE10
+		if (stack) {
+			var absPath = rExtractUri.exec(stack)[1];
+			if (absPath) {
+				return absPath;
+			}
+		}
+
+		// IE5-9
+		for (var scripts = doc.scripts, i = scripts.length - 1, script; script = scripts[i--];) {
+			if (script.className !== expose && script.readyState === 'interactive') {
+				script.className = expose;
+				// if less than ie 8, must get abs path by getAttribute(src, 4)
+				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
+			}
+		}
+	};
+
+	if (window.i18n) {
+		var scriptPath = getCurrentJsPath(),
+		    _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
+		    __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'));
+		i18n.init({
+			postAsync: false,
+			getAsync: false,
+			fallbackLng: false,
+			ns: { namespaces: ['uui-trans'] },
+			lng: (0, _cookies.getCookie)(_enumerables.U_LOCALE) || 'zh',
+			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
+		});
+	}
+
+	var trans = function trans(key, dftValue) {
+		return window.i18n ? i18n.t('uui-trans:' + key) : dftValue;
+	};
+
+	exports.trans = trans;
+
+/***/ },
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3395,7 +3491,7 @@
 	exports.hotkeys = hotkeys;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3624,7 +3720,7 @@
 	exports.URipple = URipple;
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4326,79 +4422,6 @@
 	exports.BigInt = BigInt;
 	exports.BarrettMu = BarrettMu;
 	exports.twoDigit = twoDigit;
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.trans = undefined;
-
-	var _cookies = __webpack_require__(3);
-
-	// 从datatable/src/compatiable/u/JsExtension.js抽取
-	window.getCurrentJsPath = function () {
-		var doc = document,
-		    a = {},
-		    expose = +new Date(),
-		    rExtractUri = /((?:http|https|file):\/\/.*?\/[^:]+)(?::\d+)?:\d+/,
-		    isLtIE8 = ('' + doc.querySelector).indexOf('[native code]') === -1;
-		// FF,Chrome
-		if (doc.currentScript) {
-			return doc.currentScript.src;
-		}
-
-		var stack;
-		try {
-			a.b();
-		} catch (e) {
-			stack = e.fileName || e.sourceURL || e.stack || e.stacktrace;
-		}
-		// IE10
-		if (stack) {
-			var absPath = rExtractUri.exec(stack)[1];
-			if (absPath) {
-				return absPath;
-			}
-		}
-
-		// IE5-9
-		for (var scripts = doc.scripts, i = scripts.length - 1, script; script = scripts[i--];) {
-			if (script.className !== expose && script.readyState === 'interactive') {
-				script.className = expose;
-				// if less than ie 8, must get abs path by getAttribute(src, 4)
-				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
-			}
-		}
-	}; /**
-	    * Module : Sparrow i18n
-	    * Author : Kvkens(yueming@yonyou.com)
-	    * Date	  : 2016-07-29 10:16:54
-	    */
-	//import {uuii18n} from '?';//缺失故修改为default值
-
-
-	if (window.i18n) {
-		var scriptPath = getCurrentJsPath(),
-		    _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
-		    __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'));
-		i18n.init({
-			postAsync: false,
-			getAsync: false,
-			fallbackLng: false,
-			ns: { namespaces: ['uui-trans'] },
-			lng: (0, _cookies.getCookie)('i_languages'),
-			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
-		});
-	}
-
-	var trans = function trans(key, dftValue) {
-		return window.i18n ? i18n.t('uui-trans:' + key) : dftValue;
-	};
-
-	exports.trans = trans;
 
 /***/ },
 /* 21 */
