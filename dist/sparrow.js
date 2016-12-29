@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.18
+ * tinper-sparrow v3.1.19
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -3134,7 +3134,7 @@
 	  * @param formatString
 	  */
 		format: function format(date, formatString, language) {
-			if (!date) return date;
+			if (!date) return ''; // renturn date 改为 return '',因：setFormat初始会赋值为undefined,造成二次选择报错
 			var array = formatString.match(u.date._formattingTokens),
 			    i,
 			    length,
