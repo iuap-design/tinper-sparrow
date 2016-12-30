@@ -53,7 +53,8 @@ var isDate = function(input) {
 };
 var isNumber = function(obj) {
 	//return obj === +obj
-	return(obj - parseFloat(obj) + 1) >= 0;
+	//加了个typeof 判断，因为'431027199110.078573'会解析成number
+	return (typeof obj ==='number') && (obj - parseFloat(obj) + 1 >= 0);
 };
 var isArray = Array.isArray || function(val) {
 	return Object.prototype.toString.call(val) === '[object Array]';
