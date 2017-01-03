@@ -23,6 +23,7 @@ extend(u, {
 	isIE10: false,
 	isIE10_ABOVE: false,
 	isIE11: false,
+	isEdge: false,
 	isIOS: false,
 	isIphone: false,
 	isIPAD: false,
@@ -90,7 +91,9 @@ extend(u, {
 		};
 	}
 
-
+	if(userAgent.indexOf("Edge") > -1){
+		u.isEdge = true;
+	}
 	if(s = ua.match(/opera.([\d.]+)/)) {
 		u.isOpera = true;
 	} else if(browserMatch.browser == "IE" && browserMatch.version == 11) {
