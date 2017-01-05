@@ -1,3 +1,17 @@
+<a name="3.1.20"></a>
+## [3.1.20](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.19...v3.1.20) (2017-01-05)
+
+
+### Bug Fixes
+* isNumber判断 ([ebd1848](https://github.com/iuap-design/tinper-sparrow/commit/ebd1848))
+
+* isNumber判断 ([ff8b74f](https://github.com/iuap-design/tinper-sparrow/commit/ff8b74f))
+
+* setFmormat输入undefined造成bug ([e7bb1e3](https://github.com/iuap-design/tinper-sparrow/commit/e7bb1e3))
+
+
+
+
 <a name="3.1.18"></a>
 ## [3.1.18](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.17...v3.1.18) (2016-12-20)
 
