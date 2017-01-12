@@ -49,14 +49,15 @@ window.getCurrentJsPath = function() {
 if (window.i18n) {
     var scriptPath = getCurrentJsPath(),
         _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
-        __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'))
+        __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/')),
+        resGetPath = u.i18nPath || __FOLDER__ + '/locales/__lng__/__ns__.json';
     i18n.init({
         postAsync: false,
         getAsync: false,
         fallbackLng: false,
         ns: {namespaces: ['uui-trans']},
 		lng:getCookie(U_LOCALE) || 'zh',
-        resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
+        resGetPath: resGetPath
     })
 }
 
