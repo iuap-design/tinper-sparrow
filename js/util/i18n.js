@@ -47,6 +47,7 @@ window.getCurrentJsPath = function() {
 }
 
 if (window.i18n) {
+	window.u = window.u || {};
     var scriptPath = getCurrentJsPath(),
         _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
         __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/')),
