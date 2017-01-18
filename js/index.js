@@ -54,10 +54,6 @@ import {
 import {
 	core
 } from './core';
-
-import {
-	compMgr
-} from './compMgr';
 import {
 	BaseComponent
 } from './BaseComponent';
@@ -153,7 +149,6 @@ let api = {
 	showPanelByEle: showPanelByEle,
 	Class: Class,
 	core: core,
-	compMgr: compMgr,
 	BaseComponent: BaseComponent,
 	floatRender: floatRender,
 	integerRender: integerRender,
@@ -180,13 +175,6 @@ let api = {
  	cancelRequestAnimFrame: cancelRequestAnimFrame
 };
 extend(api,env);
-if(document.readyState && document.readyState === 'complete') {
-	compMgr.updateComp();
-} else {
-	on(window, 'load', function() {
-		compMgr.updateComp();
-	});
-}
 // export api;
 //export default api;
 extend(api,window.u || {});
