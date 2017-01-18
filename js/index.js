@@ -109,7 +109,7 @@ import {
 import {
 	requestAnimationFrame,
     cancelRequestAnimFrame
-} from './ployfill';
+} from 'tinper-neoui-polyfill/js/ployfill';
 
 //公开接口、属性对外暴露
 let api = {
