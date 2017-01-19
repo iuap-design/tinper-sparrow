@@ -106,10 +106,6 @@ import {
 	trans
 } from './util/i18n';
 
-import {
-	requestAnimationFrame,
-    cancelRequestAnimFrame
-} from 'tinper-neoui-polyfill/js/ployfill';
 
 //公开接口、属性对外暴露
 let api = {
@@ -170,9 +166,7 @@ let api = {
 	BigInt: BigInt,
 	BarrettMu: BarrettMu,
 	twoDigit: twoDigit,
-	trans: trans,
-	requestAnimationFrame: requestAnimationFrame,
- 	cancelRequestAnimFrame: cancelRequestAnimFrame
+	trans: trans
 };
 extend(api,env);
 // export api;

@@ -7,7 +7,7 @@
 import {Class} from './class';
 import {isDomElement} from './util';
 import {on,off} from './event';
-import {compMgr} from './compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var BaseComponent = Class.create({
