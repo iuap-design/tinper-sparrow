@@ -54,9 +54,6 @@ import {
 import {
 	core
 } from './core';
-import {
-	BaseComponent
-} from './BaseComponent';
 
 import {
 	ajax
@@ -145,7 +142,6 @@ let api = {
 	showPanelByEle: showPanelByEle,
 	Class: Class,
 	core: core,
-	BaseComponent: BaseComponent,
 	floatRender: floatRender,
 	integerRender: integerRender,
 	dateRender: dateRender,
