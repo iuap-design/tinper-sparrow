@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/iuap-design/tinper-sparrow#readme",
   "dependencies": {
-    "compox": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
