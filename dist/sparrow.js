@@ -2897,7 +2897,7 @@
 		try {
 			a.b();
 		} catch (e) {
-			stack = e.fileName || e.sourceURL || e.stack || e.stacktrace;
+			stack = e.stack || e.fileName || e.sourceURL || e.stacktrace;
 		}
 		// IE10
 		if (stack) {
