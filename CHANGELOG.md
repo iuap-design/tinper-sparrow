@@ -1,15 +1,15 @@
+<a name="3.1.27"></a>
+## [3.1.27](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.26...v3.1.27) (2017-02-23)
+
+
+
 <a name="3.1.26"></a>
 ## [3.1.26](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.25...v3.1.26) (2017-02-20)
 
 
 
 <a name="3.1.25"></a>
-## [3.1.25](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.23...v3.1.25) (2017-02-10)
-
-
-
-<a name="3.1.23"></a>
-## [3.1.23](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.22...v3.1.23) (2017-01-16)
+## [3.1.25](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.22...v3.1.25) (2017-02-10)
 
 
 
@@ -28,12 +28,10 @@
 
 
 ### Bug Fixes
+
 * isNumber判断 ([ebd1848](https://github.com/iuap-design/tinper-sparrow/commit/ebd1848))
-
 * isNumber判断 ([ff8b74f](https://github.com/iuap-design/tinper-sparrow/commit/ff8b74f))
-
 * setFmormat输入undefined造成bug ([e7bb1e3](https://github.com/iuap-design/tinper-sparrow/commit/e7bb1e3))
-
 
 
 
@@ -47,12 +45,10 @@
 
 
 ### Bug Fixes
+
 * addClass ie9兼容 ([b2bb857](https://github.com/iuap-design/tinper-sparrow/commit/b2bb857))
-
 * i18n bug ([06ed3fc](https://github.com/iuap-design/tinper-sparrow/commit/06ed3fc))
-
 * removeClass hasClass bug other2jquery ([6fec69e](https://github.com/iuap-design/tinper-sparrow/commit/6fec69e))
-
 
 
 
@@ -81,8 +77,8 @@
 
 
 ### Bug Fixes
-* IUAPDESIGN:云表单：日期年月ios获取bug ([02c2f80](https://github.com/iuap-design/tinper-sparrow/commit/02c2f80))
 
+* IUAPDESIGN:云表单：日期年月ios获取bug ([02c2f80](https://github.com/iuap-design/tinper-sparrow/commit/02c2f80))
 
 
 
