@@ -5,7 +5,7 @@ var env = require('yargs').argv.mode;
 var fs = require('fs');
 
 
-var libraryName = 'sparrow';
+var libraryName = 'tinper-sparrow';
 var data = fs.readFileSync('./package.json', 'utf8');
 var packageObj = JSON.parse(data);
 var headerStr = '';
