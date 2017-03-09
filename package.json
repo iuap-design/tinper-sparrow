@@ -2,7 +2,7 @@
   "name": "tinper-sparrow",
   "version": "3.1.27",
   "description": "sparrow.js",
-  "main": "js/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --colors --progress --mode=build",
     "dev": "webpack --progress --colors  --mode=dev",
