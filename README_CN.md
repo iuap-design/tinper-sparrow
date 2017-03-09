@@ -1,6 +1,12 @@
 # tinper sparrow
 <img src="http://tinper.org/assets/images/sparrow.png" width="120" style="max-width:100%;"/>
 
+[![npm version](https://img.shields.io/npm/v/tinper-sparrow.svg)](https://www.npmjs.com/package/tinper-sparrow)
+[![Build Status](https://img.shields.io/travis/iuap-design/tinper-sparrow/master.svg)](https://travis-ci.org/iuap-design/tinper-sparrow)
+[![devDependency Status](https://img.shields.io/david/dev/iuap-design/tinper-sparrow.svg)](https://david-dm.org/iuap-design/tinper-sparrow#info=devDependencies)
+[![NPM downloads](http://img.shields.io/npm/dm/tinper-sparrow.svg?style=flat)](https://npmjs.org/package/tinper-sparrow)
+
+
 [English Document](./README.md)
 ##  介绍
 `sparrow.js`是一个短小精悍的前端基础库，它包含对DOM、CSS基本操作、多平台浏览器移动设备判断、Cookies操作、事件的绑定、日期、数字、字符串相关判断、以及浏览器自身函数不足所扩展的一系列功能.
