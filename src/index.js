@@ -29,9 +29,11 @@ import {
 	on,
 	off,
 	trigger,
-	stopEvent,
-	event
+	stopEvent
 } from './event';
+import{
+	event
+} from './mobileEvents'
 import {
 	addClass,
 	removeClass,
