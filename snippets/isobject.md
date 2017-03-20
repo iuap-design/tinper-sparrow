@@ -1,6 +1,6 @@
-# 对象判断
+## 对象判断
 
-## # isDate(obj)
+### isDate(obj)
 * 说明：
 
   判断传入对象是否为Date对象
@@ -15,7 +15,7 @@
   ​
   	u.isDate(new Date());	 
 
-## # isNumber(obj)
+### isNumber(obj)
 * 说明：
 
   判断传入对象是否为Number对象
@@ -30,7 +30,7 @@
   ​
   	u.isNumber('123');
 
-## # isArray(obj)
+### isArray(obj)
 * 说明：
 
   判断传入对象是否为数组对象
@@ -46,7 +46,7 @@
   	u.isArray(['1','2']);
 
 
-## # isEmptyObject(obj)
+### isEmptyObject(obj)
 * 说明：
 
   判断传入对象是否为空对象
@@ -62,7 +62,7 @@
   	u.isEmptyObject({id:'id'});
 
 
-## # inArray(node,arr)
+### inArray(node,arr)
 * 说明：
 
   判断元素是否在数组中

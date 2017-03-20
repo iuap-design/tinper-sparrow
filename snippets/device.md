@@ -1,6 +1,6 @@
-# 终端API
+## 终端API
 
-## # isIE
+### isIE
 
 * 说明：
 
@@ -17,7 +17,7 @@
 
   ```
 
-## # isFF
+### isFF
 
 * 说明：
 
@@ -26,7 +26,7 @@
 
   Boolean
 
-## # isOpera
+### isOpera
 
 * 说明：
 
@@ -35,7 +35,7 @@
 
   Boolean
 
-## # isChrome
+### isChrome
 
 * 说明：
 
@@ -44,7 +44,7 @@
 
   Boolean
 
-## # isSafari
+### isSafari
 
 * 说明：
 
@@ -53,7 +53,7 @@
 
   Boolean
 
-## # isWebkit
+### isWebkit
 
 * 说明：
 
@@ -62,7 +62,7 @@
 
   Boolean
 
-## # isIE8_BEFORE
+### isIE8_BEFORE
 
 * 说明：
 
@@ -71,7 +71,7 @@
 
   Boolean
 
-## # isIE8
+### isIE8
 
 * 说明：
 
@@ -80,7 +80,7 @@
 
   Boolean
 
-## # isIE8_CORE
+### isIE8_CORE
 
 * 说明：
 
@@ -89,7 +89,7 @@
 
   Boolean
 
-## # isIE9
+### isIE9
 
 * 说明：
 
@@ -98,7 +98,7 @@
 
   Boolean
 
-## # isIE9_CORE
+### isIE9_CORE
 
 * 说明：
 
@@ -107,7 +107,7 @@
 
   Boolean
 
-## # isIE10
+### isIE10
 
 * 说明：
 
@@ -116,7 +116,7 @@
 
   Boolean
 
-## # isIE11
+### isIE11
 
 * 说明：
 
@@ -125,7 +125,7 @@
 
   Boolean
 
-## # isIOS
+### isIOS
 
 * 说明：
 
@@ -134,7 +134,7 @@
 
   Boolean
 
-## # isIphone
+### isIphone
 
 * 说明：
 
@@ -143,7 +143,7 @@
 
   Boolean
 
-## # isIPAD
+### isIPAD
 
 * 说明：
 
@@ -152,7 +152,7 @@
 
   Boolean
 
-## # isWin
+### isWin
 
 * 说明：
 
@@ -161,7 +161,7 @@
 
   Boolean
 
-## # isUnix
+### isUnix
 
 * 说明：
 
@@ -170,7 +170,7 @@
 
   Boolean
 
-## # isLinux
+### isLinux
 
 * 说明：
 
@@ -179,7 +179,7 @@
 
   Boolean
 
-## # isAndroid
+### isAndroid
 
 * 说明：
 
@@ -188,7 +188,7 @@
 
   Boolean
 
-## # isMac
+### isMac
 
 * 说明：
 
@@ -197,7 +197,7 @@
 
   Boolean
 
-## # hasTouch
+### hasTouch
 
 * 说明：
 
@@ -205,4 +205,3 @@
 * 类型：
 
   Boolean
-

@@ -1,6 +1,6 @@
-# 事件绑定
+## 事件绑定
 
-## # on(element,eventName,child,listener)
+### on(element,eventName,child,listener)
 * 说明：
 
   为HTML元素绑定事件
@@ -18,7 +18,7 @@
   		alert('resizeFun')
   	});
 
-## # off(element,eventName,listener)
+### off(element,eventName,listener)
 * 说明：
 
   为HTML元素取消事件绑定
@@ -34,7 +34,7 @@
   	u.off(window, 'resize');
 
 
-## # trigger(element,eventName)
+### trigger(element,eventName)
 * 说明：
 
   触发HTML元素的事件绑定
@@ -46,13 +46,13 @@
 
   无
 * 用法：
-  ​	
+  ​
   	u.trigger(window, 'resize');
 
 
 
 
-## #stopEvent(e)
+##stopEvent(e)
 
 * 说明：
 
@@ -67,5 +67,3 @@
   无
 * 用法：
   	u.stopEvent(e);	 
-
-

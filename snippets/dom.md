@@ -1,7 +1,7 @@
 
-# DOM
+## DOM
 
-## # wrap(element,parent)
+### wrap(element,parent)
 * 说明：
 
   将HTML元素添加到某HTML元素中。
@@ -20,7 +20,7 @@
 
 
 
-## # makeDOM(htmlString)
+### makeDOM(htmlString)
 * 说明：
 
   创建HTML元素
@@ -34,4 +34,3 @@
   创建之后的HTML元素
 * 用法：​
   	u.makeDOM('<div></div>');	 
-

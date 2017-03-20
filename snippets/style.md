@@ -1,7 +1,7 @@
 
-# 样式
+## 样式
 
-## # addClass(element,value)
+### addClass(element,value)
 * 说明：
 
   为HTML元素添加样式
@@ -16,7 +16,7 @@
   ​
   	u.addClass(document.getElementById('id1'), 'add-class');
 
-## # removeClass(element,value)
+### removeClass(element,value)
 * 说明：
 
   为HTML元素删除样式
@@ -31,7 +31,7 @@
   ​
   	u.removeClass(document.getElementById('id1'), 'add-class');
 
-## # hasClass(element,value)
+### hasClass(element,value)
 * 说明：
 
   判断HTML元素是否存在某样式
@@ -46,7 +46,7 @@
   ​
   	u.hasClass(document.getElementById('id1'), 'add-class');
 
-## # toggleClass(element,value)
+### toggleClass(element,value)
 * 说明：
 
   判断HTML元素是否存在某样式，存在则删除此样式，否则添加此样式
@@ -61,7 +61,7 @@
   ​
   	u.toggleClass(document.getElementById('id1'), 'add-class');
 
-## # css(element,csstext,val)
+### css(element,csstext,val)
 * 说明：
 
   为HTML元素添加css样式属性。传入2个参数且第二个参数为字符串时获取HTML元素的css样式属性。
@@ -80,7 +80,3 @@
   	u.css(document.getElementById('id1'), 'width','200px');	 //设置宽度为200px
   	u.css(document.getElementById('id1'), {width:'500px'}); // 设置宽度为500px
   	u.css(document.getElementById('id1'), 'width'); // 获取宽度
-
-
-
-

@@ -1,6 +1,6 @@
-# 方法扩展
+## 方法扩展
 
-## # extend(object, config)
+### extend(object, config)
 * 说明：
 
   复制对象属性
@@ -22,7 +22,7 @@
   	}
   	u.extend(obj1, obj2); //obj1为{id: "id", name: "newName", code: "code"}
 
-## # setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure)
+### setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure)
 * 说明：
 
   设置cookie属性
@@ -40,7 +40,7 @@
 * 用法：
   	u.setCookie('COOKIENAME', 'COOKIVALUE'); //设置cookie的COOKIENAME为COOKIVALUE
 
-## # getCookie(sName)
+### getCookie(sName)
 * 说明：
 
   获取cookie属性
@@ -54,7 +54,7 @@
 * 用法：​​
   	u.getCookie('COOKIENAME'); //获取cookie的COOKIENAME
 
-## # getFunction(target, val)
+### getFunction(target, val)
 * 说明：
 
   获取function
@@ -71,7 +71,7 @@
   	u.getFunction(window,'funName1');	 
 
 
-## # getJSObject(target, names)
+### getJSObject(target, names)
 * 说明：
 
   获取Object对象
@@ -87,7 +87,7 @@
   	u.getJSObject(window,'funName1'); //获取window对象上的funName1对象
 
 
-## # each(obj,callback)
+### each(obj,callback)
 * 说明：
 
   遍历传入的obj执行callback方法
@@ -107,7 +107,7 @@
   	//遍历将class为m_context的HTML的内容翻入数组tmpdata中。
 
 
-## # getStyle(element,key)
+### getStyle(element,key)
 * 说明：
 
   获取HTML元素的style属性。
@@ -121,7 +121,7 @@
 * 用法：​
   	u.getStyle(document.getElementById('id1'), 'width');	 
 
-## # getZIndex()
+### getZIndex()
 * 说明：
 
   统一zindex值, 不同控件每次显示时都取最大的zindex，防止显示错乱
@@ -139,7 +139,7 @@
 
 
 
-## # getOffset(ele, offset)
+### getOffset(ele, offset)
 * 说明：
 
   获取/设置元素`ele`相对顶层`body`的偏移量
@@ -156,12 +156,12 @@
   		left : 20
   	};
   	var ele = document.getElementById('tit');
-  	
+
   	u.getOffset(ele,offsetObj) // {top: 120, left:100}
 
 
 
-## # getScroll(ele, offset)
+### getScroll(ele, offset)
 
 - 说明：
 
@@ -184,7 +184,7 @@
 
 
 
-## # ajax({...})
+### ajax({...})
 
 - 说明：
 
@@ -231,4 +231,3 @@
       })
   })
   ```
-
