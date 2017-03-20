@@ -29,9 +29,11 @@ import {
 	on,
 	off,
 	trigger,
-	stopEvent,
-	event
+	stopEvent
 } from './event';
+import{
+	event
+} from './mobileEvents'
 import {
 	addClass,
 	removeClass,
@@ -172,4 +174,8 @@ extend(api,window.u || {});
 window.u = api;
 window.iweb = {}
 window.iweb.browser = window.u;
-export {api as u};
+window.sparrow = window.u;
+export {
+	u,
+	sparrow
+};
