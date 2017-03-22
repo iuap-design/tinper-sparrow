@@ -38,4 +38,8 @@ var extend = function(object, config) {
 	return object;
 };
 
+if(!Object.assign){
+	Object.assign = extend;
+}
+
 export {extend};
