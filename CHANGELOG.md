@@ -1,3 +1,8 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.27...v3.2.0) (2017-03-22)
+
+
+
 <a name="3.1.27"></a>
 ## [3.1.27](https://github.com/iuap-design/tinper-sparrow/compare/v3.1.26...v3.1.27) (2017-02-23)
 

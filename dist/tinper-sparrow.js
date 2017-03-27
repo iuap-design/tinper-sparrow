@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.1.27
+ * tinper-sparrow v3.2.0
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -191,7 +191,7 @@
         hasTouch: !1,
         isMobile: !1
     }), function() {
-        var version, userAgent = navigator.userAgent, rMsie = /(msie\s|trident.*rv:)([\w.]+)/, rFirefox = /(firefox)\/([\w.]+)/, rOpera = /(opera).+version\/([\w.]+)/, rChrome = /(chrome)\/([\w.]+)/, rSafari = /version\/([\w.]+).*(safari)/, ua = userAgent.toLowerCase(), browserMatch = {
+        var userAgent = navigator.userAgent, rMsie = /(msie\s|trident.*rv:)([\w.]+)/, rFirefox = /(firefox)\/([\w.]+)/, rOpera = /(opera).+version\/([\w.]+)/, rChrome = /(chrome)\/([\w.]+)/, rSafari = /version\/([\w.]+).*(safari)/, ua = userAgent.toLowerCase(), browserMatch = {
             browser: "",
             version: ""
         }, match = rMsie.exec(ua);
@@ -219,7 +219,7 @@
         "Win32" != navigator.platform && "Windows" != navigator.platform && "Win64" != navigator.platform || (u.isWin = !0), 
         "X11" != navigator.platform || u.isWin || u.isMac || (u.isUnix = !0), String(navigator.platform).indexOf("Linux") > -1 && (u.isLinux = !0), 
         (ua.indexOf("Android") > -1 || ua.indexOf("android") > -1 || ua.indexOf("Adr") > -1 || ua.indexOf("adr") > -1) && (u.isAndroid = !0), 
-        u.version = version && browserMatch.version ? browserMatch.version : 0, u.isAndroid && (window.screen.width >= 768 && window.screen.width < 1024 && (u.isAndroidPAD = !0), 
+        u.version = 0, u.isAndroid && (window.screen.width >= 768 && window.screen.width < 1024 && (u.isAndroidPAD = !0), 
         window.screen.width <= 768 && (u.isAndroidPhone = !0)), u.isIE) {
             var intVersion = parseInt(u.version), mode = document.documentMode;
             null == mode ? 6 != intVersion && 7 != intVersion || (u.isIE8_BEFORE = !0) : (7 == mode ? u.isIE8_BEFORE = !0 : 8 == mode ? u.isIE8 = !0 : 9 == mode ? (u.isIE9 = !0, 
@@ -661,7 +661,7 @@
             var i, length, array = formatString.match(u.date._formattingTokens), output = "", _date = u.date.getDateObj(date);
             if (!_date) return date;
             for (language = language || __WEBPACK_IMPORTED_MODULE_0__core__.a.getLanguages(), 
-            i = 0, length = array.length; i < length; i++) output += u.date._formats[array[i]] ? u.date._formats[array[i]](_date, language) : array[i];
+            i = 0, length = array.length; i < length; i++) u.date._formats[array[i]] ? output += u.date._formats[array[i]](_date, language) : output += array[i];
             return output;
         },
         _addOrSubtract: function(date, period, value, isAdding) {
@@ -1014,7 +1014,7 @@
         },
         serializeUrl: function(url) {
             var cache = "cache=" + Math.random();
-            return url += url.indexOf("?") > 0 ? "&" + cache : "?" + cache;
+            return url.indexOf("?") > 0 ? url += "&" + cache : url += "?" + cache, url;
         },
         serializeParams: function(params) {
             if (void 0 == params || null == params || "" == params) return null;
@@ -1426,7 +1426,7 @@
     }), __webpack_require__.d(__webpack_exports__, "d", function() {
         return twoDigit;
     });
-    var maxDigits, ZERO_ARRAY, bigZero, bigOne, RSAUtils = {}, biRadixBits = 16, bitsPerDigit = biRadixBits, biRadix = 65536, biHalfRadix = biRadix >>> 1, biRadixSquared = biRadix * biRadix, maxDigitVal = biRadix - 1, BigInt = function(flag) {
+    var maxDigits, ZERO_ARRAY, bigZero, bigOne, RSAUtils = {}, BigInt = function(flag) {
         this.digits = "boolean" == typeof flag && 1 == flag ? null : ZERO_ARRAY.slice(0), 
         this.isNeg = !1;
     };
@@ -1435,21 +1435,20 @@
         for (var iza = 0; iza < ZERO_ARRAY.length; iza++) ZERO_ARRAY[iza] = 0;
         bigZero = new BigInt(), bigOne = new BigInt(), bigOne.digits[0] = 1;
     }, RSAUtils.setMaxDigits(20);
-    var dpl10 = 15;
     RSAUtils.biFromNumber = function(i) {
         var result = new BigInt();
         result.isNeg = i < 0, i = Math.abs(i);
-        for (var j = 0; i > 0; ) result.digits[j++] = i & maxDigitVal, i = Math.floor(i / biRadix);
+        for (var j = 0; i > 0; ) result.digits[j++] = 65535 & i, i = Math.floor(i / 65536);
         return result;
     };
     var lr10 = RSAUtils.biFromNumber(1e15);
     RSAUtils.biFromDecimal = function(s) {
         for (var result, isNeg = "-" == s.charAt(0), i = isNeg ? 1 : 0; i < s.length && "0" == s.charAt(i); ) ++i;
         if (i == s.length) result = new BigInt(); else {
-            var digitCount = s.length - i, fgl = digitCount % dpl10;
-            for (0 == fgl && (fgl = dpl10), result = RSAUtils.biFromNumber(Number(s.substr(i, fgl))), 
-            i += fgl; i < s.length; ) result = RSAUtils.biAdd(RSAUtils.biMultiply(result, lr10), RSAUtils.biFromNumber(Number(s.substr(i, dpl10)))), 
-            i += dpl10;
+            var digitCount = s.length - i, fgl = digitCount % 15;
+            for (0 == fgl && (fgl = 15), result = RSAUtils.biFromNumber(Number(s.substr(i, fgl))), 
+            i += fgl; i < s.length; ) result = RSAUtils.biAdd(RSAUtils.biMultiply(result, lr10), RSAUtils.biFromNumber(Number(s.substr(i, 15)))), 
+            i += 15;
             result.isNeg = isNeg;
         }
         return result;
@@ -1476,15 +1475,13 @@
     };
     var hexToChar = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" ];
     RSAUtils.digitToHex = function(n) {
-        for (var mask = 15, result = "", i = 0; i < 4; ++i) result += hexToChar[n & mask], 
-        n >>>= 4;
+        for (var result = "", i = 0; i < 4; ++i) result += hexToChar[15 & n], n >>>= 4;
         return RSAUtils.reverseStr(result);
     }, RSAUtils.biToHex = function(x) {
         for (var result = "", i = (RSAUtils.biHighIndex(x), RSAUtils.biHighIndex(x)); i > -1; --i) result += RSAUtils.digitToHex(x.digits[i]);
         return result;
     }, RSAUtils.charToHex = function(c) {
-        var ZERO = 48, NINE = ZERO + 9, littleA = 97, littleZ = littleA + 25, bigA = 65, bigZ = 90;
-        return c >= ZERO && c <= NINE ? c - ZERO : c >= bigA && c <= bigZ ? 10 + c - bigA : c >= littleA && c <= littleZ ? 10 + c - littleA : 0;
+        return c >= 48 && c <= 57 ? c - 48 : c >= 65 && c <= 90 ? 10 + c - 65 : c >= 97 && c <= 122 ? 10 + c - 97 : 0;
     }, RSAUtils.hexToDigit = function(s) {
         for (var result = 0, sl = Math.min(s.length, 4), i = 0; i < sl; ++i) result <<= 4, 
         result |= RSAUtils.charToHex(s.charCodeAt(i));
@@ -1508,7 +1505,7 @@
         y.isNeg = !y.isNeg; else {
             result = new BigInt();
             for (var n, c = 0, i = 0; i < x.digits.length; ++i) n = x.digits[i] + y.digits[i] + c, 
-            result.digits[i] = n % biRadix, c = Number(n >= biRadix);
+            result.digits[i] = n % 65536, c = Number(n >= 65536);
             result.isNeg = x.isNeg;
         }
         return result;
@@ -1518,12 +1515,12 @@
             result = new BigInt();
             var n, c;
             c = 0;
-            for (var i = 0; i < x.digits.length; ++i) n = x.digits[i] - y.digits[i] + c, result.digits[i] = n % biRadix, 
-            result.digits[i] < 0 && (result.digits[i] += biRadix), c = 0 - Number(n < 0);
+            for (var i = 0; i < x.digits.length; ++i) n = x.digits[i] - y.digits[i] + c, result.digits[i] = n % 65536, 
+            result.digits[i] < 0 && (result.digits[i] += 65536), c = 0 - Number(n < 0);
             if (c == -1) {
                 c = 0;
-                for (var i = 0; i < x.digits.length; ++i) n = 0 - result.digits[i] + c, result.digits[i] = n % biRadix, 
-                result.digits[i] < 0 && (result.digits[i] += biRadix), c = 0 - Number(n < 0);
+                for (var i = 0; i < x.digits.length; ++i) n = 0 - result.digits[i] + c, result.digits[i] = n % 65536, 
+                result.digits[i] < 0 && (result.digits[i] += 65536), c = 0 - Number(n < 0);
                 result.isNeg = !x.isNeg;
             } else result.isNeg = x.isNeg;
         }
@@ -1532,22 +1529,22 @@
         for (var result = x.digits.length - 1; result > 0 && 0 == x.digits[result]; ) --result;
         return result;
     }, RSAUtils.biNumBits = function(x) {
-        var result, n = RSAUtils.biHighIndex(x), d = x.digits[n], m = (n + 1) * bitsPerDigit;
-        for (result = m; result > m - bitsPerDigit && 0 == (32768 & d); --result) d <<= 1;
+        var result, n = RSAUtils.biHighIndex(x), d = x.digits[n], m = 16 * (n + 1);
+        for (result = m; result > m - 16 && 0 == (32768 & d); --result) d <<= 1;
         return result;
     }, RSAUtils.biMultiply = function(x, y) {
         for (var c, uv, k, result = new BigInt(), n = RSAUtils.biHighIndex(x), t = RSAUtils.biHighIndex(y), i = 0; i <= t; ++i) {
             c = 0, k = i;
             for (var j = 0; j <= n; ++j, ++k) uv = result.digits[k] + x.digits[j] * y.digits[i] + c, 
-            result.digits[k] = uv & maxDigitVal, c = uv >>> biRadixBits;
+            result.digits[k] = 65535 & uv, c = uv >>> 16;
             result.digits[i + n + 1] = c;
         }
         return result.isNeg = x.isNeg != y.isNeg, result;
     }, RSAUtils.biMultiplyDigit = function(x, y) {
         var n, c, uv, result = new BigInt();
         n = RSAUtils.biHighIndex(x), c = 0;
-        for (var j = 0; j <= n; ++j) uv = result.digits[j] + x.digits[j] * y + c, result.digits[j] = uv & maxDigitVal, 
-        c = uv >>> biRadixBits;
+        for (var j = 0; j <= n; ++j) uv = result.digits[j] + x.digits[j] * y + c, result.digits[j] = 65535 & uv, 
+        c = uv >>> 16;
         return result.digits[1 + n] = c, result;
     }, RSAUtils.arrayCopy = function(src, srcStart, dest, destStart, n) {
         for (var m = Math.min(srcStart + n, src.length), i = srcStart, j = destStart; i < m; ++i, 
@@ -1555,18 +1552,18 @@
     };
     var highBitMasks = [ 0, 32768, 49152, 57344, 61440, 63488, 64512, 65024, 65280, 65408, 65472, 65504, 65520, 65528, 65532, 65534, 65535 ];
     RSAUtils.biShiftLeft = function(x, n) {
-        var digitCount = Math.floor(n / bitsPerDigit), result = new BigInt();
+        var digitCount = Math.floor(n / 16), result = new BigInt();
         RSAUtils.arrayCopy(x.digits, 0, result.digits, digitCount, result.digits.length - digitCount);
-        for (var bits = n % bitsPerDigit, rightBits = bitsPerDigit - bits, i = result.digits.length - 1, i1 = i - 1; i > 0; --i, 
-        --i1) result.digits[i] = result.digits[i] << bits & maxDigitVal | (result.digits[i1] & highBitMasks[bits]) >>> rightBits;
-        return result.digits[0] = result.digits[i] << bits & maxDigitVal, result.isNeg = x.isNeg, 
+        for (var bits = n % 16, rightBits = 16 - bits, i = result.digits.length - 1, i1 = i - 1; i > 0; --i, 
+        --i1) result.digits[i] = result.digits[i] << bits & 65535 | (result.digits[i1] & highBitMasks[bits]) >>> rightBits;
+        return result.digits[0] = result.digits[i] << bits & 65535, result.isNeg = x.isNeg, 
         result;
     };
     var lowBitMasks = [ 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535 ];
     RSAUtils.biShiftRight = function(x, n) {
-        var digitCount = Math.floor(n / bitsPerDigit), result = new BigInt();
+        var digitCount = Math.floor(n / 16), result = new BigInt();
         RSAUtils.arrayCopy(x.digits, digitCount, result.digits, 0, x.digits.length - digitCount);
-        for (var bits = n % bitsPerDigit, leftBits = bitsPerDigit - bits, i = 0, i1 = i + 1; i < result.digits.length - 1; ++i, 
+        for (var bits = n % 16, leftBits = 16 - bits, i = 0, i1 = i + 1; i < result.digits.length - 1; ++i, 
         ++i1) result.digits[i] = result.digits[i] >>> bits | (result.digits[i1] & lowBitMasks[bits]) << leftBits;
         return result.digits[result.digits.length - 1] >>>= bits, result.isNeg = x.isNeg, 
         result;
@@ -1591,16 +1588,16 @@
         x.isNeg = !1, y.isNeg = !1, r = biSubtract(y, x), x.isNeg = !0, y.isNeg = origYIsNeg) : (q = new BigInt(), 
         r = RSAUtils.biCopy(x)), [ q, r ];
         q = new BigInt(), r = x;
-        for (var t = Math.ceil(tb / bitsPerDigit) - 1, lambda = 0; y.digits[t] < biHalfRadix; ) y = RSAUtils.biShiftLeft(y, 1), 
-        ++lambda, ++tb, t = Math.ceil(tb / bitsPerDigit) - 1;
+        for (var t = Math.ceil(tb / 16) - 1, lambda = 0; y.digits[t] < 32768; ) y = RSAUtils.biShiftLeft(y, 1), 
+        ++lambda, ++tb, t = Math.ceil(tb / 16) - 1;
         r = RSAUtils.biShiftLeft(r, lambda), nb += lambda;
-        for (var n = Math.ceil(nb / bitsPerDigit) - 1, b = RSAUtils.biMultiplyByRadixPower(y, n - t); RSAUtils.biCompare(r, b) != -1; ) ++q.digits[n - t], 
+        for (var n = Math.ceil(nb / 16) - 1, b = RSAUtils.biMultiplyByRadixPower(y, n - t); RSAUtils.biCompare(r, b) != -1; ) ++q.digits[n - t], 
         r = RSAUtils.biSubtract(r, b);
         for (var i = n; i > t; --i) {
             var ri = i >= r.digits.length ? 0 : r.digits[i], ri1 = i - 1 >= r.digits.length ? 0 : r.digits[i - 1], ri2 = i - 2 >= r.digits.length ? 0 : r.digits[i - 2], yt = t >= y.digits.length ? 0 : y.digits[t], yt1 = t - 1 >= y.digits.length ? 0 : y.digits[t - 1];
-            q.digits[i - t - 1] = ri == yt ? maxDigitVal : Math.floor((ri * biRadix + ri1) / yt);
-            for (var c1 = q.digits[i - t - 1] * (yt * biRadix + yt1), c2 = ri * biRadixSquared + (ri1 * biRadix + ri2); c1 > c2; ) --q.digits[i - t - 1], 
-            c1 = q.digits[i - t - 1] * (yt * biRadix | yt1), c2 = ri * biRadix * biRadix + (ri1 * biRadix + ri2);
+            q.digits[i - t - 1] = ri == yt ? 65535 : Math.floor((65536 * ri + ri1) / yt);
+            for (var c1 = q.digits[i - t - 1] * (65536 * yt + yt1), c2 = 4294967296 * ri + (65536 * ri1 + ri2); c1 > c2; ) --q.digits[i - t - 1], 
+            c1 = q.digits[i - t - 1] * (65536 * yt | yt1), c2 = 65536 * ri * 65536 + (65536 * ri1 + ri2);
             b = RSAUtils.biMultiplyByRadixPower(y, i - t - 1), r = RSAUtils.biSubtract(r, RSAUtils.biMultiplyDigit(b, q.digits[i - t - 1])), 
             r.isNeg && (r = RSAUtils.biAdd(r, b), --q.digits[i - t - 1]);
         }
