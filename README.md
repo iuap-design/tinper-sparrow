@@ -14,14 +14,14 @@
 
 ###  Get sparrow
 
-* npm 
+* npm
 ```
 	npm install tinper-sparrow
 ```
 
-* cdn 
+* cdn
 ```
-	//design.yyuap.com/static/tinper-sparrow/latest/js/tinper-sparrow.js
+	//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js
 ```
 ### Introducing sparrow
 - ES6
@@ -33,7 +33,7 @@ import { sparrow} from "tinper-sparrow"
 
 ```
 	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-    <script src="//design.yyuap.com/static/tinper-sparrow/latest/js/tinper-sparrow.js"></script>
+    <script src="//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js"></script>
 ```
 **Note**： sparrow is dependent on jQuery
 
@@ -44,7 +44,7 @@ import { sparrow} from "tinper-sparrow"
 	sparrow.isDate(new Date()); //Date Object returns true, others return to false
 
 ```
-Read the [Develop documentation](http://tinper.org/dist/sparrow/index.html) 
+Read the [Develop documentation](http://tinper.org/dist/sparrow/index.html)
 
 ## Contributing
 
