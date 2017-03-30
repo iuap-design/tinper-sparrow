@@ -8,6 +8,7 @@ var U_LANGUAGES = "i_languages";
 var U_THEME = "u_theme";
 var U_LOCALE = "u_locale";
 var U_USERCODE = "usercode";
+var U_TIMEZONE = "u_timezone";
 
 var enumerables = true,
 	enumerablesTest = {
@@ -24,4 +25,4 @@ if(enumerables) {
 }
 
 
-export {enumerables,U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE};
+export {enumerables,U_LANGUAGES,U_THEME,U_LOCALE,U_USERCODE,U_TIMEZONE};
