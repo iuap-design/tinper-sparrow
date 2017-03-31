@@ -155,7 +155,7 @@ u.date = {
      * @param formatString
      */
     format: function(date, formatString, language) {
-        if (!date) return ''; // renturn date 改为 return '',因：setFormat初始会赋值为undefined,造成二次选择报错
+        if (!date && date != 0) return ''; // renturn date 改为 return '',因：setFormat初始会赋值为undefined,造成二次选择报错
         var array = formatString.match(u.date._formattingTokens),
             i, length, output = '';
         var _date = u.date.getDateObj(date);
@@ -251,7 +251,7 @@ u.date = {
         if (obj) {
             timezone = obj.timezone;
         }
-        if (!value || typeof value == 'undefined') return value;
+        if ((!value && value != 0) || typeof value == 'undefined') return value;
         var dateFlag = false;
         var _date = new Date(dateFormat(value));
         if (isNaN(_date)) {
