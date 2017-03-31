@@ -179,15 +179,26 @@ u.date = {
         return utc;
     },
 
-
+    /**
+     * 根据当前时区日期对象获取指定时区日期对象
+     * @param  {Date} date     当前时区日期对象
+     * @param  {number} timezone 指定时区
+     * @return {Date}          转化后的日期对象
+     */
     getDateByTimeZonec2z: function(date, timezone) {
         var dateObj = u.date.getDateObj(date);
         var localTime = dateObj.getTime();
         var localOffset = dateObj.getTimezoneOffset() * 60000;
-        var utc = localTime + localOffset; //得到国际标准时间
+        var utc = localTime + localOffset;
         var calctime = utc + (3600000 * parseFloat(timezone));
         return new Date(calctime);
     },
+    /**
+     * 根据指定时区日期对象获取当前时区日期对象
+     * @param  {Date} date     指定时区日期对象
+     * @param  {number} timezone 指定时区
+     * @return {Date}          转化后的日期对象
+     */
     getDateByTimeZonez2c: function(date, timezone) {
         var dateObj = u.date.getDateObj(date);
         var localTime = dateObj.getTime();
