@@ -277,6 +277,8 @@ u.date = {
                         _date.setYear(s1[0]);
                         _date.setMonth(parseInt(s1[1] - 1));
                         _date.setDate(s1[2] ? s1[2] : 0);
+                        _date.setMonth(parseInt(s1[1] - 1));
+                        _date.setDate(s1[2] ? s1[2] : 0);
                         dateFlag = true;
                     }
                     if (s2 && s2.length > 0) {
