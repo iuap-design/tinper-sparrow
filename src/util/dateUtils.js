@@ -294,7 +294,7 @@ u.date = {
                 } else {
                     _date = new Date(parseInt(value));
                     if (isNaN(_date)) {
-                        throw new TypeError('invalid Date parameter');
+                        // throw new TypeError('invalid Date parameter');
                     } else {
                         dateFlag = true;
                     }
