@@ -1,5 +1,5 @@
 /*!
- * tinper-sparrow v3.2.0
+ * tinper-sparrow v3.2.1
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -657,12 +657,24 @@
             }
         },
         format: function(date, formatString, language) {
-            if (!date) return "";
+            if (!date && 0 != date) return "";
             var i, length, array = formatString.match(u.date._formattingTokens), output = "", _date = u.date.getDateObj(date);
             if (!_date) return date;
             for (language = language || __WEBPACK_IMPORTED_MODULE_0__core__.a.getLanguages(), 
             i = 0, length = array.length; i < length; i++) u.date._formats[array[i]] ? output += u.date._formats[array[i]](_date, language) : output += array[i];
             return output;
+        },
+        strToDateByTimezone: function(str, timezone) {
+            var dateObj = u.date.getDateObj(str), localTime = dateObj.getTime(), localOffset = 6e4 * dateObj.getTimezoneOffset(), utc = localTime + localOffset;
+            return utc += 36e5 * parseFloat(timezone);
+        },
+        getDateByTimeZonec2z: function(date, timezone) {
+            var dateObj = u.date.getDateObj(date), localTime = dateObj.getTime(), localOffset = 6e4 * dateObj.getTimezoneOffset(), utc = localTime + localOffset, calctime = utc + 36e5 * parseFloat(timezone);
+            return new Date(calctime);
+        },
+        getDateByTimeZonez2c: function(date, timezone) {
+            var dateObj = u.date.getDateObj(date), localTime = dateObj.getTime(), localOffset = 6e4 * dateObj.getTimezoneOffset(), utc = localTime - 36e5 * parseFloat(timezone) - localOffset;
+            return new Date(utc);
         },
         _addOrSubtract: function(date, period, value, isAdding) {
             var times = date.getTime(), d = date.getDate(), m = date.getMonth(), _date = u.date.getDateObj(date);
@@ -678,24 +690,23 @@
         sub: function(date, period, value) {
             return u.date._addOrSubtract(date, period, value, -1);
         },
-        getDateObj: function(value) {
-            if (!value || void 0 === value) return value;
+        getDateObj: function(value, obj) {
+            var timezone;
+            if (obj && (timezone = obj.timezone), !value && 0 != value || void 0 === value) return value;
             var dateFlag = !1, _date = new Date(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__.l)(value));
             if (isNaN(_date)) {
                 var index1, index2, index3, s1, s2, s3, s4;
-                if (value.indexOf) if (index1 = value.indexOf("-"), index2 = value.indexOf(":"), 
-                index3 = value.indexOf(" "), index1 > 0 || index2 > 0 || index3 > 0) _date = new Date(), 
-                index3 > 0 ? (s3 = value.split(" "), s1 = s3[0].split("-"), s2 = s3[1].split(":"), 
-                s4 = s3[2]) : index1 > 0 ? s1 = value.split("-") : index2 > 0 && (s2 = value.split(":")), 
+                value.indexOf && (index1 = value.indexOf("-"), index2 = value.indexOf(":"), index3 = value.indexOf(" "), 
+                index1 > 0 || index2 > 0 || index3 > 0 ? (_date = new Date(), index3 > 0 ? (s3 = value.split(" "), 
+                s1 = s3[0].split("-"), s2 = s3[1].split(":"), s4 = s3[2]) : index1 > 0 ? s1 = value.split("-") : index2 > 0 && (s2 = value.split(":")), 
                 s1 && s1.length > 0 && (_date.setYear(s1[0]), _date.setMonth(parseInt(s1[1] - 1)), 
-                _date.setDate(s1[2] ? s1[2] : 0), dateFlag = !0), s2 && s2.length > 0 && ("pm" == s4 && (s2[0] = s2[0] - -12), 
-                _date.setHours(s2[0] ? s2[0] : 0), _date.setMinutes(s2[1] ? s2[1] : 0), _date.setSeconds(s2[2] ? s2[2] : 0), 
-                dateFlag = !0); else {
-                    if (_date = new Date(parseInt(value)), isNaN(_date)) throw new TypeError("invalid Date parameter");
-                    dateFlag = !0;
-                }
+                _date.setDate(s1[2] ? s1[2] : 0), _date.setMonth(parseInt(s1[1] - 1)), _date.setDate(s1[2] ? s1[2] : 0), 
+                dateFlag = !0), s2 && s2.length > 0 && ("pm" == s4 && (s2[0] = s2[0] - -12), _date.setHours(s2[0] ? s2[0] : 0), 
+                _date.setMinutes(s2[1] ? s2[1] : 0), _date.setSeconds(s2[2] ? s2[2] : 0), dateFlag = !0)) : (_date = new Date(parseInt(value)), 
+                isNaN(_date) || (dateFlag = !0)));
             } else dateFlag = !0;
-            return dateFlag ? _date : null;
+            return dateFlag ? (timezone && (_date = u.date.getDateByTimeZonec2z(_date, timezone)), 
+            _date) : null;
         }
     };
     var date = u.date;
