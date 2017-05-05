@@ -21,7 +21,7 @@
 
 * cdn
 ```
-	//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js
+	//design.yonyoucloud.com/static/tinper-sparrow/latest/tinper-sparrow.js
 ```
 ### Introducing sparrow
 - ES6
@@ -32,8 +32,8 @@ import { sparrow} from "tinper-sparrow"
 * HTML
 
 ```
-	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-    <script src="//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js"></script>
+	<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yonyoucloud.com/static/tinper-sparrow/latest/tinper-sparrow.js"></script>
 ```
 **Note**： sparrow is dependent on jQuery
 

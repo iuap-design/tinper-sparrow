@@ -22,7 +22,7 @@
 
 * cdn 资源
 ```
-	//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js
+	//design.yonyoucloud.com/static/tinper-sparrow/latest/tinper-sparrow.js
 ```
 ### 引入sparrow
 - ES6语法
@@ -33,8 +33,8 @@ import { sparrow} from "tinper-sparrow"
 * HTML直接引入
 
 ```
-	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-    <script src="//design.yyuap.com/static/tinper-sparrow/latest/tinper-sparrow.js"></script>
+	<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yonyoucloud.com/static/tinper-sparrow/latest/tinper-sparrow.js"></script>
 ```
 **注**： sparrow依赖于jquery，引入资源时需先引入jquery
 
