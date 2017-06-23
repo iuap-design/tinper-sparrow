@@ -1,5 +1,5 @@
 /**
- * tinper-sparrow v3.2.2
+ * tinper-sparrow v3.2.3
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -982,6 +982,8 @@ var makeModal = function makeModal(element, parEle) {
 	} else {
 		document.body.appendChild(overlayDiv);
 	}
+	$('.u-overlay').css('display', "none");
+	$('.u-overlay:eq(0)').css('display', "block");
 
 	element.style.zIndex = getZIndex();
 	on$1(overlayDiv, 'click', function (e) {
@@ -1200,10 +1202,9 @@ Class.Mutators = {
 	'Statics': function Statics(staticProperties) {
 		mix(this, staticProperties);
 	}
-};
 
-// Shared empty constructor function to aid in prototype-chain creation.
-function Ctor() {}
+	// Shared empty constructor function to aid in prototype-chain creation.
+};function Ctor() {}
 
 // See: http://jsperf.com/object-create-vs-new-ctor
 var createProto = Object.__proto__ ? function (proto) {
