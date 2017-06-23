@@ -165,6 +165,8 @@ var makeModal = function(element, parEle) {
 	} else {
 		document.body.appendChild(overlayDiv)
 	}
+	$('.u-overlay').css('display',"none");
+	$('.u-overlay:eq(0)').css('display',"block");
 
 	element.style.zIndex = getZIndex();
 	on(overlayDiv, 'click', function(e) {
