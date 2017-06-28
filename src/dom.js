@@ -165,8 +165,6 @@ var makeModal = function(element, parEle) {
 	} else {
 		document.body.appendChild(overlayDiv)
 	}
-	$('.u-overlay').css('display',"none");
-	$('.u-overlay:eq(0)').css('display',"block");
 
 	element.style.zIndex = getZIndex();
 	on(overlayDiv, 'click', function(e) {
@@ -175,6 +173,27 @@ var makeModal = function(element, parEle) {
 	return overlayDiv;
 };
 
+
+var makModalAssign = function(element, parEle) {
+	var overlayDiv = document.createElement('div');
+	$(overlayDiv).addClass('u-overlay-assign');
+	overlayDiv.style.zIndex = getZIndex();
+	// 如果有父元素则插入到父元素上，没有则添加到body上
+	if(parEle && parEle != document.body) {
+		addClass(overlayDiv, 'hasPar');
+		parEle.appendChild(overlayDiv);
+	} else {
+		document.body.appendChild(overlayDiv)
+	}
+	$('.u-overlay-assign').css('display',"none");
+	$('.u-overlay-assign:eq(0)').css('display',"block");
+
+	element.style.zIndex = getZIndex();
+	on(overlayDiv, 'click', function(e) {
+		stopEvent(e);
+	})
+	return overlayDiv;
+};
 var getOffset = function(Node, offset) {
 	if(!offset) {
 		offset = {};
@@ -303,6 +322,7 @@ export {
 	getZIndex,
 	makeDOM,
 	makeModal,
+	makModalAssign,
 	getOffset,
 	getScroll,
 	showPanelByEle,
