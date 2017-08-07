@@ -1,5 +1,5 @@
 /**
- * tinper-sparrow v3.2.3
+ * tinper-sparrow v3.2.4
  * sparrow.js
  * author : Yonyou FED
  * homepage : https://github.com/iuap-design/tinper-sparrow#readme
@@ -982,8 +982,6 @@ var makeModal = function makeModal(element, parEle) {
 	} else {
 		document.body.appendChild(overlayDiv);
 	}
-	$('.u-overlay').css('display', "none");
-	$('.u-overlay:eq(0)').css('display', "block");
 
 	element.style.zIndex = getZIndex();
 	on$1(overlayDiv, 'click', function (e) {
