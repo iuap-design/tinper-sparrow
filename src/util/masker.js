@@ -436,7 +436,7 @@ PercentMasker.prototype.formatArgument = function(obj) {
 PercentMasker.prototype.innerFormat = function(value) {
 	var val = "";
 	if (value != "") {
-		var obj = (new NumberMasker(this.formatMeta)).innerFormat({value:value}).value;
+		var obj = new NumberMasker(this.formatMeta).innerFormat({ value: value }).value;
 		// 获取obj保留几位小数位,obj小数位-2为显示小数位
 		var objStr = String(obj);
 		var objPrecision = objStr.length - objStr.indexOf(".") - 1;
@@ -444,8 +444,10 @@ PercentMasker.prototype.innerFormat = function(value) {
 		if (showPrecision < 0) {
 			showPrecision = 0;
 		}
+		obj = obj.replace(",","");
 		val = parseFloat(obj) * 100;
 		val = (val * Math.pow(10, showPrecision) / Math.pow(10, showPrecision)).toFixed(showPrecision);
+		val = new NumberMasker(this.formatMeta).innerFormat({ value: val }).value;
 		val = val + "%";
 	}
 	return {
