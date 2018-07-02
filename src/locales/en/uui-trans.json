@@ -1,0 +1,25 @@
+{
+    "gridComp": {
+      "show_column": "show hide column",
+      "clear_set": "clear set",
+      "no_rows": "no data",
+      "sum": "sum:",
+	  "close": "close"
+    },
+	"dialog": {
+		"info_dialog": "Info Dialog"
+	},
+	"validate": {
+		"required": "cannot be null!",
+		"integer": "please input an integer!",
+		"float": "please input a number!",
+		"zipCode": "please input zipcode!",
+		"phone": "please input phone number!",
+		"email": "please input email!",
+		"url": "please input url!",
+		"error_zipCode": "error zipcode!",
+		"error_phone": "error phone number!",
+		"error_email": "error email!",
+		"error_url": "error url!"
+	}
+}

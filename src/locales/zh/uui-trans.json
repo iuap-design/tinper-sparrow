@@ -1,0 +1,25 @@
+{
+    "gridComp": {
+      "show_column": "显示 隐藏列",
+      "clear_set": "清除设置",
+      "no_rows": "无数据",
+      "sum": "合计:",
+	  "close":"关闭"
+    },
+	"dialog": {
+		"info_dialog": "提示窗口"
+	},
+	"validate": {
+		"required": "不能为空！",
+		"integer": "请填写整数！",
+		"float": "请填写数字！",
+		"zipCode": "请填写邮政编码！",
+		"phone": "请填写手机号码！",
+		"email": "请填写邮箱地址！",
+		"url": "请填写网址！",
+		"error_zipCode": "邮政编码格式不对！",
+		"error_phone": "手机号码格式不对！",
+		"error_email": "邮箱地址格式不对！",
+		"error_url": "网址格式不对！"
+	}
+}
