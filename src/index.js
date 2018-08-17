@@ -62,6 +62,11 @@ import {
 } from './ajax';
 
 import {
+	get,
+	post
+} from './fetch';
+
+import {
 	floatRender,
 	integerRender,
 	dateRender,
@@ -109,6 +114,8 @@ import {
 //公开接口、属性对外暴露
 let api = {
 	ajax: ajax,
+	get,
+	post,
 	extend : extend,
 	setCookie: setCookie,
 	getCookie: getCookie,
@@ -164,7 +171,8 @@ let api = {
 	BigInt: BigInt,
 	BarrettMu: BarrettMu,
 	twoDigit: twoDigit,
-	trans: trans
+	trans: trans,
+	
 };
 extend(api,env);
 // export api;
