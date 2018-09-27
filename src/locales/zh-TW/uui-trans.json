@@ -1,0 +1,69 @@
+{
+    "public":{
+        "clear":"清空",
+        "confirm": "確定",
+        "cancel": "取消",
+        "day": "日",
+        "ok": "確定"
+    },
+    "gridComp": {
+      "show_column": "顯示 隱藏列",
+      "clear_set": "清除設置",
+      "no_rows": "無數據",
+      "sum": "合計:",
+	  "close":"關閉"
+    },
+	"dialog": {
+		"info_dialog": "提示窗口",
+		"title":"提示",
+		"okText":"確定",
+		"cancelText":"取消"
+	},
+	"validate": {
+		"required": "不能為空！",
+		"integer": "請填寫整數！",
+		"float": "請填寫數字！",
+		"zipCode": "請填寫郵政編碼！",
+		"phone": "請填寫手機號碼！",
+		"email": "請填寫郵箱地址！",
+		"url": "請填寫網址！",
+		"error_zipCode": "郵政編碼格式不對！",
+		"error_phone": "手機號碼格式不對！",
+		"error_email": "郵箱地址格式不對！",
+		"error_url": "網址格式不對！",
+		"input_minlength": "輸入長度不能小於 ",
+		"input_maxlength": "輸入長度不能大於 ",
+		"input_unit": " 位",
+		"input_maxvalue": "輸入值不能大於",
+		"input_minvalue": "輸入值不能小於",
+		"input_equalMax": "輸入值不能大於或等於",
+		"input_equalMin": "輸入值不能小於或等於",
+        "landline": "請填寫座機號碼！",
+        "datetime":"請填寫日期！",
+        "phoneNumber":"請填寫正確號碼！",
+        "error_integer":"整數格式不對！",
+        "error_float":"數字格式不對！",
+        "error_landline":"座機號碼格式不對！",
+        "error_datetime":"日期格式不對！",
+        "error_phoneNumber":"號碼格式不對！"
+	},
+    "date":{
+        "months": ["壹月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十壹月","十二月"],
+        "monthsShort": ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+        "weekdays": ["星期日","星期壹","星期二","星期三","星期四","星期五","星期六"],
+        "weekdaysShort": ["周日","周壹","周二","周三","周四","周五","周六"],
+        "weekdaysMin": ["日","壹","二","三","四","五","六"]
+    },
+    "pagination":{
+        "totalText":"共",
+        "listText": "條",
+        "pageText":"頁",
+        "showText":"顯示",
+        "toText":"到"
+    },
+    "dataTable":{
+        "Y":"是",
+        "N":"否"
+    }
+
+}
